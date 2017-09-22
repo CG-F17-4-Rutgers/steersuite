@@ -1,0 +1,16 @@
+﻿cl : Command line warning D9002: ignoring unknown option '-std=c++0x'
+cl : Command line warning D9002: ignoring unknown option '-ggdb'
+cl : Command line warning D9002: ignoring unknown option '-fPIC'
+  DetourCrowd.cpp
+..\..\external\recastnavigation\DetourCrowd\Source\DetourCrowd.cpp(20): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
+  DetourLocalBoundary.cpp
+..\..\external\recastnavigation\DetourCrowd\Source\DetourLocalBoundary.cpp(19): fatal error C1083: Cannot open include file: 'float.h': No such file or directory
+  DetourObstacleAvoidance.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\external\recastnavigation\Detour\Include\DetourMath.h(11): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  DetourPathCorridor.cpp
+..\..\external\recastnavigation\DetourCrowd\Source\DetourPathCorridor.cpp(19): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
+  DetourPathQueue.cpp
+..\..\external\recastnavigation\DetourCrowd\Source\DetourPathQueue.cpp(19): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
+  DetourProximityGrid.cpp
+..\..\external\recastnavigation\DetourCrowd\Source\DetourProximityGrid.cpp(19): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
+  Generating Code...

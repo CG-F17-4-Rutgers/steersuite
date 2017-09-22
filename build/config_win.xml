@@ -92,7 +92,7 @@ Options specified by the command line will override options in this configuratio
 	    Options related to the spatial database
 	    -->
 	        <!-- Max number of items a grid cell can contain -->
-	        <maxItemsPerGridCell>15</maxItemsPerGridCell>
+	        <maxItemsPerGridCell>100</maxItemsPerGridCell>
 	        <!-- Number of cells in the grid along the X axis -->
 	        <numCellsX>200</numCellsX>
 	        <!-- Number of cells in the grid along the Z axis -->

@@ -1,0 +1,464 @@
+﻿  AgentInterface.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(108): warning C4100: 'item': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'directiontToRightOfAgent': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  AgentMetricsCollector.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'indentation': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'out': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(108): warning C4100: 'item': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'directiontToRightOfAgent': unreferenced formal parameter
+  AStarPlanner.cpp
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  BehaviorParameter.cpp
+  BenchmarkEngine.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'indentation': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'out': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(108): warning C4100: 'item': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'directiontToRightOfAgent': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\util\include\LogObject.h(89): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(106): warning C4100: 'agent': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(126): warning C4100: 'action': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(126): warning C4100: 'key': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(128): warning C4100: 'deltaY': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(128): warning C4100: 'deltaX': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(129): warning C4100: 'action': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(129): warning C4100: 'button': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/BenchmarkTechniqueInterface.h(59): warning C4100: 'out': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/BenchmarkTechniqueInterface.h(59): warning C4100: 'simulationMetrics': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/BenchmarkTechniqueInterface.h(61): warning C4100: 'out': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/BenchmarkTechniqueInterface.h(61): warning C4100: 'simulationMetrics': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/BenchmarkTechniqueInterface.h(61): warning C4100: 'agentIndex': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/BenchmarkEnginePrivate.h(41): warning C4100: 'engineInfo': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/BenchmarkEnginePrivate.h(41): warning C4100: 'initialConditions': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/BenchmarkEnginePrivate.h(44): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/BenchmarkEnginePrivate.h(44): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/BenchmarkEnginePrivate.h(44): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/BenchmarkEnginePrivate.h(63): warning C4100: 'newGoal': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/BenchmarkEnginePrivate.h(77): warning C4100: 'rangeSq': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/BenchmarkEnginePrivate.h(77): warning C4100: 'agent': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique01.h(26): warning C4100: 'engineInfo': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique01.h(26): warning C4100: 'options': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique01.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique01.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique01.h(27): warning C4100: 'simulationMetrics': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique01.h(28): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique01.h(28): warning C4100: 'timePassedSinceLastFrame': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique01.h(28): warning C4100: 'currentTimeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique01.h(28): warning C4100: 'engineInterface': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique01.h(46): warning C4100: 'scores': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique01.h(46): warning C4100: 'simulationMetrics': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique01.h(46): warning C4100: 'agentIndex': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique02.h(23): warning C4100: 'engineInfo': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique02.h(23): warning C4100: 'options': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique02.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique02.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique02.h(27): warning C4100: 'simulationMetrics': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique02.h(31): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique02.h(31): warning C4100: 'timePassedSinceLastFrame': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique02.h(31): warning C4100: 'currentTimeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechnique02.h(31): warning C4100: 'engineInterface': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(24): warning C4100: 'engineInfo': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(24): warning C4100: 'options': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(26): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(26): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(26): warning C4100: 'simulationMetrics': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(29): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(29): warning C4100: 'timePassedSinceLastFrame': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(29): warning C4100: 'currentTimeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(29): warning C4100: 'engineInterface': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(37): warning C4100: 'scores': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(41): warning C4100: 'scores': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(41): warning C4100: 'simulationMetrics': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/EnergyEfficiencyTechnique.h(41): warning C4100: 'agentIndex': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(25): warning C4100: 'engineInfo': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(25): warning C4100: 'options': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(27): warning C4100: 'simulationMetrics': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(30): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(30): warning C4100: 'timePassedSinceLastFrame': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(30): warning C4100: 'currentTimeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(30): warning C4100: 'engineInterface': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(60): warning C4100: 'scores': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(64): warning C4100: 'scores': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(64): warning C4100: 'simulationMetrics': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/AccelerationEfficiencyTechnique.h(64): warning C4100: 'agentIndex': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechniquePLE.h(23): warning C4100: 'engineInfo': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechniquePLE.h(23): warning C4100: 'options': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechniquePLE.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechniquePLE.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechniquePLE.h(27): warning C4100: 'simulationMetrics': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechniquePLE.h(28): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechniquePLE.h(28): warning C4100: 'timePassedSinceLastFrame': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechniquePLE.h(28): warning C4100: 'currentTimeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\benchmarking/CompositeTechniquePLE.h(28): warning C4100: 'engineInterface': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  BoxObstacle.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Camera.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  CircleObstacle.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Clock.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'indentation': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'out': unreferenced formal parameter
+  CompositeTechniqueEntropy.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(108): warning C4100: 'item': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'directiontToRightOfAgent': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  CompositeTechniqueGraph.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'indentation': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'out': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(108): warning C4100: 'item': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'directiontToRightOfAgent': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\util\include\LogObject.h(89): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(106): warning C4100: 'agent': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(126): warning C4100: 'action': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(126): warning C4100: 'key': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(128): warning C4100: 'deltaY': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(128): warning C4100: 'deltaX': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(129): warning C4100: 'action': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(129): warning C4100: 'button': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/BenchmarkTechniqueInterface.h(59): warning C4100: 'out': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/BenchmarkTechniqueInterface.h(59): warning C4100: 'simulationMetrics': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/BenchmarkTechniqueInterface.h(61): warning C4100: 'out': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/BenchmarkTechniqueInterface.h(61): warning C4100: 'simulationMetrics': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/BenchmarkTechniqueInterface.h(61): warning C4100: 'agentIndex': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\benchmarking\CompositeTechnique02.h(23): warning C4100: 'engineInfo': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\benchmarking\CompositeTechnique02.h(23): warning C4100: 'options': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\benchmarking\CompositeTechnique02.h(27): warning C4100: 'dt': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\benchmarking\CompositeTechnique02.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\benchmarking\CompositeTechnique02.h(27): warning C4100: 'simulationMetrics': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\benchmarking\CompositeTechnique02.h(31): warning C4100: 'frameNumber': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\benchmarking\CompositeTechnique02.h(31): warning C4100: 'timePassedSinceLastFrame': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\benchmarking\CompositeTechnique02.h(31): warning C4100: 'currentTimeStamp': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\benchmarking\CompositeTechnique02.h(31): warning C4100: 'engineInterface': unreferenced formal parameter
+  Curve.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  DrawLib.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  DynamicLibrary.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+  FrameSaver.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  GJK_EPA.cpp
+..\..\steerlib\src\GJK_EPA.cpp(9): warning C4100: '_shapeB': unreferenced formal parameter
+..\..\steerlib\src\GJK_EPA.cpp(9): warning C4100: '_shapeA': unreferenced formal parameter
+..\..\steerlib\src\GJK_EPA.cpp(9): warning C4100: 'return_penetration_vector': unreferenced formal parameter
+..\..\steerlib\src\GJK_EPA.cpp(9): warning C4100: 'return_penetration_depth': unreferenced formal parameter
+  GridDatabase2D.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  GridDatabasePlanningDomain.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\griddatabase/GridDatabase2D.h(208): warning C4100: 'exclude1': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\griddatabase/GridDatabase2D.h(210): warning C4100: 'exclude1': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(108): warning C4100: 'item': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'directiontToRightOfAgent': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  HighResCounter.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+  OrientedBoxObstacle.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Generating Code...
+  Compiling...
+  OrientedWallObstacle.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\obstacles/OrientedWallObstacle.h(40): warning C4251: 'SteerLib::OrientedWallObstacle::_wallSections': class 'std::vector<SteerLib::OrientedBoxObstacle *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'SteerLib::OrientedWallObstacle'
+          with
+          [
+              _Ty=SteerLib::OrientedBoxObstacle *
+          ]
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\obstacles/OrientedWallObstacle.h(40): note: see declaration of 'std::vector<SteerLib::OrientedBoxObstacle *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=SteerLib::OrientedBoxObstacle *
+          ]
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  PerformanceProfiler.cpp
+  PolygonObstacle.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\obstacles/PolygonObstacle.h(56): warning C4251: 'PolygonObstacle::_points': class 'std::vector<Util::Point,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'PolygonObstacle'
+          with
+          [
+              _Ty=Util::Point
+          ]
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/Geometry.h(596): note: see declaration of 'std::vector<Util::Point,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=Util::Point
+          ]
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  RecFilePlayerModule.cpp
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  RecFileReader.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'indentation': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'out': unreferenced formal parameter
+  SimulationEngine.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'indentation': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'out': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(108): warning C4100: 'item': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'directiontToRightOfAgent': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\util\include\LogObject.h(89): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(106): warning C4100: 'agent': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(126): warning C4100: 'action': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(126): warning C4100: 'key': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(128): warning C4100: 'deltaY': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(128): warning C4100: 'deltaX': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(129): warning C4100: 'action': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(129): warning C4100: 'button': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  SimulationMetricsCollector.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'indentation': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'out': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(108): warning C4100: 'item': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'directiontToRightOfAgent': unreferenced formal parameter
+..\..\steerlib\src\SimulationMetricsCollector.cpp(67): warning C4100: 'timePassedSinceLastFrame': unreferenced formal parameter
+..\..\steerlib\src\SimulationMetricsCollector.cpp(67): warning C4100: 'currentTimeStamp': unreferenced formal parameter
+..\..\steerlib\src\SimulationMetricsCollector.cpp(67): warning C4100: 'gridDB': unreferenced formal parameter
+  SimulationRecorderModule.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(108): warning C4100: 'item': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'directiontToRightOfAgent': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\util\include\LogObject.h(89): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(106): warning C4100: 'agent': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(126): warning C4100: 'action': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(126): warning C4100: 'key': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(128): warning C4100: 'deltaY': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(128): warning C4100: 'deltaX': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(129): warning C4100: 'action': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(129): warning C4100: 'button': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  StateMachine.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'indentation': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'out': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/StateMachine.h(41): warning C4100: 'currentState': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/StateMachine.h(41): warning C4100: 'previousState': unreferenced formal parameter
+  TestCasePlayerModule.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(108): warning C4100: 'item': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'directiontToRightOfAgent': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\util\include\LogObject.h(89): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(106): warning C4100: 'agent': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(122): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(124): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(126): warning C4100: 'action': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(126): warning C4100: 'key': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(128): warning C4100: 'deltaY': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(128): warning C4100: 'deltaX': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(129): warning C4100: 'action': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ModuleInterface.h(129): warning C4100: 'button': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  TestCaseReader.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\testcaseio\TestCaseIOPrivate.h(96): warning C4100: 't': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\testcaseio\TestCaseIOPrivate.h(96): warning C4100: 'r': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\testcaseio\TestCaseIOPrivate.h(97): warning C4100: 'radius': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\testcaseio\TestCaseIOPrivate.h(97): warning C4100: 'p': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\testcaseio\TestCaseIOPrivate.h(98): warning C4100: 'radius': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\testcaseio\TestCaseIOPrivate.h(98): warning C4100: 'p': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'indentation': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'out': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(108): warning C4100: 'item': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'directiontToRightOfAgent': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  TestCaseReaderPrivate.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'frameNumber': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'dt': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/ObstacleInterface.h(27): warning C4100: 'timeStamp': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\testcaseio\TestCaseIOPrivate.h(96): warning C4100: 't': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\testcaseio\TestCaseIOPrivate.h(96): warning C4100: 'r': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\testcaseio\TestCaseIOPrivate.h(97): warning C4100: 'radius': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\testcaseio\TestCaseIOPrivate.h(97): warning C4100: 'p': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\testcaseio\TestCaseIOPrivate.h(98): warning C4100: 'radius': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\testcaseio\TestCaseIOPrivate.h(98): warning C4100: 'p': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'indentation': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'out': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(108): warning C4100: 'item': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'timeStamp': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\interfaces/AgentInterface.h(133): warning C4100: 'directiontToRightOfAgent': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  TestCaseWriter.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(58): warning C4275: non dll-interface class 'std::exception' used as base for dll-interface class 'Util::GenericException'
+  H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\vcruntime_exception.h(43): note: see declaration of 'std::exception'
+  C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/GenericException.h(57): note: see declaration of 'Util::GenericException'
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(36): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'subRoot': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(38): warning C4100: 'tag': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'indentation': unreferenced formal parameter
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/XMLParser.h(40): warning C4100: 'out': unreferenced formal parameter
+c:\users\taichi\documents\research\steersuite-rutgers\steerlib\include\util/DrawLib.h(37): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Generating Code...

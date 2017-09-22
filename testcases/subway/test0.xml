@@ -1,0 +1,169 @@
+
+
+<!--
+  Copyright (c) 2009-2015  Glen Berseth, Mubbasir Kapadia, Shawn Singh, Petros Faloutsos, Glenn Reinman
+  See license.txt for complete license.
+--><!--
+  Copyright (c) 2009 Shawn Singh, Mubbasir Kapadia, Petros Faloutsos, Glenn Reinman
+  See license.txt for complete license.
+-->
+
+<SteerBenchTestCase xmlns="http://www.magix.ucla.edu/steerbench"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.magix.ucla.edu/steerbench 
+                                        TestCaseSchema.xsd">
+
+  <header>
+    <version>1.0</version>
+    <name>3-squeeze</name>
+    <worldBounds>
+      <xmin>-100</xmin>
+      <xmax>100</xmax>
+      <ymin>0</ymin>
+      <ymax>0</ymax>
+      <zmin>-100</zmin>
+      <zmax>100</zmax>
+    </worldBounds>
+  </header>
+  
+  <suggestedCameraView>
+    <position> <x>-10</x> <y>35</y> <z>-5</z> </position>
+    <lookat> <x>0</x> <y>0</y> <z>0</z> </lookat>
+    <up> <x>0</x> <y>1</y> <z>0</z> </up>
+    <fovy>45</fovy>
+  </suggestedCameraView>
+
+  <suggestedCameraView>
+    <position> <x>-10</x> <y>35</y> <z>-0</z> </position>
+    <lookat> <x>0</x> <y>0</y> <z>0</z> </lookat>
+    <up> <x>0</x> <y>1</y> <z>0</z> </up>
+    <fovy>45</fovy>
+  </suggestedCameraView>
+
+  <suggestedCameraView>
+    <position> <x>0</x> <y>35</y> <z>-10</z> </position>
+    <lookat> <x>0</x> <y>0</y> <z>0</z> </lookat>
+    <up> <x>0</x> <y>1</y> <z>0</z> </up>
+    <fovy>45</fovy>
+  </suggestedCameraView>
+
+
+<obstacle>
+  <xmin>16.3872909320241</xmin>
+  <xmax>13.3392909320241</xmax>
+  <ymin>0</ymin>
+  <ymax>2</ymax>
+  <zmin>4.29036733659396</zmin>
+  <zmax>4.49356733659396</zmax>
+</obstacle>
+
+<obstacle>
+  <xmin>12.1200909320241</xmin>
+  <xmax>9.07209093202406</xmax>
+  <ymin>0</ymin>
+  <ymax>2</ymax>
+  <zmin>4.29036733659395</zmin>
+  <zmax>4.49356733659395</zmax>
+</obstacle>
+
+<obstacle>
+  <xmin>7.85289093202407</xmin>
+  <xmax>4.80489093202406</xmax>
+  <ymin>0</ymin>
+  <ymax>2</ymax>
+  <zmin>4.29036733659393</zmin>
+  <zmax>4.49356733659393</zmax>
+</obstacle>
+
+<obstacle>
+  <xmin>16.3872909320241</xmin>
+  <xmax>4.80489093202407</xmax>
+  <ymin>0</ymin>
+  <ymax>2</ymax>
+  <zmin>1.24236733659393</zmin>
+  <zmax>1.44556733659393</zmax>
+</obstacle>
+
+<obstacle>
+  <xmin>16.4888909320241</xmin>
+  <xmax>16.2856909320241</xmax>
+  <ymin>0</ymin>
+  <ymax>2</ymax>
+  <zmin>1.34396733659393</zmin>
+  <zmax>4.39196733659396</zmax>
+</obstacle>
+
+<obstacle>
+  <xmin>4.90649093202406</xmin>
+  <xmax>4.70329093202407</xmax>
+  <ymin>0</ymin>
+  <ymax>2</ymax>
+  <zmin>1.3439673365939</zmin>
+  <zmax>4.39196733659393</zmax>
+</obstacle>
+
+<obstacle>
+  <xmin>11.5215813684839</xmin>
+  <xmax>11.3183813684839</xmax>
+  <ymin>0</ymin>
+  <ymax>2</ymax>
+  <zmin>2.04595254581579</zmin>
+  <zmax>3.56995254581579</zmax>
+</obstacle>
+
+<obstacle>
+  <xmin>11.4199813684839</xmin>
+  <xmax>9.59118136848394</xmax>
+  <ymin>0</ymin>
+  <ymax>2</ymax>
+  <zmin>1.94435254581579</zmin>
+  <zmax>2.14755254581579</zmax>
+</obstacle>
+
+<obstacle>
+  <xmin>9.69278136848394</xmin>
+  <xmax>9.48958136848395</xmax>
+  <ymin>0</ymin>
+  <ymax>2</ymax>
+  <zmin>2.04595254581579</zmin>
+  <zmax>3.56995254581578</zmax>
+</obstacle>
+
+<obstacle>
+  <xmin>11.4199813684839</xmin>
+  <xmax>9.59118136848394</xmax>
+  <ymin>0</ymin>
+  <ymax>2</ymax>
+  <zmin>3.46835254581578</zmin>
+  <zmax>3.67155254581578</zmax>
+</obstacle>
+
+<agentRegion>
+ <numAgents>10</numAgents>
+ <regionBounds>
+  <xmin>4.90649093202407</xmin> <xmax>16.2856909320241</xmax>
+  <ymin>0</ymin> <ymax>0</ymax>
+  <zmin>1.4455673365939</zmin> <zmax>4.29036733659396</zmax>
+ </regionBounds>
+ <initialConditions>
+  <direction> <x>1</x> <y>0</y> <z>0</z> </direction>
+  <radius>0.5</radius>
+  <speed>1.2</speed>
+ </initialConditions>
+ <goalSequence>
+  <seekStaticTarget>
+   <targetLocation> <x>15.4266295594896</x> <y>0</y> <z>3.0163371788375</z> </targetLocation>
+   <desiredSpeed>1.3</desiredSpeed>
+   <timeDuration>1000.0</timeDuration>
+  </seekStaticTarget>
+ </goalSequence>
+</agentRegion>
+
+
+
+
+
+
+
+
+</SteerBenchTestCase>

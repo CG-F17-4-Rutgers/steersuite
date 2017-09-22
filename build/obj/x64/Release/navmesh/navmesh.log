@@ -1,0 +1,44 @@
+﻿cl : Command line warning D9002: ignoring unknown option '-std=c++0x'
+cl : Command line warning D9002: ignoring unknown option '-ggdb'
+cl : Command line warning D9002: ignoring unknown option '-fPIC'
+  ChunkyTriMesh.cpp
+..\..\navmeshBuilder\src\ChunkyTriMesh.cpp(24): fatal error C1083: Cannot open include file: 'stdio.h': No such file or directory
+  ConvexVolumeTool.cpp
+..\..\navmeshBuilder\src\ConvexVolumeTool.cpp(24): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  CrowdTool.cpp
+..\..\navmeshBuilder\src\CrowdTool.cpp(24): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  imgui.cpp
+..\..\navmeshBuilder\src\imgui.cpp(23): fatal error C1083: Cannot open include file: 'stdio.h': No such file or directory
+  imguiRenderGL.cpp
+..\..\navmeshBuilder\src\imguiRenderGL.cpp(24): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  InputGeom.cpp
+..\..\navmeshBuilder\src\InputGeom.cpp(24): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  Main.cpp
+H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\crtdefs.h(10): fatal error C1083: Cannot open include file: 'corecrt.h': No such file or directory
+  Mesh.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/Geometry.h(19): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+  MeshLoaderObj.cpp
+..\..\navmeshBuilder\src\MeshLoaderObj.cpp(24): fatal error C1083: Cannot open include file: 'stdio.h': No such file or directory
+  NavMeshModule.cpp
+H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\crtdefs.h(10): fatal error C1083: Cannot open include file: 'corecrt.h': No such file or directory
+  NavMeshPruneTool.cpp
+..\..\navmeshBuilder\src\NavMeshPruneTool.cpp(24): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  NavMeshTesterTool.cpp
+..\..\navmeshBuilder\src\NavMeshTesterTool.cpp(24): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  OffMeshConnectionTool.cpp
+..\..\navmeshBuilder\src\OffMeshConnectionTool.cpp(24): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  PerfTimer.cpp
+C:\Program Files (x86)\Windows Kits\8.1\Include\um\winnt.h(31): fatal error C1083: Cannot open include file: 'ctype.h': No such file or directory
+  RecaseNavMeshPlanner.cpp
+C:\Users\Taichi\Documents\Research\steersuite-rutgers\steerlib\include\util/Geometry.h(19): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+  Sample.cpp
+..\..\navmeshBuilder\src\Sample.cpp(24): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  SampleInterfaces.cpp
+..\..\navmeshBuilder\src\SampleInterfaces.cpp(6): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  Sample_SoloMesh.cpp
+..\..\navmeshBuilder\src\Sample_SoloMesh.cpp(24): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  Timer.cpp
+C:\Program Files (x86)\Windows Kits\8.1\Include\um\winnt.h(31): fatal error C1083: Cannot open include file: 'ctype.h': No such file or directory
+  ValueHistory.cpp
+..\..\navmeshBuilder\src\ValueHistory.cpp(7): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
+  Generating Code...

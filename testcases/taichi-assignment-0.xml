@@ -1,0 +1,133 @@
+<!-- Taichi Aritomo - Assignment 0 - Computer Graphics -->
+
+<SteerBenchTestCase xmlns="http://www.magix.ucla.edu/steerbench"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.magix.ucla.edu/steerbench 
+                                        TestCaseSchema.xsd">
+    
+  <header>
+      <version>1.0</version>
+      <name>taichi-assignment-0</name>
+      <worldBounds>
+        <xmin>-100</xmin>
+        <xmax>100</xmax>
+        <ymin>0</ymin>
+        <ymax>0</ymax>
+        <zmin>-100</zmin>
+        <zmax>100</zmax>
+      </worldBounds>
+  </header>
+    
+<!--
+  <suggestedCameraView>
+    <position> <x>44</x> <y>30</y> <z>0</z> </position>
+    <lookat> <x>27</x> <y>0</y> <z>0</z> </lookat>
+    <up> <x>0</x> <y>1</y> <z>0</z> </up>
+    <fovy>45</fovy>
+  </suggestedCameraView>
+-->
+
+  <suggestedCameraView>
+    <position> <x>15</x> <y>30</y> <z>-30</z> </position>
+    <lookat> <x>15</x> <y>0</y> <z>0</z> </lookat>
+    <up> <x>0</x> <y>0</y> <z>1</z> </up>
+    <fovy>0</fovy>
+  </suggestedCameraView>
+
+  
+  <!-- Containing Walls -->
+  <obstacle>
+    <xmin>0</xmin>
+    <xmax>1</xmax>
+    <ymin>0</ymin>
+    <ymax>1</ymax>
+    <zmin>0</zmin>
+    <zmax>10</zmax>
+  </obstacle>
+  
+  <obstacle>
+    <xmin>1</xmin>
+    <xmax>29</xmax>
+    <ymin>0</ymin>
+    <ymax>1</ymax>
+    <zmin>0</zmin>
+    <zmax>1</zmax>
+  </obstacle>
+  
+  <obstacle>
+    <xmin>29</xmin>
+    <xmax>30</xmax>
+    <ymin>0</ymin>
+    <ymax>1</ymax>
+    <zmin>0</zmin>
+    <zmax>10</zmax>
+  </obstacle>
+
+  <obstacle>
+    <xmin>1</xmin>
+    <xmax>29</xmax>
+    <ymin>0</ymin>
+    <ymax>1</ymax>
+    <zmin>9</zmin>
+    <zmax>10</zmax>
+  </obstacle>
+  
+  
+  <!-- Middle obstacle -->
+  <obstacle>
+    <xmin>2</xmin>
+    <xmax>12</xmax>
+    <ymin>0</ymin>
+    <ymax>1</ymax>
+    <zmin>2</zmin>
+    <zmax>4</zmax>
+  </obstacle>
+
+  
+  <agent>
+    <name>A</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>1</x> <y>0</y> <z>1</z> </position>
+      <direction> <x>1</x> <y>0</y> <z>0</z> </direction>
+      <speed>0</speed>
+    </initialConditions> 
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <x>28</x> <y>0</y> <z>1</z> </targetLocation>
+        <desiredSpeed>0.3</desiredSpeed>
+        <timeDuration>5000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+  
+  <agentRegion>
+    <numAgents>10</numAgents>
+    <regionBounds>
+      <xmin>13</xmin>
+      <xmax>25</xmax>
+      <ymin>0</ymin>
+      <ymax>0</ymax>
+      <zmin>5</zmin>
+      <zmax>8</zmax>
+    </regionBounds>
+    <initialConditions>
+      <direction> <random>true</random> </direction>
+      <radius>0.5</radius>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation>
+        <x>1</x>
+        <y>0</y>
+        <z>1</z>
+      </targetLocation>
+        <desiredSpeed>0.3</desiredSpeed>
+        <timeDuration>5000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+
+  </agentRegion>
+    
+</SteerBenchTestCase>

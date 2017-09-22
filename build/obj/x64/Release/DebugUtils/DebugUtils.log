@@ -1,0 +1,10 @@
+﻿cl : Command line warning D9002: ignoring unknown option '-std=c++0x'
+cl : Command line warning D9002: ignoring unknown option '-ggdb'
+cl : Command line warning D9002: ignoring unknown option '-fPIC'
+  DebugDraw.cpp
+..\..\external\recastnavigation\DebugUtils\Source\DebugDraw.cpp(20): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
+  RecastDebugDraw.cpp
+..\..\external\recastnavigation\DebugUtils\Source\RecastDebugDraw.cpp(20): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  RecastDump.cpp
+..\..\external\recastnavigation\DebugUtils\Source\RecastDump.cpp(20): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
+  Generating Code...

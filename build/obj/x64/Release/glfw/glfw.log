@@ -1,0 +1,36 @@
+﻿  enable.c
+  fullscreen.c
+  glext.c
+  image.c
+  init.c
+  input.c
+  joystick.c
+  stream.c
+  tga.c
+  thread.c
+  time.c
+  window.c
+  win32_dllmain.c
+..\..\external\glfw\lib\win32\win32_dllmain.c(40): warning C4100: 'reserved': unreferenced formal parameter
+..\..\external\glfw\lib\win32\win32_dllmain.c(40): warning C4100: 'reason': unreferenced formal parameter
+..\..\external\glfw\lib\win32\win32_dllmain.c(40): warning C4100: 'instance': unreferenced formal parameter
+  win32_enable.c
+  win32_fullscreen.c
+  win32_glext.c
+  win32_init.c
+..\..\external\glfw\lib\win32\win32_init.c(237): warning C4996: 'GetVersionExA': was declared deprecated
+  C:\Program Files (x86)\Windows Kits\8.1\Include\um\sysinfoapi.h(433): note: see declaration of 'GetVersionExA'
+  win32_joystick.c
+  win32_thread.c
+  win32_time.c
+  Generating Code...
+c:\users\taichi\documents\research\steersuite-rutgers\external\glfw\lib\win32\win32_fullscreen.c(281): warning C4701: potentially uninitialized local variable 'm2' used
+c:\users\taichi\documents\research\steersuite-rutgers\external\glfw\lib\image.c(620): warning C4701: potentially uninitialized local variable 'GenMipMap' used
+  Compiling...
+  win32_window.c
+..\..\external\glfw\lib\win32\win32_window.c(1306): warning C4100: 'height': unreferenced formal parameter
+..\..\external\glfw\lib\win32\win32_window.c(1306): warning C4100: 'width': unreferenced formal parameter
+  Generating Code...
+     Creating library ..\bin\glfw.lib and object ..\bin\glfw.exp
+  glfw.vcxproj -> C:\Users\Taichi\Documents\Research\steersuite-rutgers\build\vs2012\..\bin\glfw.dll
+  glfw.vcxproj -> ..\bin\glfw.pdb (Full PDB)
