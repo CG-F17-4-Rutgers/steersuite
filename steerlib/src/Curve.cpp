@@ -62,19 +62,32 @@ void Curve::drawCurve(Color curveColor, float curveThickness, int window)
 #endif
 }
 
+// Compare two control points and return boolean indicating if point A is an earlier time than point B
+bool compareControlPoints(const CurvePoint& pointA, const CurvePoint& pointB)
+{
+	return (pointA.time < pointB.time);
+}
+
 // Sort controlPoints vector in ascending order: min-first
 void Curve::sortControlPoints()
 {
-	//================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
-	{
-		std::cerr << "ERROR>>>>Member function sortControlPoints is not implemented!" << std::endl;
-		flag = true;
-	}
-	//=========================================================================
+	
+	// FOR TESTING -- before sort
+	/*
+	for (CurvePoint pt : controlPoints)
+		std::cout << pt.time << " ";
+	std::cout << std::endl;
+	*/
 
-	return;
+	// Sort vector of control points
+	std::sort(controlPoints.begin(), controlPoints.end(), compareControlPoints);
+
+	// FOR TESTING -- after sort
+	/*
+	for (CurvePoint pt : controlPoints)
+	std::cout << pt.time << " ";
+	std::cout << std::endl;
+	*/
 }
 
 // Calculate the position on curve corresponding to the given time, outputPoint is the resulting position

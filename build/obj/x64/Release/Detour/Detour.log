@@ -1,16 +1,1 @@
-﻿cl : Command line warning D9002: ignoring unknown option '-std=c++0x'
-cl : Command line warning D9002: ignoring unknown option '-ggdb'
-cl : Command line warning D9002: ignoring unknown option '-fPIC'
-  DetourAlloc.cpp
-..\..\external\recastnavigation\Detour\Source\DetourAlloc.cpp(19): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-  DetourCommon.cpp
-C:\Users\Taichi\Documents\Research\steersuite-rutgers\external\recastnavigation\Detour\Include\DetourMath.h(11): fatal error C1083: Cannot open include file: 'math.h': No such file or directory
-  DetourNavMesh.cpp
-..\..\external\recastnavigation\Detour\Source\DetourNavMesh.cpp(19): fatal error C1083: Cannot open include file: 'float.h': No such file or directory
-  DetourNavMeshBuilder.cpp
-..\..\external\recastnavigation\Detour\Source\DetourNavMeshBuilder.cpp(19): fatal error C1083: Cannot open include file: 'stdio.h': No such file or directory
-  DetourNavMeshQuery.cpp
-..\..\external\recastnavigation\Detour\Source\DetourNavMeshQuery.cpp(19): fatal error C1083: Cannot open include file: 'float.h': No such file or directory
-  DetourNode.cpp
-..\..\external\recastnavigation\Detour\Source\DetourNode.cpp(23): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
-  Generating Code...
+﻿  Detour.vcxproj -> C:\Users\Taichi\Desktop\steersuite\build\vs2012\..\bin\Detour.lib

@@ -24,13 +24,13 @@
   win32_thread.c
   win32_time.c
   Generating Code...
-c:\users\taichi\documents\research\steersuite-rutgers\external\glfw\lib\win32\win32_fullscreen.c(281): warning C4701: potentially uninitialized local variable 'm2' used
-c:\users\taichi\documents\research\steersuite-rutgers\external\glfw\lib\image.c(620): warning C4701: potentially uninitialized local variable 'GenMipMap' used
+c:\users\taichi\desktop\steersuite\external\glfw\lib\win32\win32_fullscreen.c(281): warning C4701: potentially uninitialized local variable 'm2' used
+c:\users\taichi\desktop\steersuite\external\glfw\lib\image.c(620): warning C4701: potentially uninitialized local variable 'GenMipMap' used
   Compiling...
   win32_window.c
 ..\..\external\glfw\lib\win32\win32_window.c(1306): warning C4100: 'height': unreferenced formal parameter
 ..\..\external\glfw\lib\win32\win32_window.c(1306): warning C4100: 'width': unreferenced formal parameter
   Generating Code...
      Creating library ..\bin\glfw.lib and object ..\bin\glfw.exp
-  glfw.vcxproj -> C:\Users\Taichi\Documents\Research\steersuite-rutgers\build\vs2012\..\bin\glfw.dll
+  glfw.vcxproj -> C:\Users\Taichi\Desktop\steersuite\build\vs2012\..\bin\glfw.dll
   glfw.vcxproj -> ..\bin\glfw.pdb (Full PDB)

@@ -1,7 +1,3 @@
-﻿cl : Command line warning D9002: ignoring unknown option '-std=c++0x'
-cl : Command line warning D9002: ignoring unknown option '-ggdb'
-  PPRAgent.cpp
-H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\crtdefs.h(10): fatal error C1083: Cannot open include file: 'corecrt.h': No such file or directory
-  PPRAIModule.cpp
-H:\Program Files\Visual Studio 2017\VC\Tools\MSVC\14.10.25017\include\crtdefs.h(10): fatal error C1083: Cannot open include file: 'corecrt.h': No such file or directory
-  Generating Code...
+﻿     Creating library ..\bin\pprAI.lib and object ..\bin\pprAI.exp
+  pprAI.vcxproj -> C:\Users\Taichi\Desktop\steersuite\build\vs2012\..\bin\pprAI.dll
+  pprAI.vcxproj -> ..\bin\pprAI.pdb (Full PDB)
