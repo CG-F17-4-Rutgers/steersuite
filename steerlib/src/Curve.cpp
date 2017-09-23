@@ -139,16 +139,27 @@ bool Curve::checkRobust()
 // Find the current time interval (i.e. index of the next control point to follow according to current time)
 bool Curve::findTimeInterval(unsigned int& nextPoint, float time)
 {
-	//================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
+
+	// assign nextPoint the index of the next control point. return false if there is no next point
+	// binary search: terminate if exact time is found. otherwise, let it rock and return the mid. 
+	unsigned int lo = 0, mid, hi = controlPoints.size() - 1;
+	while (lo <= hi)
 	{
-		std::cerr << "ERROR>>>>Member function findTimeInterval is not implemented!" << std::endl;
-		flag = true;
+		mid = (lo + hi) / 2;
+		if (controlPoints[mid].time < time)
+			lo = mid + 1;
+		else if (controlPoints[mid].time > time)
+			hi = mid - 1;
+		else
+		{
+			nextPoint = (unsigned int) mid + 1;
+			return true;
+		}
 	}
-	//=========================================================================
-
-
+	if (mid >= controlPoints.size())
+		return false;
+	else
+		nextPoint = (unsigned int) mid;
 	return true;
 }
 
