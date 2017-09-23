@@ -1,18 +1,10 @@
 ﻿  Curve.cpp
-..\..\steerlib\src\Curve.cpp(44): warning C4100: 'window': unreferenced formal parameter
-..\..\steerlib\src\Curve.cpp(44): warning C4100: 'curveThickness': unreferenced formal parameter
-..\..\steerlib\src\Curve.cpp(44): warning C4100: 'curveColor': unreferenced formal parameter
-..\..\steerlib\src\Curve.cpp(145): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-..\..\steerlib\src\Curve.cpp(167): warning C4100: 'time': unreferenced formal parameter
-..\..\steerlib\src\Curve.cpp(167): warning C4100: 'nextPoint': unreferenced formal parameter
-..\..\steerlib\src\Curve.cpp(170): warning C4101: 'intervalTime': unreferenced local variable
-..\..\steerlib\src\Curve.cpp(170): warning C4101: 'normalTime': unreferenced local variable
-..\..\steerlib\src\Curve.cpp(188): warning C4100: 'time': unreferenced formal parameter
-..\..\steerlib\src\Curve.cpp(188): warning C4100: 'nextPoint': unreferenced formal parameter
+..\..\steerlib\src\Curve.cpp(158): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+..\..\steerlib\src\Curve.cpp(227): warning C4100: 'time': unreferenced formal parameter
+..\..\steerlib\src\Curve.cpp(227): warning C4100: 'nextPoint': unreferenced formal parameter
 c:\program files (x86)\microsoft visual studio\2017\community\vc\auxiliary\vs\include\gl\freeglut_std.h(623): warning C4505: 'glutInit_ATEXIT_HACK': unreferenced local function has been removed
 c:\program files (x86)\microsoft visual studio\2017\community\vc\auxiliary\vs\include\gl\freeglut_std.h(625): warning C4505: 'glutCreateWindow_ATEXIT_HACK': unreferenced local function has been removed
 c:\program files (x86)\microsoft visual studio\2017\community\vc\auxiliary\vs\include\gl\freeglut_std.h(627): warning C4505: 'glutCreateMenu_ATEXIT_HACK': unreferenced local function has been removed
-c:\users\taichi\desktop\steersuite\steerlib\src\curve.cpp(159): warning C4701: potentially uninitialized local variable 'mid' used
      Creating library ..\bin\steerlib.lib and object ..\bin\steerlib.exp
   steerlib.vcxproj -> C:\Users\Taichi\Desktop\steersuite\build\vs2012\..\bin\steerlib.dll
   steerlib.vcxproj -> ..\bin\steerlib.pdb (Full PDB)
