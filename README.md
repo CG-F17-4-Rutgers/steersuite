@@ -11,7 +11,7 @@ Taichi Aritomo (ta340), Justin Wu (jw879), Michael Parrilla (map565), Kian Jacks
 4. In Command Prompt, navigate to build/ and **run premake**:
    - cd *path_to_steersuite*/build
    - premake4 --platform=x64 vs2012
-5. You should now have a folder in build/ named "vs2012". This folder is excluded from push/pull (see [build/.gitignore](build/.gitignore))
+5. You should now have a folder in build/ named "vs2012". This folder is excluded from push/pull (see [.gitignore](.gitignore))
 6. **Open steersuite.sln** from the vs2012 folder, in Visual Studio. Upgrade if prompted.
 7. In the menu, go to Build > Configuration Manager. Set the *Active solution platform* to x64.
 8. On the right side, you'll see the Solution Explorer. Right-click *Solution steersuite*, and select *Properties*. On the left-hand side menu, select *Configuration Properties*. Set *Configuration* to Active(Release) and *Platform* to x64.
