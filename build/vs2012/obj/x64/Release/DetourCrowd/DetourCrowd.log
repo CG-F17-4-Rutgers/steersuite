@@ -1,0 +1,11 @@
+﻿cl : Command line warning D9002: ignoring unknown option '-std=c++0x'
+cl : Command line warning D9002: ignoring unknown option '-ggdb'
+cl : Command line warning D9002: ignoring unknown option '-fPIC'
+  DetourCrowd.cpp
+  DetourLocalBoundary.cpp
+  DetourObstacleAvoidance.cpp
+  DetourPathCorridor.cpp
+  DetourPathQueue.cpp
+  DetourProximityGrid.cpp
+  Generating Code...
+  DetourCrowd.vcxproj -> C:\Users\Taichi\Desktop\steersuite\build\vs2012\..\bin\DetourCrowd.lib

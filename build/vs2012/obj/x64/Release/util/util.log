@@ -1,0 +1,195 @@
+﻿  AStarLite.cpp
+C:\Users\Taichi\Desktop\steersuite\util\include\astar/AStarLite.h(34): warning C4251: 'AStarLite::m_path': class 'std::vector<int,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'AStarLite'
+          with
+          [
+              _Ty=int
+          ]
+  C:\Users\Taichi\Desktop\steersuite\util\include\astar/AStarLiteClose.h(28): note: see declaration of 'std::vector<int,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=int
+          ]
+  AStarLiteClose.cpp
+  AStarLiteNode.cpp
+  AStarLiteOpen.cpp
+  LogData.cpp
+c:\users\taichi\desktop\steersuite\util\include\LogObject.h(24): warning C4251: 'DataItem::string': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of struct 'DataItem'
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include\xstring(3997): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+c:\users\taichi\desktop\steersuite\util\include\LogObject.h(96): warning C4251: 'LogObject::_record': class 'std::vector<DataItem,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'LogObject'
+          with
+          [
+              _Ty=DataItem
+          ]
+  c:\users\taichi\desktop\steersuite\util\include\LogObject.h(96): note: see declaration of 'std::vector<DataItem,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=DataItem
+          ]
+c:\users\taichi\desktop\steersuite\util\include\LogObject.h(89): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\taichi\desktop\steersuite\util\include\Logger.h(65): warning C4251: 'Logger::_fileStream': class 'std::basic_fstream<char,std::char_traits<char>>' needs to have dll-interface to be used by clients of class 'Logger'
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include\iosfwd(638): note: see declaration of 'std::basic_fstream<char,std::char_traits<char>>'
+c:\users\taichi\desktop\steersuite\util\include\Logger.h(66): warning C4251: 'Logger::_fileName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Logger'
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include\xstring(3997): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+c:\users\taichi\desktop\steersuite\util\include\Logger.h(69): warning C4251: 'Logger::_fieldNames': class 'std::vector<std::string,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Logger'
+          with
+          [
+              _Ty=std::string
+          ]
+  c:\users\taichi\desktop\steersuite\util\include\UtilGlobals.h(27): note: see declaration of 'std::vector<std::string,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=std::string
+          ]
+c:\users\taichi\desktop\steersuite\util\include\Logger.h(70): warning C4251: 'Logger::_dataTypes': class 'std::vector<DataType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Logger'
+          with
+          [
+              _Ty=DataType
+          ]
+  c:\users\taichi\desktop\steersuite\util\include\Logger.h(70): note: see declaration of 'std::vector<DataType,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=DataType
+          ]
+C:\Users\Taichi\Desktop\steersuite\util\include\LogData.h(34): warning C4251: 'LogData::logData': class 'std::vector<LogObject *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'LogData'
+          with
+          [
+              _Ty=LogObject *
+          ]
+  C:\Users\Taichi\Desktop\steersuite\util\include\LogData.h(26): note: see declaration of 'std::vector<LogObject *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=LogObject *
+          ]
+..\..\util\src\LogData.cpp(33): warning C4458: declaration of 'log' hides class member
+  C:\Users\Taichi\Desktop\steersuite\util\include\LogData.h(33): note: see declaration of 'LogData::log'
+..\..\util\src\LogData.cpp(41): warning C4458: declaration of 'logData' hides class member
+  C:\Users\Taichi\Desktop\steersuite\util\include\LogData.h(34): note: see declaration of 'LogData::logData'
+..\..\util\src\LogData.cpp(72): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+..\..\util\src\LogData.cpp(80): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  Logger.cpp
+c:\users\taichi\desktop\steersuite\util\include\LogObject.h(24): warning C4251: 'DataItem::string': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of struct 'DataItem'
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include\xstring(3997): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+c:\users\taichi\desktop\steersuite\util\include\LogObject.h(96): warning C4251: 'LogObject::_record': class 'std::vector<DataItem,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'LogObject'
+          with
+          [
+              _Ty=DataItem
+          ]
+  c:\users\taichi\desktop\steersuite\util\include\LogObject.h(96): note: see declaration of 'std::vector<DataItem,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=DataItem
+          ]
+c:\users\taichi\desktop\steersuite\util\include\LogObject.h(89): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\Taichi\Desktop\steersuite\util\include\Logger.h(65): warning C4251: 'Logger::_fileStream': class 'std::basic_fstream<char,std::char_traits<char>>' needs to have dll-interface to be used by clients of class 'Logger'
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include\iosfwd(638): note: see declaration of 'std::basic_fstream<char,std::char_traits<char>>'
+C:\Users\Taichi\Desktop\steersuite\util\include\Logger.h(66): warning C4251: 'Logger::_fileName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Logger'
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include\xstring(3997): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\Taichi\Desktop\steersuite\util\include\Logger.h(69): warning C4251: 'Logger::_fieldNames': class 'std::vector<std::string,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Logger'
+          with
+          [
+              _Ty=std::string
+          ]
+  c:\users\taichi\desktop\steersuite\util\include\UtilGlobals.h(27): note: see declaration of 'std::vector<std::string,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=std::string
+          ]
+C:\Users\Taichi\Desktop\steersuite\util\include\Logger.h(70): warning C4251: 'Logger::_dataTypes': class 'std::vector<DataType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Logger'
+          with
+          [
+              _Ty=DataType
+          ]
+  C:\Users\Taichi\Desktop\steersuite\util\include\Logger.h(70): note: see declaration of 'std::vector<DataType,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=DataType
+          ]
+..\..\util\src\Logger.cpp(173): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+..\..\util\src\Logger.cpp(290): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+..\..\util\src\Logger.cpp(292): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+..\..\util\src\Logger.cpp(296): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+..\..\util\src\Logger.cpp(298): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  LogManager.cpp
+c:\users\taichi\desktop\steersuite\util\include\LogObject.h(24): warning C4251: 'DataItem::string': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of struct 'DataItem'
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include\xstring(3997): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+c:\users\taichi\desktop\steersuite\util\include\LogObject.h(96): warning C4251: 'LogObject::_record': class 'std::vector<DataItem,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'LogObject'
+          with
+          [
+              _Ty=DataItem
+          ]
+  c:\users\taichi\desktop\steersuite\util\include\LogObject.h(96): note: see declaration of 'std::vector<DataItem,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=DataItem
+          ]
+c:\users\taichi\desktop\steersuite\util\include\LogObject.h(89): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\taichi\desktop\steersuite\util\include\Logger.h(65): warning C4251: 'Logger::_fileStream': class 'std::basic_fstream<char,std::char_traits<char>>' needs to have dll-interface to be used by clients of class 'Logger'
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include\iosfwd(638): note: see declaration of 'std::basic_fstream<char,std::char_traits<char>>'
+c:\users\taichi\desktop\steersuite\util\include\Logger.h(66): warning C4251: 'Logger::_fileName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Logger'
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include\xstring(3997): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+c:\users\taichi\desktop\steersuite\util\include\Logger.h(69): warning C4251: 'Logger::_fieldNames': class 'std::vector<std::string,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Logger'
+          with
+          [
+              _Ty=std::string
+          ]
+  c:\users\taichi\desktop\steersuite\util\include\UtilGlobals.h(27): note: see declaration of 'std::vector<std::string,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=std::string
+          ]
+c:\users\taichi\desktop\steersuite\util\include\Logger.h(70): warning C4251: 'Logger::_dataTypes': class 'std::vector<DataType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Logger'
+          with
+          [
+              _Ty=DataType
+          ]
+  c:\users\taichi\desktop\steersuite\util\include\Logger.h(70): note: see declaration of 'std::vector<DataType,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=DataType
+          ]
+C:\Users\Taichi\Desktop\steersuite\util\include\LogManager.h(36): warning C4251: 'LogManager::_loggers': class 'std::map<std::string,Logger *,std::less<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'LogManager'
+          with
+          [
+              _Kty=std::string,
+              _Ty=Logger *
+          ]
+  C:\Users\Taichi\Desktop\steersuite\util\include\LogManager.h(36): note: see declaration of 'std::map<std::string,Logger *,std::less<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+          with
+          [
+              _Kty=std::string,
+              _Ty=Logger *
+          ]
+  LogObject.cpp
+C:\Users\Taichi\Desktop\steersuite\util\include\LogObject.h(24): warning C4251: 'DataItem::string': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of struct 'DataItem'
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include\xstring(3997): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\Taichi\Desktop\steersuite\util\include\LogObject.h(96): warning C4251: 'LogObject::_record': class 'std::vector<DataItem,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'LogObject'
+          with
+          [
+              _Ty=DataItem
+          ]
+  C:\Users\Taichi\Desktop\steersuite\util\include\LogObject.h(96): note: see declaration of 'std::vector<DataItem,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=DataItem
+          ]
+C:\Users\Taichi\Desktop\steersuite\util\include\LogObject.h(89): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\Taichi\Desktop\steersuite\util\include\LogObject.h(55): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  ..\..\util\src\LogObject.cpp(35): note: see reference to function template instantiation 'void LogObject::addLogData<int>(T)' being compiled
+          with
+          [
+              T=int
+          ]
+C:\Users\Taichi\Desktop\steersuite\util\include\LogObject.h(65): warning C4244: 'argument': conversion from 'int' to 'const char', possible loss of data
+C:\Users\Taichi\Desktop\steersuite\util\include\LogObject.h(47): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  ..\..\util\src\LogObject.cpp(61): note: see reference to function template instantiation 'void LogObject::addLogData<float>(T)' being compiled
+          with
+          [
+              T=float
+          ]
+C:\Users\Taichi\Desktop\steersuite\util\include\LogObject.h(60): warning C4244: '=': conversion from 'float' to '__int64', possible loss of data
+C:\Users\Taichi\Desktop\steersuite\util\include\LogObject.h(65): warning C4244: 'argument': conversion from 'float' to 'const char', possible loss of data
+  Generating Code...
+c:\users\taichi\desktop\steersuite\util\src\logger.cpp(273): warning C4701: potentially uninitialized local variable 'dataType' used
+     Creating library ..\bin\util.lib and object ..\bin\util.exp
+  util.vcxproj -> C:\Users\Taichi\Desktop\steersuite\build\vs2012\..\bin\util.dll
+  util.vcxproj -> ..\bin\util.pdb (Full PDB)

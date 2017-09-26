@@ -1,8 +1,0 @@
-﻿  ticpp.cpp
-  tinystr.cpp
-  tinyxml.cpp
-  tinyxmlerror.cpp
-  tinyxmlparser.cpp
-  Generating Code...
-  tinyxml.vcxproj -> C:\Users\Taichi\Desktop\steersuite\build\vs2012\..\bin\tinyxml.dll
-  tinyxml.vcxproj -> ..\bin\tinyxml.pdb (Full PDB)

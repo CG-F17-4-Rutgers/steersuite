@@ -1,0 +1,11 @@
+﻿cl : Command line warning D9002: ignoring unknown option '-std=c++0x'
+cl : Command line warning D9002: ignoring unknown option '-ggdb'
+cl : Command line warning D9002: ignoring unknown option '-fPIC'
+  DetourAlloc.cpp
+  DetourCommon.cpp
+  DetourNavMesh.cpp
+  DetourNavMeshBuilder.cpp
+  DetourNavMeshQuery.cpp
+  DetourNode.cpp
+  Generating Code...
+  Detour.vcxproj -> C:\Users\Taichi\Desktop\steersuite\build\vs2012\..\bin\Detour.lib

@@ -1,0 +1,9 @@
+﻿cl : Command line warning D9002: ignoring unknown option '-std=c++0x'
+cl : Command line warning D9002: ignoring unknown option '-ggdb'
+cl : Command line warning D9002: ignoring unknown option '-fPIC'
+  DebugDraw.cpp
+  DetourDebugDraw.cpp
+  RecastDebugDraw.cpp
+  RecastDump.cpp
+  Generating Code...
+  DebugUtils.vcxproj -> C:\Users\Taichi\Desktop\steersuite\build\vs2012\..\bin\DebugUtils.lib
