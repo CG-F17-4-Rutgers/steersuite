@@ -191,17 +191,10 @@ Point Curve::useHermiteCurve(const unsigned int nextPoint, const float time)
 	Point newPosition;
 	float normalTime, intervalTime;
 
-	//================DELETE THIS PART AND THEN START CODING===================
-	/*static bool flag = false;
-	if (!flag)
-	{
-		std::cerr << "ERROR>>>>Member function useHermiteCurve is not implemented!" << std::endl;
-		flag = true;
-	}*/
-	//=========================================================================
-
 	const unsigned int currentPoint = nextPoint - 1;
 	assert(currentPoint >= 0 && currentPoint < controlPoints.size());
+
+	// Convert time to t | 0<=t<=1
 	intervalTime = controlPoints[nextPoint].time - controlPoints[currentPoint].time;
 	normalTime = (time - controlPoints[currentPoint].time) / intervalTime;
 	// std::cout << time << " " << currentPoint << " " << controlPoints[currentPoint].time << std::endl;
@@ -226,18 +219,45 @@ Point Curve::useHermiteCurve(const unsigned int nextPoint, const float time)
 // Implement Catmull-Rom curve
 Point Curve::useCatmullCurve(const unsigned int nextPoint, const float time)
 {
-	Point newPosition;
+	// Check if we've been given a well-formed call
+	const unsigned int n = controlPoints.size();
+	assert(nextPoint >= 1 && nextPoint < n);
 
-	//================DELETE THIS PART AND THEN START CODING===================
-	static bool flag = false;
-	if (!flag)
-	{
-		std::cerr << "ERROR>>>>Member function useCatmullCurve is not implemented!" << std::endl;
-		flag = true;
-	}
-	//=========================================================================
+	// Generation of Catmull-Rom point requires four neighboring control points (two ahead and two behind) (http://algorithmist.net/docs/catmullrom.pdf)
+
+	// Get immediate neighbors
+	Point p[4];
+	p[1] = controlPoints[nextPoint - 1].position;
+	p[2] = controlPoints[nextPoint].position;
+
+	// Get farther neighbors
+	// If we are next to an endpoint, we'll have to create an auxiliary control point beyond that endpoint.
+	// For the auxiliary endpoint, we'll simply use the negative of the tangent stored in the endpoint.
+	if ((int) nextPoint - 2 < 0)
+		p[0] = Point(-1 * controlPoints[0].tangent.x, -1 * controlPoints[0].tangent.y, -1 * controlPoints[0].tangent.z);
+	else
+		p[0] = controlPoints[nextPoint - 2].position;
+	if (nextPoint + 1 >= n)
+		p[3] = Point(-1 * controlPoints[n - 1].tangent.x, -1 * controlPoints[n - 1].tangent.y, -1 * controlPoints[n - 1].tangent.z);
+	else
+		p[3] = controlPoints[nextPoint + 1].position;
+
+
+	// Convert time to t | 0<=t<=1
+	float intervalTime = controlPoints[nextPoint].time - controlPoints[nextPoint - 1].time;
+	float normalTime = (time - controlPoints[nextPoint - 1].time) / intervalTime;
 
 	// Calculate position at t = time on Catmull-Rom curve
+	const float t = normalTime;
+	const float t2 = std::pow(t, 2);
+	const float t3 = std::pow(t, 3);
+
+
+	Point newPosition = 0.5 * (
+		(2 * p[1])
+		+ ((-1 * p[0]) + p[2]) * t
+		+ ((2 * p[0]) + (-5 * p[1]) + (4 * p[2]) + (-1 * p[3])) * t2
+		+ ((-1 * p[0]) + (3 * p[1]) + (-3 * p[2]) + p[3]) * t3 );
 	
 	// Return result
 	return newPosition;
