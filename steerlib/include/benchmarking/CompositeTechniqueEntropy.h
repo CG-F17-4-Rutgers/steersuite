@@ -167,7 +167,7 @@ namespace SteerLib
 		 * agent0	p_x,p_y	p_x,p_y
 		 * agent1	p_x,p_y	p_x,p_y
 		 */
-		std::vector<std::vector<mPair>> _posData;
+		std::vector<std::vector<mPair> > _posData;
 		std::vector<Util::Point> _AgentGoals;
 
 		int X_DIM;  // State dimension
@@ -196,7 +196,7 @@ namespace SteerLib
 		void m_initGuess(Matrix &Sigma, Matrix &xHat);
 
 
-		void initData(double & timestep, int & sumSamp, int & numAgt, std::vector<std::vector<mPair>> posData);
+		void initData(double & timestep, int & sumSamp, int & numAgt, std::vector<std::vector<mPair> > posData);
 
 		/*
 		 * This area is mostly for debugging

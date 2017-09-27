@@ -59,7 +59,7 @@ public:
    * The vector does not necessarily need to be rectangular but it would work
    * much better for using the matrix.
    */
-  inline Matrix(const std::vector<std::vector<double>> & data)
+  inline Matrix(const std::vector<std::vector<double> > & data)
   {
       _numRows = data.size();
       _numColumns = data.at(0).size();

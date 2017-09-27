@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <vector>
 #include <math.h>
+#include <cmath>
 #include <util/Geometry.h>
 #include <util/Curve.h>
 #include <util/Color.h>
