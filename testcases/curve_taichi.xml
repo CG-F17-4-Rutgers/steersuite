@@ -80,6 +80,21 @@
         <desiredSpeed>1.3</desiredSpeed>
         <timeDuration>10000</timeDuration>
       </seekStaticTarget>
+      <seekStaticTarget>
+        <targetLocation>
+          <x>10</x>
+          <y>0</y>
+          <z>10</z>
+        </targetLocation>
+        <targetTangent>
+          <x>2</x>
+          <y>-1</y>
+          <z>1</z>
+        </targetTangent>
+        <targetTime>200</targetTime>
+        <desiredSpeed>1.3</desiredSpeed>
+        <timeDuration>10000</timeDuration>
+      </seekStaticTarget>
     </goalSequence>
   </agent>
 
