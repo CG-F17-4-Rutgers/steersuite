@@ -193,7 +193,7 @@ Point Curve::useHermiteCurve(const unsigned int nextPoint, const float time)
 	float normalTime, intervalTime;
 
 	const unsigned int currentPoint = nextPoint - 1;
-	assert(currentPoint >= 0 && currentPoint < controlPoints.size());
+	assert(nextPoint >= 1 && currentPoint < controlPoints.size());
 
 	// Convert time to t | 0<=t<=1
 	intervalTime = controlPoints[nextPoint].time - controlPoints[currentPoint].time;
