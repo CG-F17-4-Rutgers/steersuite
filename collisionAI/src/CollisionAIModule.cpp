@@ -136,7 +136,7 @@ void CollisionAIModule::preprocessSimulation()
 {
     std::set<SteerLib::ObstacleInterface*> _obstacles = gEngine->getObstacles();
 
-    std::vector<std::vector<Util::Vector>> polyVects;
+    std::vector<std::vector<Util::Vector> > polyVects;
     std::vector<Util::Point> points;
 	std::vector<Util::Vector> vects;
 
