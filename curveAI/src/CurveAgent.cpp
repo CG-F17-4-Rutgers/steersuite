@@ -27,7 +27,7 @@ CurveAgent::CurveAgent()
 
 	// Set curve type here
 	curve.setType(Util::hermiteCurve);
-	// curve.setType(Util::catmullCurve);
+	//curve.setType(Util::catmullCurve);
 }
 
 CurveAgent::~CurveAgent()
