@@ -27,3 +27,16 @@ When you make changes to the C++ code in, say, [steerlib/src/Curve.cpp](steerlib
 
 ## Notes
 Notes and code snippets: [Dropbox Paper Doc](https://paper.dropbox.com/doc/Steersuite-Assignments-4pWAWAmWmpfuaMozsfF6y?_tk=share_copylink)
+
+
+Links:
+curve1h - https://www.youtube.com/watch?v=n5M5tcmQ2ns
+curve2h - https://www.youtube.com/watch?v=WqF5O9DbF-0
+curve3h - https://www.youtube.com/watch?v=YWwMnZ1eBZM
+curve4h - https://www.youtube.com/watch?v=PYzSGVTO7XQ
+curveDh - https://www.youtube.com/watch?v=BWLnhU7Hs-Y
+curve1cc - https://www.youtube.com/watch?v=jHbLsOgwyKM
+curve2cc - https://www.youtube.com/watch?v=EaV6PXx__AE
+curve3cc - https://www.youtube.com/watch?v=Ow04TAWrnMo
+curve4cc - https://www.youtube.com/watch?v=xiXjXCUVR_Q
+curveDcc - https://www.youtube.com/watch?v=em0kN_DNPdw
