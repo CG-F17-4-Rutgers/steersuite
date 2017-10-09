@@ -7,6 +7,44 @@ SteerLib::GJK_EPA::GJK_EPA()
 {
 }
 
+// Returns the convex hull of a list of points as a new list of points in counter-clockwise order
+// The last point in the list is the same as the first one
+// Algorithm taken from: https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#C.2B.2B
+std::vector<Util::Vector> getConvexHull(std::vector<Util::Vector> shape)
+{
+    int n = shape.size(), k = 0;
+    if (n == 1) return shape;
+    std::vector<Util::Vector> hull(2*n);
+
+    // Sort points lexicographically
+    sort(shape.begin(), shape.end());
+
+    // Build lower hull
+    for (int i = 0; i < n; ++i) {
+        while (k >= 2 && cross(hull[k-2], hull[k-1], shape[i]) <= 0) k--;
+        hull[k++] = shape[i];
+    }
+
+    // Build upper hull
+    for (int i = n-2, t = k+1; i >= 0; i--) {
+        while (k >= t && cross(hull[k-2], hull[k-1], shape[i]) <= 0) k--;
+        hull[k++] = shape[i];
+    }
+
+    hull.resize(k-1);
+    return hull;
+}
+
+// Test to see if a point is inside a given shape
+bool isPointInsideShape(Util::Vector point, std::vector<Util::Vector> shape)
+{
+    std::vector<Util::Vector> hull = getConvexHull(shape); // get the convex hull of the shape
+    int n = hull.size();                                   // store the number of points in the hull
+    hull.push_back (point);                                // add the query point to the hull
+    hull = getConvexHull(hull);                            // re-evaluate the convex hull
+    return (hull.size == n);                               // if the number of points stayed the same, the point is inside
+}
+
 float getXMax(std::vector<Util::Vector> shape) {
     float max = shape[0].x;
     for(Util::Vector v: shape) {
