@@ -7,6 +7,14 @@ SteerLib::GJK_EPA::GJK_EPA()
 {
 }
 
+// 2D cross product of OA and OB vectors, i.e. y-component of their 3D cross product.
+// Returns a positive value, if OAB makes a counter-clockwise turn,
+// negative for clockwise turn, and zero if the points are collinear.
+float cross2D(const Util::Vector &O, const Util::Vector &A, const Util::Vector &B)
+{
+    return (A.x - O.x) * (B.z - O.z) - (A.z - O.z) * (B.x - O.x);
+}
+
 // Returns the convex hull of a list of points as a new list of points in counter-clockwise order
 // The last point in the list is the same as the first one
 // Algorithm taken from: https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#C.2B.2B
@@ -21,13 +29,13 @@ std::vector<Util::Vector> getConvexHull(std::vector<Util::Vector> shape)
 
     // Build lower hull
     for (int i = 0; i < n; ++i) {
-        while (k >= 2 && cross(hull[k-2], hull[k-1], shape[i]) <= 0) k--;
+        while (k >= 2 && cross2D(hull[k-2], hull[k-1], shape[i]) <= 0) k--;
         hull[k++] = shape[i];
     }
 
     // Build upper hull
     for (int i = n-2, t = k+1; i >= 0; i--) {
-        while (k >= t && cross(hull[k-2], hull[k-1], shape[i]) <= 0) k--;
+        while (k >= t && cross2D(hull[k-2], hull[k-1], shape[i]) <= 0) k--;
         hull[k++] = shape[i];
     }
 
