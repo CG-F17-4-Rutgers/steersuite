@@ -133,6 +133,22 @@ std::vector<Util::Vector> calculateMinkowskiDifference(std::vector<Util::Vector>
     return minkowskiDifference;
 }
 
+// Removes the point that is furthest from the origin
+void removeFarthestPoint(std::vector<Util::Vector>& simplex) {
+    float furthestDistance = 0;
+    int furthestDistanceIndex = 0;
+
+    for(int i = 0; i < simplex.size(); i++) {
+        float distanceFromOrigin = Util::distanceBetween(Util::Point(), Util::Point(simplex[i].x, simplex[i].y, simplex[i].z));
+        if(distanceFromOrigin >= furthestDistance) {
+            furthestDistance = distanceFromOrigin;
+            furthestDistanceIndex = i;
+        }
+    }
+
+    simplex.erase(simplex.begin() + furthestDistanceIndex);
+}
+
 
 
 //Look at the GJK_EPA.h header file for documentation and instructions
