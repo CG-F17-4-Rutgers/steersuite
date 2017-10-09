@@ -29,7 +29,7 @@ ifeq ($(config),debug)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -stdlib=libc++ -std=c++0x -ggdb -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -stdlib=libc++ -Wl,-rpath,/Users/Taichi/Desktop/steersuite/build/lib -install_name @rpath/libDetour.dylib
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -stdlib=libc++ -Wl,-rpath,/Users/kianjackson/Documents/ComputerGraphics/A2/steersuite/build/lib -install_name @rpath/libDetour.dylib
   LDDEPS    += ../lib/libRecast.a
   LIBS      += $(LDDEPS) -framework OpenGL
   LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
@@ -51,7 +51,7 @@ ifeq ($(config),release)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -O2 -stdlib=libc++ -std=c++0x -ggdb -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -stdlib=libc++ -Wl,-rpath,/Users/Taichi/Desktop/steersuite/build/lib -install_name @rpath/libDetour.dylib
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -stdlib=libc++ -Wl,-rpath,/Users/kianjackson/Documents/ComputerGraphics/A2/steersuite/build/lib -install_name @rpath/libDetour.dylib
   LDDEPS    += ../lib/libRecast.a
   LIBS      += $(LDDEPS) -framework OpenGL
   LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)

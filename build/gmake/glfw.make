@@ -29,7 +29,7 @@ ifeq ($(config),debug)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -fPIC -stdlib=libc++ -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -dynamiclib -stdlib=libc++ -Wl,-rpath,/Users/Taichi/Desktop/steersuite/build/lib -framework OpenGL -framework Cocoa -framework IOKit -install_name @rpath/libglfw.dylib
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -dynamiclib -stdlib=libc++ -Wl,-rpath,/Users/kianjackson/Documents/ComputerGraphics/A2/steersuite/build/lib -framework OpenGL -framework Cocoa -framework IOKit -install_name @rpath/libglfw.dylib
   LDDEPS    +=
   LIBS      += $(LDDEPS) -framework OpenGL -lpthread
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -51,7 +51,7 @@ ifeq ($(config),release)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -O2 -fPIC -stdlib=libc++ -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -dynamiclib -stdlib=libc++ -Wl,-rpath,/Users/Taichi/Desktop/steersuite/build/lib -framework OpenGL -framework Cocoa -framework IOKit -install_name @rpath/libglfw.dylib
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -dynamiclib -stdlib=libc++ -Wl,-rpath,/Users/kianjackson/Documents/ComputerGraphics/A2/steersuite/build/lib -framework OpenGL -framework Cocoa -framework IOKit -install_name @rpath/libglfw.dylib
   LDDEPS    +=
   LIBS      += $(LDDEPS) -framework OpenGL -lpthread
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)

@@ -24,6 +24,7 @@ namespace SteerLib
 	{
 	public:
 		GJK_EPA();
+        //static std::vector<Util::Vector> calculateMinkowskiDifference(std::vector<Util::Vector> shapeA, std::vector<Util::Vector> shapeB);
 
 		/*
 		*
