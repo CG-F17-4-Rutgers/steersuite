@@ -1,6 +1,7 @@
 #include "obstacles/GJK_EPA.h"
 #include <iostream>
 #include <cmath>
+#include <algorithm>
 
 
 SteerLib::GJK_EPA::GJK_EPA()
@@ -10,14 +11,14 @@ SteerLib::GJK_EPA::GJK_EPA()
 // Returns the convex hull of a list of points as a new list of points in counter-clockwise order
 // The last point in the list is the same as the first one
 // Algorithm taken from: https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#C.2B.2B
-std::vector<Util::Vector> getConvexHull(std::vector<Util::Vector> shape)
+/*std::vector<Util::Vector> getConvexHull(std::vector<Util::Vector> shape)
 {
     int n = shape.size(), k = 0;
     if (n == 1) return shape;
     std::vector<Util::Vector> hull(2*n);
 
     // Sort points lexicographically
-    sort(shape.begin(), shape.end());
+    std::sort(shape.begin(), shape.end());
 
     // Build lower hull
     for (int i = 0; i < n; ++i) {
@@ -44,6 +45,7 @@ bool isPointInsideShape(Util::Vector point, std::vector<Util::Vector> shape)
     hull = getConvexHull(hull);                            // re-evaluate the convex hull
     return (hull.size == n);                               // if the number of points stayed the same, the point is inside
 }
+*/
 
 float getXMax(std::vector<Util::Vector> shape) {
     float max = shape[0].x;
@@ -74,12 +76,16 @@ bool containsOrigin(std::vector<Util::Vector> shape) {
 }
 
 Util::Vector getSupport(std::vector<Util::Vector> shape, int count, Util::Vector d) {
-    float highest = std::numeric_limits<float>::min();
+    float highest = std::numeric_limits<float>::max() * -1;
     Util::Vector support;
+	std::cout << "Hightst = " << highest << std::endl;
+	for (Util::Vector pointA : shape) {
+		std::cout << "support Shape: (" << pointA.x << ", " << pointA.z << ")" << std::endl;
+	}
 
     for(int i = 0; i < count; ++i) {
         Util::Vector v = shape[i];
-        float dot = v.x * d.x+ v.y * d.y;
+        float dot = v.x * d.x + v.z * d.z;
 
         if(dot > highest) {
             highest = dot;
@@ -119,13 +125,30 @@ std::vector<Util::Vector> calculateMinkowskiDifference(std::vector<Util::Vector>
     return minkowskiDifference;
 }
 
+
+
 //Look at the GJK_EPA.h header file for documentation and instructions
 bool SteerLib::GJK_EPA::intersect(float& return_penetration_depth, Util::Vector& return_penetration_vector, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB)
 {
+	
+
+
     std::vector<Util::Vector> minkowskiDifference = calculateMinkowskiDifference(_shapeA, _shapeB);
     Util::Vector supportA = getSupport(_shapeA, _shapeA.size(), minkowskiDifference[0] * -1);
     Util::Vector supportB = getSupport(_shapeB, _shapeB.size(), minkowskiDifference[0]);
     Util::Vector w = supportA - supportB;
+
+	for (Util::Vector pointA : _shapeA) {
+		std::cout << "Shape A: (" << pointA.x << ", " << pointA.z << ")" << std::endl;
+	}
+	for (Util::Vector pointB : _shapeB) {
+		std::cout << "Shape B: (" << pointB.x << ", " << pointB.z << ")" << std::endl;
+	}
+
+	std::cout << "sA: (" << supportA.x << ", " << w.y << ", " << supportA.z << ")" << std::endl;
+	std::cout << "sB: (" << supportB.x << ", " << w.y << ", " << supportB.z << ")" << std::endl;
+	std::cout << "w: (" << w.x << ", " << w.y << ", " << w.z << ")" << std::endl;
+	std::cout << "md[0]: (" << minkowskiDifference[0].x << ", " << w.y << ", " << minkowskiDifference[0].z << ")" << std::endl;
 
     if(w.norm() == minkowskiDifference[0].norm()) {
         // Shapes intersect
