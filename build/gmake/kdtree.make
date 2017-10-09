@@ -29,7 +29,7 @@ ifeq ($(config),debug)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -fPIC -stdlib=libc++ -std=c++0x -ggdb
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -dynamiclib -stdlib=libc++ -Wl,-rpath,/Users/kianjackson/Documents/ComputerGraphics/A2/steersuite/build/lib -install_name @rpath/libkdtree.dylib
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -dynamiclib -stdlib=libc++ -Wl,-rpath,/Users/Taichi/Desktop/steersuite/build/lib -install_name @rpath/libkdtree.dylib
   LDDEPS    += ../lib/libsteerlib.dylib ../lib/libutil.dylib
   LIBS      += $(LDDEPS) -framework OpenGL
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -51,7 +51,7 @@ ifeq ($(config),release)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -O2 -fPIC -stdlib=libc++ -std=c++0x -ggdb
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -dynamiclib -stdlib=libc++ -Wl,-rpath,/Users/kianjackson/Documents/ComputerGraphics/A2/steersuite/build/lib -install_name @rpath/libkdtree.dylib
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -dynamiclib -stdlib=libc++ -Wl,-rpath,/Users/Taichi/Desktop/steersuite/build/lib -install_name @rpath/libkdtree.dylib
   LDDEPS    += ../lib/libsteerlib.dylib ../lib/libutil.dylib
   LIBS      += $(LDDEPS) -framework OpenGL
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)

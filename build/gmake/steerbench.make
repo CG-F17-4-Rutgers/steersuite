@@ -29,7 +29,7 @@ ifeq ($(config),debug)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -stdlib=libc++ -std=c++0x -ggdb -Wunused-value -Wshadow -Wreorder -Wsign-compare -Wall
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -stdlib=libc++ -Wl,-rpath,/Users/kianjackson/Documents/ComputerGraphics/A2/steersuite/build/lib
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -stdlib=libc++ -Wl,-rpath,/Users/Taichi/Desktop/steersuite/build/lib
   LDDEPS    += ../lib/libsteerlib.dylib ../lib/libutil.dylib ../lib/libglfw.dylib ../lib/libtinyxml.dylib
   LIBS      += $(LDDEPS) -framework OpenGL -framework Cocoa -ldl
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -51,7 +51,7 @@ ifeq ($(config),release)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -O2 -stdlib=libc++ -std=c++0x -ggdb -Wunused-value -Wshadow -Wreorder -Wsign-compare -Wall
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -stdlib=libc++ -Wl,-rpath,/Users/kianjackson/Documents/ComputerGraphics/A2/steersuite/build/lib
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -stdlib=libc++ -Wl,-rpath,/Users/Taichi/Desktop/steersuite/build/lib
   LDDEPS    += ../lib/libsteerlib.dylib ../lib/libutil.dylib ../lib/libglfw.dylib ../lib/libtinyxml.dylib
   LIBS      += $(LDDEPS) -framework OpenGL -framework Cocoa -ldl
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)

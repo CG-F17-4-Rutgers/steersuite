@@ -29,7 +29,7 @@ ifeq ($(config),debug)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -fPIC -stdlib=libc++ -std=c++0x -ggdb -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -dynamiclib -stdlib=libc++ -Wl,-rpath,/Users/kianjackson/Documents/ComputerGraphics/A2/steersuite/build/lib -install_name @rpath/libnavmesh.dylib
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -dynamiclib -stdlib=libc++ -Wl,-rpath,/Users/Taichi/Desktop/steersuite/build/lib -install_name @rpath/libnavmesh.dylib
   LDDEPS    += ../lib/libsteerlib.dylib ../lib/libsteersimlib.dylib ../lib/libutil.dylib ../lib/libRecast.a ../lib/libDebugUtils.a ../lib/libDetour.a ../lib/libDetourCrowd.a
   LIBS      += $(LDDEPS) -framework OpenGL
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
@@ -51,7 +51,7 @@ ifeq ($(config),release)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g -O2 -fPIC -stdlib=libc++ -std=c++0x -ggdb -fPIC
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -dynamiclib -stdlib=libc++ -Wl,-rpath,/Users/kianjackson/Documents/ComputerGraphics/A2/steersuite/build/lib -install_name @rpath/libnavmesh.dylib
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../lib -dynamiclib -stdlib=libc++ -Wl,-rpath,/Users/Taichi/Desktop/steersuite/build/lib -install_name @rpath/libnavmesh.dylib
   LDDEPS    += ../lib/libsteerlib.dylib ../lib/libsteersimlib.dylib ../lib/libutil.dylib ../lib/libRecast.a ../lib/libDebugUtils.a ../lib/libDetour.a ../lib/libDetourCrowd.a
   LIBS      += $(LDDEPS) -framework OpenGL
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
