@@ -16,18 +16,26 @@ float cross2D(const Util::Vector &O, const Util::Vector &A, const Util::Vector &
     return (A.x - O.x) * (B.z - O.z) - (A.z - O.z) * (B.x - O.x);
 }
 
-/*
+// Compare two vectors lexicographically. First compares x coordinates, and in the case of a tie, compares z coordinates.
+// Returns a boolean indicating if point A is "less" than point B
+bool compareVector2D(const Util::Vector &pointA, const Util::Vector &pointB)
+{
+    return pointA.x < pointB.x || (pointA.x == pointB.x && pointA.z <= pointB.z);
+}
+
+
 // Returns the convex hull of a list of points as a new list of points in counter-clockwise order
 // The last point in the list is the same as the first one
 // Algorithm taken from: https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#C.2B.2B
 std::vector<Util::Vector> getConvexHull(std::vector<Util::Vector> shape)
 {
+    // Run getConvexHull
     int n = shape.size(), k = 0;
     if (n == 1) return shape;
     std::vector<Util::Vector> hull(2*n);
 
     // Sort points lexicographically
-    std::sort(shape.begin(), shape.end());
+    std::sort(shape.begin(), shape.end(), compareVector2D);
 
     // Build lower hull
     for (int i = 0; i < n; ++i) {
@@ -49,12 +57,11 @@ std::vector<Util::Vector> getConvexHull(std::vector<Util::Vector> shape)
 bool isPointInsideShape(Util::Vector point, std::vector<Util::Vector> shape)
 {
     std::vector<Util::Vector> hull = getConvexHull(shape); // get the convex hull of the shape
-    int n = hull.size();                                   // store the number of points in the hull
+    unsigned int n = hull.size();                                   // store the number of points in the hull
     hull.push_back (point);                                // add the query point to the hull
     hull = getConvexHull(hull);                            // re-evaluate the convex hull
     return (hull.size() == n);                               // if the number of points stayed the same, the point is inside
 }
-*/
 
 
 float getXMax(std::vector<Util::Vector> shape) {
@@ -187,6 +194,21 @@ bool gjk(std::vector<Util::Vector> shapeA, std::vector<Util::Vector> shapeB) {
 //Look at the GJK_EPA.h header file for documentation and instructions
 bool SteerLib::GJK_EPA::intersect(float& return_penetration_depth, Util::Vector& return_penetration_vector, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB)
 {
+    // test Convex Hull
+    std::cout << "Testing Convex Hull. Remove Tests before submitting assignment!" << std::endl;
+    std::vector<Util::Vector> frankenshape;
+    for (Util::Vector point : _shapeA)
+        frankenshape.push_back(point);
+    for (Util::Vector point : _shapeB)
+        frankenshape.push_back(point);
+    frankenshape = getConvexHull(frankenshape);
+    for (Util::Vector point : frankenshape)
+        std::cout << point;
+    std::cout << std::endl;
+    std::cout << "Is (2.8, 0.5) inside the convex hull?" << isPointInsideShape(Util::Vector(2.8, 0, 0.5), frankenshape) << std::endl; // should be false
+    std::cout << "Is (0.8, 2.3) inside the convex hull?" << isPointInsideShape(Util::Vector(0.8, 0, 2.3), frankenshape) << std::endl; // should be true
+
+    std::cout << "Testing GJK. Remove Tests before submitting assignment!" << std::endl;
 	gjk(_shapeA, _shapeB);
 
 	return false; // There is no collision
