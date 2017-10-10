@@ -154,26 +154,85 @@ void removeFarthestPoint(std::vector<Util::Vector>& simplex) {
     simplex.erase(simplex.begin() + furthestDistanceIndex);
 }
 
-bool gjk(std::vector<Util::Vector> shapeA, std::vector<Util::Vector> shapeB) {
+//Subtract 2 vectors
+Util::Vector subtract(Util::Vector a, Util::Vector b) { a.x -= b.x; a.y -= b.y; return a; }
+
+Util::Vector tripleProduct(Util::Vector a, Util::Vector b, Util::Vector c) {
+
+	Util::Vector r;
+
+	float ac = a.x * c.x + a.y * c.y; // perform a.dot(c)
+	float bc = b.x * c.x + b.y * c.y; // perform b.dot(c)
+
+	// perform b * a.dot(c) - a * b.dot(c)
+	r.x = b.x * ac - a.x * bc;
+	r.y = b.y * ac - a.y * bc;
+	return r;
+}
+
+bool gjk(std::vector<Util::Vector> shapeA, std::vector<Util::Vector> shapeB, std::vector<Util::Vector>& simplex) {
     
-    std::vector<Util::Vector> simplex;
+	int iteration = 0;
     std::vector<Util::Vector> minkowskiDifference = calculateMinkowskiDifference(shapeA, shapeB);
-    Util::Vector supportA = getSupport(shapeA, shapeA.size(), minkowskiDifference[0] * -1);
-    Util::Vector supportB = getSupport(shapeB, shapeB.size(), minkowskiDifference[0]);
+	Util::Vector d = minkowskiDifference[0];
+	Util::Vector a, b, ab;
+    Util::Vector supportA = getSupport(shapeA, shapeA.size(), d );
+    Util::Vector supportB = getSupport(shapeB, shapeB.size(), -d);
     Util::Vector w = supportA - supportB;
     std::cout << "md[0]: (" << minkowskiDifference[0].x << ", " << w.y << ", " << minkowskiDifference[0].z << ")" << std::endl;
     std::cout << "w0: (" << w.x << ", " << w.y << ", " << w.z << ")" << std::endl;
-    simplex.push_back(w);
-    supportA = getSupport(shapeA, shapeA.size(), w * -1);
-    supportB = getSupport(shapeB, shapeB.size(), w);
+	simplex.push_back(w);
+	d = -w;
+    supportA = getSupport(shapeA, shapeA.size(), d);
+    supportB = getSupport(shapeB, shapeB.size(), -d);
     w = supportA - supportB;
     std::cout << "w1: (" << w.x << ", " << w.y << ", " << w.z << ")" << std::endl;
-    simplex.push_back(w);
-    supportA = getSupport(shapeA, shapeA.size(), w * -1);
-    supportB = getSupport(shapeB, shapeB.size(), w);
+	simplex.push_back(w);
+
+	a = simplex[0];
+	b = simplex[1];
+	ab = subtract(a, b);
+	d = tripleProduct(ab, -a, ab);
+
+    supportA = getSupport(shapeA, shapeA.size(), d);
+    supportB = getSupport(shapeB, shapeB.size(), -d);
     w = supportA - supportB;
     std::cout << "w2: (" << w.x << ", " << w.y << ", " << w.z << ")" << std::endl;
-    simplex.push_back(w);
+	simplex.push_back(w);
+
+	if (isPointInsideShape(Util::Vector(0, 0, 0), simplex)) {
+		for (Util::Vector pointA : simplex) {
+			std::cout << "Simplex: (" << pointA.x << ", " << pointA.z << ")" << std::endl;
+		}
+		std::cout << "First 3" << std::endl;
+		return true;
+	}
+
+	while (iteration < 10) {
+
+		std::cout << "Iteration: " << iteration << std::endl;
+
+		simplex[0] = simplex[1];
+		simplex[1] = simplex[2];
+
+		a = simplex[0];
+		b = simplex[1];
+		ab = subtract(a, b);
+		d = tripleProduct(ab, -a, ab);
+		supportA = getSupport(shapeA, shapeA.size(), d);
+		supportB = getSupport(shapeB, shapeB.size(), -d);
+		w = supportA - supportB;
+		simplex.pop_back();
+		simplex.push_back(w);
+
+		if (isPointInsideShape(Util::Vector(0, 0, 0), simplex)) {
+			return true;
+		}
+
+		iteration++;
+	}
+
+	return false;
 
 
 
@@ -209,8 +268,13 @@ bool SteerLib::GJK_EPA::intersect(float& return_penetration_depth, Util::Vector&
     std::cout << "Is (0.8, 2.3) inside the convex hull?" << isPointInsideShape(Util::Vector(0.8, 0, 2.3), frankenshape) << std::endl; // should be true
 
     std::cout << "Testing GJK. Remove Tests before submitting assignment!" << std::endl;
-	gjk(_shapeA, _shapeB);
 
-	return false; // There is no collision
+
+	std::vector<Util::Vector> simplex;
+	return_penetration_depth = 0;
+	return_penetration_vector = Util::Vector(0, 0, 0);
+
+	return gjk(_shapeA, _shapeB, simplex);
+	//return false; // There is no collision
 }
 
