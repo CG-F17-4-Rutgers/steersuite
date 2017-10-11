@@ -22,6 +22,9 @@
 #include <float.h>
 #include "Globals.h"
 #include <vector>
+#include <cstdint>
+#include <list>
+#include <algorithm>
 
 
 
@@ -659,7 +662,6 @@ namespace Util {
 			return (c - (a + r * (b - a))).lengthSquared();
 		}
 	}
-
 } // end namespace Util
 
 

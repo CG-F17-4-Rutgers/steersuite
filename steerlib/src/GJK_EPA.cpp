@@ -3,10 +3,165 @@
 #include <cmath>
 #include <algorithm>
 
-
 SteerLib::GJK_EPA::GJK_EPA()
 {
 }
+
+#include <cstdint>
+#include <list>
+#include <vector>
+#include <algorithm>
+
+#include "DrawLib.h"
+class Triangulation {
+    // This code uses C++11 features like "auto" and initializer lists.
+
+public:
+    // Compare two floating point numbers accurately.
+    static bool compf(float a, float b, float threshold=0.00001f)
+    {
+        return (a + threshold > b && a - threshold < b);
+    }
+
+    // A point in space. 
+    struct vector_t 
+    {
+        float x, y;
+        inline bool operator==(const vector_t& B)
+        { return compf(B.x, x) && compf(B.y, y); }
+    };
+
+    // Determine orientation of a triangle.
+    // TRUE if ccw, FALSE if cw or not a triangle.
+    static bool orientation(const std::vector<vector_t>& p)
+    {
+        return (p[1].x - p[0].x) * (p[2].y - p[0].y) - 
+               (p[2].x - p[0].x) * (p[1].y - p[0].y) > 0;
+    }
+
+    // Barycentric coordinate calculation.
+    static bool in_triangle(const vector_t& V, const vector_t& A,
+                     const vector_t& B, const vector_t& C)
+    {
+        float denom = ((B.y - C.y) * (A.x - C.x) + (C.x - B.x) * (A.y - C.y));
+        if(compf(denom, 0.0)) return true;
+        denom = 1 / denom;
+        
+        float alpha = denom * ((B.y - C.y) * (V.x - C.x) + (C.x - B.x) * (V.y - C.y));
+        if(alpha < 0) return false;
+     
+        float beta  = denom * ((C.y - A.y) * (V.x - C.x) + (A.x - C.x) * (V.y - C.y));
+        if(beta < 0) return false;
+        
+        return alpha + beta >= 1;
+    }
+
+    static std::vector<vector_t> triangulate(std::vector<vector_t> Polygon)
+    {
+        std::vector<uint16_t> reflex;
+        std::vector<vector_t> triangles;    
+        
+        if(Polygon.size() < 3) return Polygon;
+        
+        // Polygon orientation
+        vector_t left = Polygon[0];
+        size_t index = 0;
+        
+        for(size_t i = 0; i < Polygon.size(); ++i)
+        {
+            if(Polygon[i].x < left.x ||
+              (compf(Polygon[i].x, left.x) && Polygon[i].y < left.y))
+            {
+                index = i;
+                left = Polygon[i];
+            }
+        }
+        
+        // C++11 initializer list (not on <= MSVC11)
+        std::vector<vector_t> tri {
+            Polygon[(index > 0) ? index - 1 : Polygon.size() - 1],
+            Polygon[index],
+            Polygon[(index < Polygon.size()) ? index + 1 : 0]
+        };
+        bool ccw = orientation(tri);
+        
+        // We know there will be vertex_count - 2 triangles made.
+        triangles.reserve(Polygon.size() - 2);
+
+        if(Polygon.size() == 3) return Polygon;
+        while(Polygon.size() >= 3)
+        {
+            reflex.clear();
+            int16_t eartip = -1, index = -1;
+            for(auto& i : Polygon)
+            {
+                ++index;
+                if(eartip >= 0) break;
+                
+                uint16_t p = (index > 0) ? index - 1 : Polygon.size() - 1;
+                uint16_t n = (index < Polygon.size()) ? index + 1 : 0;
+                
+                std::vector<vector_t> tri { Polygon[p], i, Polygon[n] };
+                if(orientation(tri) != ccw)
+                {
+                    reflex.emplace_back(index);
+                    continue;
+                }
+                
+                bool ear = true;
+                for(auto& j : reflex)
+                {
+                    if(j == p || j == n) continue;
+                    if(in_triangle(Polygon[j], Polygon[p], i, Polygon[n]))
+                    {
+                        ear = false;
+                        break;
+                    }
+                }
+                
+                if(ear)
+                {
+                    auto j = Polygon.begin() + index + 1,
+                         k = Polygon.end();
+                     
+                    for( ; j != k; ++j)
+                    {
+                        auto& v = *j;
+
+                        if(&v == &Polygon[p] ||
+                           &v == &Polygon[n] ||
+                           &v == &Polygon[index]) continue;
+
+                        if(in_triangle(v, Polygon[p], i, Polygon[n]))
+                        {
+                            ear = false;
+                            break;
+                        }
+                    }
+                }
+                
+                if(ear) eartip = index;
+            }
+            
+            if(eartip < 0) break;
+            
+            uint16_t p = (eartip > 0) ? eartip - 1 : Polygon.size() - 1;
+            uint16_t n = (eartip < Polygon.size()) ? eartip + 1 : 0;
+            vector_t* parts[3] = { 
+                &Polygon[p], &Polygon[eartip], &Polygon[n]
+            };
+            
+            // Create the triangulated piece.
+            for(const auto& i : parts) triangles.push_back(*i);
+            
+            // Clip the ear from the polygon.
+            Polygon.erase(std::find(Polygon.begin(), Polygon.end(), *parts[1]));
+        }
+        
+        return triangles;
+    }
+};
+
 
 Util::Vector getSupport(std::vector<Util::Vector> shape, int count, Util::Vector d) {
     float highest = std::numeric_limits<float>::max() * -1;
@@ -192,14 +347,14 @@ void epa(float& return_penetration_depth, Util::Vector& return_penetration_vecto
         // obtain the feature (edge for 2D) closest to the 
         // origin on the Minkowski Difference
         Edge e = findClosestEdge(simplex);
-        std::cout << "TEST DEPTH" << e.distance << std::endl;
+        //std::cout << "TEST DEPTH" << e.distance << std::endl;
         // obtain a new support point in the direction of the edge normal
         // Vector p = support(shapeA, shapeB, e.normal);
         Util::Vector support = getSupport(shapeA, shapeA.size(), e.normal) - getSupport(shapeB, shapeB.size(), -e.normal);
         // check the distance from the origin to the edge against the
         // distance p is along e.normal
         float d = dotProduct(support, e.normal);
-        std::cout << "D VALUE" << d << std::endl;
+        //std::cout << "D VALUE" << d << std::endl;
         if (d - e.distance < TOLERANCE) {
             // the tolerance should be something positive close to zero (ex. 0.00001)
 
@@ -223,20 +378,41 @@ void epa(float& return_penetration_depth, Util::Vector& return_penetration_vecto
 
 //Look at the GJK_EPA.h header file for documentation and instructions
 bool SteerLib::GJK_EPA::intersect(float& return_penetration_depth, Util::Vector& return_penetration_vector, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB)
-{
+{   
+    std::vector<Triangulation::vector_t> vector_tShapeA;
+    for(Util::Vector v: _shapeA) {
+        Triangulation::vector_t point;
+        point.x = v.x;
+        point.y = v.z;
+
+        vector_tShapeA.push_back(point); 
+    }
+
+    std::cout << "Size of vector_tShapeA: " << vector_tShapeA.size();
+
+    std::vector<Triangulation::vector_t> triangulatedShapeA = Triangulation::triangulate(vector_tShapeA);
+    std::cout << "Size of triangulatedShapeA: " << triangulatedShapeA.size();
+
+    for(int i = 0; i < triangulatedShapeA.size(); i++) {
+        Triangulation::vector_t v1 = triangulatedShapeA.at(i);
+        //Triangulation::vector_t v2 = triangulatedShapeA.at(i + 1);
+        std::cout << "(" << v1.x << ", " << v1.y << ")" << std::endl;
+        //Util::DrawLib::drawLine(Util::Point(v1.x, 0, v1.y), Util::Point(v2.x, 0, v2.y));
+    }
+
 
 	std::vector<Util::Vector> simplex;
 
 	if (gjk(_shapeA, _shapeB, simplex)) {
 		for (Util::Vector pointA : simplex) {
-			std::cout << "Simplex: (" << pointA.x << ", " << pointA.z << ")" << std::endl;
+			//std::cout << "Simplex: (" << pointA.x << ", " << pointA.z << ")" << std::endl;
 		}
         epa(return_penetration_depth, return_penetration_vector, simplex, _shapeA, _shapeB);
 		return true;
 	}
 	else {
 		for (Util::Vector pointA : simplex) {
-			std::cout << "Simplex: (" << pointA.x << ", " << pointA.z << ")" << std::endl;
+			//std::cout << "Simplex: (" << pointA.x << ", " << pointA.z << ")" << std::endl;
 		}
 		return false;
 	}
