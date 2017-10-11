@@ -2,6 +2,7 @@
   @author VaHiD AzIzI
 -->
 
+
 <SteerBenchTestCase xmlns="http://www.magix.ucla.edu/steerbench"
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     xsi:schemaLocation="http://www.magix.ucla.edu/steerbench 
@@ -20,21 +21,54 @@
     </worldBounds>
   </header>
 
+  <!-- When the simulation is run with Polygons1.xml, we don’t get any false-positive collisions. When the simulation is run with Polygons2.xml, a collision is detected, even though the two polygons defined by taking their vertices in order are not actually colliding. This is because the given order of the vertices for each polygon produces a polygon that is self-intersecting. Because GJK-EPA assumes that the polygons are convex, one polygon is detected in the convex hull of the other.
+
+  If you just wanted the polygons defined by the convex hulls of each set of given points, then we could just reorder each set of points in Polygons2.xml. If you wanted the polygon defined by the points in the given order, then we should decompose the self-intersecting, concave polygons into smaller convex ones. -->
+
  
-  <polygonObstacle isClosed="true">
+  <!-- <polygonObstacle isClosed="true">
 	<vertex> <x>3.0</x> <y>0.0</y> <z>4.0</z> </vertex>
 	<vertex> <x>6.0</x> <y>0.0</y> <z>0.0</z> </vertex>	
         <vertex> <x>3.0</x> <y>0.0</y> <z>0.0</z> </vertex>
 	<vertex> <x>0.0</x> <y>0.0</y> <z>0.0</z> </vertex>
 	<vertex> <x>3.0</x> <y>0.0</y> <z>-4.0</z> </vertex>
+  </polygonObstacle> -->
+
+  <!-- Decomposed into -->
+  <polygonObstacle isClosed="true">
+    <vertex> <x>0.0</x> <y>0.0</y> <z>0.0</z> </vertex>
+    <vertex> <x>3.0</x> <y>0.0</y> <z>-4.0</z> </vertex> 
+    <vertex> <x>3.0</x> <y>0.0</y> <z>0.0</z> </vertex>
+  </polygonObstacle>
+  <polygonObstacle isClosed="true">
+    <vertex> <x>3.0</x> <y>0.0</y> <z>0.0</z> </vertex>
+    <vertex> <x>3.0</x> <y>0.0</y> <z>4.0</z> </vertex> 
+    <vertex> <x>6.0</x> <y>0.0</y> <z>0.0</z> </vertex>
   </polygonObstacle>
 
-  <polygonObstacle isClosed="true">
+  <!-- <polygonObstacle isClosed="true">
         <vertex> <x>5.0</x> <y>0.0</y> <z>-3.0</z> </vertex>
 	<vertex> <x>5.0</x> <y>0.0</y> <z>-5.0</z> </vertex>
 	<vertex> <x>4.0</x> <y>0.0</y> <z>-1.0</z> </vertex>
 	<vertex> <x>7.0</x> <y>0.0</y> <z>-2.0</z> </vertex>
 	<vertex> <x>4.0</x> <y>0.0</y> <z>-4.0</z> </vertex>
+  </polygonObstacle> -->
+
+ <!-- Decomposed into -->
+  <polygonObstacle isClosed="true">
+    <vertex> <x>4.0</x> <y>0.0</y> <z>-4.0</z> </vertex>
+    <vertex> <x>4.6</x> <y>0.0</y> <z>-3.4</z> </vertex> 
+    <vertex> <x>4.64</x> <y>0.0</y> <z>-3.57</z> </vertex>
+  </polygonObstacle>
+  <polygonObstacle isClosed="true">
+    <vertex> <x>4.64</x> <y>0.0</y> <z>-3.57</z> </vertex>
+    <vertex> <x>5.0</x> <y>0.0</y> <z>-3.33</z> </vertex> 
+    <vertex> <x>5.0</x> <y>0.0</y> <z>-5.0</z> </vertex>
+  </polygonObstacle>
+  <polygonObstacle isClosed="true">
+    <vertex> <x>4.64</x> <y>0.0</y> <z>-3.57</z> </vertex>
+    <vertex> <x>4.0</x> <y>0.0</y> <z>-1.0</z> </vertex> 
+    <vertex> <x>7.0</x> <y>0.0</y> <z>-2.0</z> </vertex>
   </polygonObstacle>
  
   <agent>
