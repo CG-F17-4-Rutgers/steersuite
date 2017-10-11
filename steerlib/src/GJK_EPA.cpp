@@ -133,6 +133,94 @@ bool gjk(std::vector<Util::Vector> shapeA, std::vector<Util::Vector> shapeB, std
 	return false;
 }
 
+struct Edge
+{
+    Util::Vector p1;     // point 1
+    Util::Vector p2;     // point 2
+    float distance;      // distance from origin
+    Util::Vector normal; // normal
+    unsigned int index;  // index of point 2 in shape
+};
+
+// Returns the closest edge of a simplex s to the origin (as a vector of two points)
+Edge findClosestEdge(std::vector<Util::Vector> s)
+{
+    Edge closest;
+    // prime the distance of the edge to the max
+    closest.distance = std::numeric_limits<float>::max();
+    // float distance = std::numeric_limits<float>::max();
+    // float normal;
+    // unsigned int closestIndex;
+    // s is the passed in simplex
+    for (unsigned int i = 0; i < s.size(); i++) {
+        // compute the next points index
+        unsigned int j = i + 1 == s.size() ? 0 : i + 1;
+        // get the current point and the next one
+        Util::Vector a = s[i];
+        Util::Vector b = s[j];
+        // create the edge vector
+        Util::Vector e = b - a; // or a.to(b);
+        // get the vector from the origin to a
+        Util::Vector oa = a; // or a - ORIGIN
+        // get the vector from the edge towards the origin
+        Util::Vector n = tripleProduct(e, oa, e);
+        // normalize the vector
+        n = Util::normalize(n);
+        // calculate the distance from the origin to the edge
+        float d = dotProduct(n, a); // could use b or a here
+        // check the distance against the other distances
+        if (d < closest.distance) {
+            // if this edge is closer then use it
+            closest.distance = d;
+            closest.normal = n;
+            closest.index = j;
+        }
+    }
+// return the closest edge we found
+return closest;
+}
+
+float TOLERANCE = 0.001;
+
+void epa(float& return_penetration_depth, Util::Vector& return_penetration_vector, std::vector<Util::Vector>& simplex, const std::vector<Util::Vector>& shapeA, const std::vector<Util::Vector>& shapeB)
+{
+    int iteration = 0;
+
+    // loop to find the collision information
+    while (iteration < 10) {
+        iteration++;
+        // obtain the feature (edge for 2D) closest to the 
+        // origin on the Minkowski Difference
+        Edge e = findClosestEdge(simplex);
+        std::cout << "TEST DEPTH" << e.distance << std::endl;
+        // obtain a new support point in the direction of the edge normal
+        // Vector p = support(shapeA, shapeB, e.normal);
+        Util::Vector support = getSupport(shapeA, shapeA.size(), e.normal) - getSupport(shapeB, shapeB.size(), -e.normal);
+        // check the distance from the origin to the edge against the
+        // distance p is along e.normal
+        float d = dotProduct(support, e.normal);
+        std::cout << "D VALUE" << d << std::endl;
+        if (d - e.distance < TOLERANCE) {
+            // the tolerance should be something positive close to zero (ex. 0.00001)
+
+            // if the difference is less than the tolerance then we can
+            // assume that we cannot expand the simplex any further and
+            // we have our solution
+            return_penetration_vector = e.normal;
+            return_penetration_depth = d;
+            return;
+        }
+        else
+        {
+            // we haven't reached the edge of the Minkowski Difference
+            // so continue expanding by adding the new point to the simplex
+            // in between the points that made the closest edge
+            simplex.insert(simplex.begin() + e.index, support);
+        }
+    }
+    return;
+}
+
 //Look at the GJK_EPA.h header file for documentation and instructions
 bool SteerLib::GJK_EPA::intersect(float& return_penetration_depth, Util::Vector& return_penetration_vector, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB)
 {
@@ -143,6 +231,7 @@ bool SteerLib::GJK_EPA::intersect(float& return_penetration_depth, Util::Vector&
 		for (Util::Vector pointA : simplex) {
 			std::cout << "Simplex: (" << pointA.x << ", " << pointA.z << ")" << std::endl;
 		}
+        epa(return_penetration_depth, return_penetration_vector, simplex, _shapeA, _shapeB);
 		return true;
 	}
 	else {
