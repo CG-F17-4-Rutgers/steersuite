@@ -22,17 +22,17 @@
 
  
   <polygonObstacle isClosed="true">
-	<vertex> <x>0</x> <y>0.0</y> <z>0</z> </vertex>
-	<vertex> <x>2.0</x> <y>0.0</y> <z>0.0</z> </vertex>
-	<vertex> <x>2.0</x> <y>0.0</y> <z>2.0</z> </vertex>
-	<vertex> <x>0</x> <y>0.0</y> <z>2.0</z> </vertex>
+	<vertex> <x>0</x> <y>0</y> <z>0</z> </vertex>
+	<vertex> <x>2</x> <y>0</y> <z>0</z> </vertex>
+	<vertex> <x>2</x> <y>0</y> <z>2</z> </vertex>
+	<vertex> <x>0</x> <y>0</y> <z>2</z> </vertex>
   </polygonObstacle>
   
   <polygonObstacle isClosed="true">
-	<vertex> <x>4</x> <y>0</y> <z>4</z> </vertex>
-	<vertex> <x>6</x> <y>0</y> <z>4</z> </vertex>
-	<vertex> <x>6</x> <y>0</y> <z>6</z> </vertex>
-	<vertex> <x>4</x> <y>0</y> <z>6</z> </vertex>
+	<vertex> <x>1</x> <y>0</y> <z>1</z> </vertex>
+	<vertex> <x>3</x> <y>0</y> <z>1</z> </vertex>
+	<vertex> <x>3</x> <y>0</y> <z>3</z> </vertex>
+	<vertex> <x>1</x> <y>0</y> <z>3</z> </vertex>
   </polygonObstacle>
   
 
