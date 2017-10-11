@@ -348,13 +348,15 @@ void epa(float& return_penetration_depth, Util::Vector& return_penetration_vecto
         // origin on the Minkowski Difference
         Edge e = findClosestEdge(simplex);
         //std::cout << "TEST DEPTH" << e.distance << std::endl;
+
         // obtain a new support point in the direction of the edge normal
         // Vector p = support(shapeA, shapeB, e.normal);
         Util::Vector support = getSupport(shapeA, shapeA.size(), e.normal) - getSupport(shapeB, shapeB.size(), -e.normal);
         // check the distance from the origin to the edge against the
         // distance p is along e.normal
         float d = dotProduct(support, e.normal);
-        //std::cout << "D VALUE" << d << std::endl;
+        
+        // std::cout << "D VALUE" << d << std::endl;
         if (d - e.distance < TOLERANCE) {
             // the tolerance should be something positive close to zero (ex. 0.00001)
 
