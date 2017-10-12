@@ -13,6 +13,9 @@ SteerLib::GJK_EPA::GJK_EPA()
 #include <algorithm>
 
 #include <util/DrawLib.h>
+#include <util/Color.h>
+
+/* Polygon triangle decomposition package from https://gist.github.com/Shaptic/6526805 */
 class Triangulation {
     // This code uses C++11 features like "auto" and initializer lists.
 
@@ -400,15 +403,23 @@ std::vector<Triangle> getTriangles(std::vector<Util::Vector> shape)
     for (unsigned int i = 0; i < triangles_as_vector_t.size(); i += 3)
     {
         Triangle t;
-        t.points[0] = Util::Vector(triangles_as_vector_t[i].x, 0, triangles_as_vector_t[i].y);
-        t.points[1] = Util::Vector(triangles_as_vector_t[i+1].x, 0, triangles_as_vector_t[i+1].y);
-        t.points[2] = Util::Vector(triangles_as_vector_t[i+2].x, 0, triangles_as_vector_t[i+2].y);
-        // t.a = triangles_as_vector_t[i];
-        // t.b = triangles_as_vector_t[i+1];
-        // t.c = triangles_as_vector_t[i+2];
+        t.points.push_back(Util::Vector(triangles_as_vector_t[i].x, 0, triangles_as_vector_t[i].y));
+        t.points.push_back(Util::Vector(triangles_as_vector_t[i+1].x, 0, triangles_as_vector_t[i+1].y));
+        t.points.push_back(Util::Vector(triangles_as_vector_t[i+2].x, 0, triangles_as_vector_t[i+2].y));
         triangles.push_back(t);
     }
     return triangles;
+}
+
+// Doesn't work for some reason
+void drawTriangle(Triangle t)
+{
+    Util::Point a = Util::Point(t.points[0].x, 0, t.points[0].z);
+    Util::Point b = Util::Point(t.points[1].x, 0, t.points[1].z);
+    Util::Point c = Util::Point(t.points[2].x, 0, t.points[2].z);
+    Util::DrawLib::drawLine(a,b,Util::gRed,2.0f);
+    Util::DrawLib::drawLine(b,c,Util::gRed,2.0f);
+    Util::DrawLib::drawLine(c,a,Util::gRed,2.0f);
 }
 
 
@@ -418,25 +429,20 @@ bool gjk_concave(std::vector<Util::Vector> shapeA, std::vector<Util::Vector> sha
     std::vector<Triangle> trianglesA = getTriangles(shapeA);
     std::vector<Triangle> trianglesB = getTriangles(shapeB);
 
-    // Draw points for triangle A
-    // for(int i = 0; i < trianglesA.size(); i++) {
-    //     Triangle t = trianglesA[i];
-    //     Util::DrawLib::drawLine(t.points[0], t.points[1]);
-    //     Util::DrawLib::drawLine(t.points[1], t.points[2]);
-    //     Util::DrawLib::drawLine(t.points[2], t.points[0]);
-    //     // Triangulation::vector_t v1 = triangulatedShapeA.at(i);
-    //     // //Triangulation::vector_t v2 = triangulatedShapeA.at(i + 1);
-    //     // std::cout << "(" << v1.x << ", " << v1.y << ")" << std::endl;
-    //     //Util::DrawLib::drawLine(Util::Point(v1.x, 0, v1.y), Util::Point(v2.x, 0, v2.y));
-    // }
+    std::cout << "Triangles for shape A" << std::endl;
+    std::cout << trianglesA.size() << std::endl;
 
-    // // Draw points for triangle B
-    // for(int i = 0; i < trianglesB.size(); i++) {
-    //     Triangle t = trianglesB[i];
-    //     Util::DrawLib::drawLine(t.points[0], t.points[1]);
-    //     Util::DrawLib::drawLine(t.points[1], t.points[2]);
-    //     Util::DrawLib::drawLine(t.points[2], t.points[0]);
-    // }
+    for (int i = 0; i < trianglesA.size(); i++)
+    {
+        std::cout << trianglesA[i].points[0] << " " << trianglesA[i].points[1] << " " << trianglesA[i].points[2] << std::endl;
+    }
+
+    std::cout << "Triangles for shape B" << std::endl;
+    std::cout << trianglesB.size() << std::endl;
+    for (int i = 0; i < trianglesB.size(); i++)
+    {
+        std::cout << trianglesB[i].points[0] << " " << trianglesB[i].points[1] << " " << trianglesB[i].points[2] << std::endl;
+    }
 
     for (Triangle tA : trianglesA)
     {
@@ -457,22 +463,7 @@ bool gjk_concave(std::vector<Util::Vector> shapeA, std::vector<Util::Vector> sha
 bool SteerLib::GJK_EPA::intersect(float& return_penetration_depth, Util::Vector& return_penetration_vector, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB)
 {   
 
-    // std::vector<Triangulation::vector_t> vector_tShapeA;
-    // for(Util::Vector v: _shapeA) {
-    //     Triangulation::vector_t point;
-    //     point.x = v.x;
-    //     point.y = v.z;
-
-    //     vector_tShapeA.push_back(point); 
-    // }
-
-    // std::cout << "Size of vector_tShapeA: " << vector_tShapeA.size() << std::endl;
-
-    // std::vector<Triangulation::vector_t> triangulatedShapeA = Triangulation::triangulate(vector_tShapeA);
-    // std::cout << "Size of triangulatedShapeA: " << triangulatedShapeA.size() << std::endl;
-
-
-    bool USE_GJK_CONCAVE = true;
+    bool USE_GJK_CONCAVE = false;
 
     if (USE_GJK_CONCAVE)
     {
