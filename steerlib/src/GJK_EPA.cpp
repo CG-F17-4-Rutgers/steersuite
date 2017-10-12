@@ -12,7 +12,7 @@ SteerLib::GJK_EPA::GJK_EPA()
 #include <vector>
 #include <algorithm>
 
-#include "DrawLib.h"
+#include <util/DrawLib.h>
 class Triangulation {
     // This code uses C++11 features like "auto" and initializer lists.
 
@@ -378,46 +378,125 @@ void epa(float& return_penetration_depth, Util::Vector& return_penetration_vecto
     return;
 }
 
-//Look at the GJK_EPA.h header file for documentation and instructions
-bool SteerLib::GJK_EPA::intersect(float& return_penetration_depth, Util::Vector& return_penetration_vector, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB)
-{   
-    std::vector<Triangulation::vector_t> vector_tShapeA;
-    for(Util::Vector v: _shapeA) {
+
+struct Triangle
+{
+    std::vector<Util::Vector> points;
+};
+
+std::vector<Triangle> getTriangles(std::vector<Util::Vector> shape)
+{
+    std::vector<Triangulation::vector_t> shape_as_vector_t;
+    for (Util::Vector v: shape)
+    {
         Triangulation::vector_t point;
         point.x = v.x;
         point.y = v.z;
 
-        vector_tShapeA.push_back(point); 
+        shape_as_vector_t.push_back(point);
     }
-
-    std::cout << "Size of vector_tShapeA: " << vector_tShapeA.size();
-
-    std::vector<Triangulation::vector_t> triangulatedShapeA = Triangulation::triangulate(vector_tShapeA);
-    std::cout << "Size of triangulatedShapeA: " << triangulatedShapeA.size();
-
-    for(int i = 0; i < triangulatedShapeA.size(); i++) {
-        Triangulation::vector_t v1 = triangulatedShapeA.at(i);
-        //Triangulation::vector_t v2 = triangulatedShapeA.at(i + 1);
-        std::cout << "(" << v1.x << ", " << v1.y << ")" << std::endl;
-        //Util::DrawLib::drawLine(Util::Point(v1.x, 0, v1.y), Util::Point(v2.x, 0, v2.y));
+    std::vector<Triangulation::vector_t> triangles_as_vector_t = Triangulation::triangulate(shape_as_vector_t);
+    std::vector<Triangle> triangles;
+    for (unsigned int i = 0; i < triangles_as_vector_t.size(); i += 3)
+    {
+        Triangle t;
+        t.points[0] = Util::Vector(triangles_as_vector_t[i].x, 0, triangles_as_vector_t[i].y);
+        t.points[1] = Util::Vector(triangles_as_vector_t[i+1].x, 0, triangles_as_vector_t[i+1].y);
+        t.points[2] = Util::Vector(triangles_as_vector_t[i+2].x, 0, triangles_as_vector_t[i+2].y);
+        // t.a = triangles_as_vector_t[i];
+        // t.b = triangles_as_vector_t[i+1];
+        // t.c = triangles_as_vector_t[i+2];
+        triangles.push_back(t);
     }
+    return triangles;
+}
 
 
-	std::vector<Util::Vector> simplex;
+// Performs a triangle decomposition on input shapes to detect collisions for concave shapes
+bool gjk_concave(std::vector<Util::Vector> shapeA, std::vector<Util::Vector> shapeB)
+{
+    std::vector<Triangle> trianglesA = getTriangles(shapeA);
+    std::vector<Triangle> trianglesB = getTriangles(shapeB);
 
-	if (gjk(_shapeA, _shapeB, simplex)) {
-		for (Util::Vector pointA : simplex) {
-			//std::cout << "Simplex: (" << pointA.x << ", " << pointA.z << ")" << std::endl;
-		}
-        epa(return_penetration_depth, return_penetration_vector, simplex, _shapeA, _shapeB);
-		return true;
-	}
-	else {
-		for (Util::Vector pointA : simplex) {
-			//std::cout << "Simplex: (" << pointA.x << ", " << pointA.z << ")" << std::endl;
-		}
-		return false;
-	}
-	//return false; // There is no collision
+    // Draw points for triangle A
+    // for(int i = 0; i < trianglesA.size(); i++) {
+    //     Triangle t = trianglesA[i];
+    //     Util::DrawLib::drawLine(t.points[0], t.points[1]);
+    //     Util::DrawLib::drawLine(t.points[1], t.points[2]);
+    //     Util::DrawLib::drawLine(t.points[2], t.points[0]);
+    //     // Triangulation::vector_t v1 = triangulatedShapeA.at(i);
+    //     // //Triangulation::vector_t v2 = triangulatedShapeA.at(i + 1);
+    //     // std::cout << "(" << v1.x << ", " << v1.y << ")" << std::endl;
+    //     //Util::DrawLib::drawLine(Util::Point(v1.x, 0, v1.y), Util::Point(v2.x, 0, v2.y));
+    // }
+
+    // // Draw points for triangle B
+    // for(int i = 0; i < trianglesB.size(); i++) {
+    //     Triangle t = trianglesB[i];
+    //     Util::DrawLib::drawLine(t.points[0], t.points[1]);
+    //     Util::DrawLib::drawLine(t.points[1], t.points[2]);
+    //     Util::DrawLib::drawLine(t.points[2], t.points[0]);
+    // }
+
+    for (Triangle tA : trianglesA)
+    {
+        for (Triangle tB : trianglesB)
+        {
+            std::vector<Util::Vector> simplex;
+            if (gjk(tA.points, tB.points, simplex))
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+
+//Look at the GJK_EPA.h header file for documentation and instructions
+bool SteerLib::GJK_EPA::intersect(float& return_penetration_depth, Util::Vector& return_penetration_vector, const std::vector<Util::Vector>& _shapeA, const std::vector<Util::Vector>& _shapeB)
+{   
+
+    // std::vector<Triangulation::vector_t> vector_tShapeA;
+    // for(Util::Vector v: _shapeA) {
+    //     Triangulation::vector_t point;
+    //     point.x = v.x;
+    //     point.y = v.z;
+
+    //     vector_tShapeA.push_back(point); 
+    // }
+
+    // std::cout << "Size of vector_tShapeA: " << vector_tShapeA.size() << std::endl;
+
+    // std::vector<Triangulation::vector_t> triangulatedShapeA = Triangulation::triangulate(vector_tShapeA);
+    // std::cout << "Size of triangulatedShapeA: " << triangulatedShapeA.size() << std::endl;
+
+
+    bool USE_GJK_CONCAVE = true;
+
+    if (USE_GJK_CONCAVE)
+    {
+        gjk_concave(_shapeA, _shapeB);
+    }
+    else
+    {
+        std::vector<Util::Vector> simplex;
+
+        if (gjk(_shapeA, _shapeB, simplex)) {
+            // FOR TESTING: CHECK SIMPLEX
+            // for (Util::Vector pointA : simplex) {
+            //    std::cout << "Simplex: (" << pointA.x << ", " << pointA.z << ")" << std::endl;
+            // }
+            epa(return_penetration_depth, return_penetration_vector, simplex, _shapeA, _shapeB);
+            return true;
+        }
+        else {
+            // FOR TESTING: CHECK SIMPLEX
+            // for (Util::Vector pointA : simplex) {
+            //    std::cout << "Simplex: (" << pointA.x << ", " << pointA.z << ")" << std::endl;
+            // }
+            return false; // no collision
+        }
+    }
 }
 
