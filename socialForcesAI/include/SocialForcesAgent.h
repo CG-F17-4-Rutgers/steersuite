@@ -71,6 +71,9 @@ protected:
 
 	virtual SteerLib::EngineInterface * getSimulationEngine();
 
+	// ADDED FOR B3. NOTE: double-underscore indicates something we added
+	std::string __name; // optional name that describes agent role
+
 
 	/**
 		 * \brief   Updates the three-dimensional position and three-dimensional velocity of this agent.

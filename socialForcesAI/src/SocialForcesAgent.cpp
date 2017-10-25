@@ -107,6 +107,7 @@ void SocialForcesAgent::reset(const SteerLib::AgentInitialConditions & initialCo
 	_forward = normalize(initialConditions.direction);
 	_radius = initialConditions.radius;
 	_velocity = initialConditions.speed * _forward;
+	__name = initialConditions.name;
 	// std::cout << "inital colour of agent " << initialConditions.color << std::endl;
 	if ( initialConditions.colorSet == true )
 	{
@@ -773,6 +774,16 @@ void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNu
 	}
 
 	Util::AxisAlignedBox oldBounds(_position.x - _radius, _position.x + _radius, 0.0f, 0.0f, _position.z - _radius, _position.z + _radius);
+
+
+	std::cout << this->__name << std::endl;
+
+	// Check if role is recognized
+	if (this->__name.compare("Cop") == 0)
+	{
+		std::cout << "heyyyy we found the cop" << std::endl;
+	}
+
 
 	SteerLib::AgentGoalInfo goalInfo = _goalQueue.front();
 	Util::Vector goalDirection;
