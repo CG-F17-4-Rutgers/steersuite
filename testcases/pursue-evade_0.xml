@@ -88,7 +88,8 @@
     <name>Cop</name>
     <initialConditions>
       <radius>0.5</radius>
-      <position> <x>10</x> <y>0</y> <z>0</z> </position>
+      <color><r>255</r><g>0</g><b>0</b></color>
+      <position> <x>60</x> <y>0</y> <z>30</z> </position>
       <direction> <x>0</x> <y>0</y> <z>1</z> </direction>
       <speed>0</speed>
     </initialConditions>
@@ -103,10 +104,10 @@
   </agent>
 
   <agent>
-    <name>Murderer</name>
+    <name>Robber</name>
     <initialConditions>
       <radius>0.5</radius>
-      <position> <x>40</x> <y>0</y> <z>0</z> </position>
+      <position> <x>80</x> <y>0</y> <z>-30</z> </position>
       <direction> <x>0</x> <y>0</y> <z>1</z> </direction>
       <speed>0</speed>
     </initialConditions>
@@ -120,7 +121,7 @@
 
   </agent>
 
-  <agent>
+  <!-- <agent>
     <name>OldLady</name>
     <initialConditions>
       <radius>0.5</radius>
@@ -136,6 +137,6 @@
       </seekStaticTarget>
     </goalSequence>
 
-  </agent>
+  </agent> -->
 
 </SteerBenchTestCase>

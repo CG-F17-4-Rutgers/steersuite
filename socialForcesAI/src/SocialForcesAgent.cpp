@@ -107,7 +107,7 @@ void SocialForcesAgent::reset(const SteerLib::AgentInitialConditions & initialCo
 	_forward = normalize(initialConditions.direction);
 	_radius = initialConditions.radius;
 	_velocity = initialConditions.speed * _forward;
-	__name = initialConditions.name;
+	__name = initialConditions.name; // ADDED FOR A3
 	// std::cout << "inital colour of agent " << initialConditions.color << std::endl;
 	if ( initialConditions.colorSet == true )
 	{
@@ -775,13 +775,42 @@ void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNu
 
 	Util::AxisAlignedBox oldBounds(_position.x - _radius, _position.x + _radius, 0.0f, 0.0f, _position.z - _radius, _position.z + _radius);
 
-
-	std::cout << this->__name << std::endl;
-
-	// Check if role is recognized
+	// PURSUE/EVADE
 	if (this->__name.compare("Cop") == 0)
 	{
-		std::cout << "heyyyy we found the cop" << std::endl;
+		std::vector<SteerLib::AgentInterface*> agents = getSimulationEngine()->getAgents();
+		for (SteerLib::AgentInterface* agent : agents) // scan agents and pick out robber
+		{
+			if (dynamic_cast<SocialForcesAgent*>(agent) != nullptr) // check if downcast conversion is valid
+			{
+				SocialForcesAgent* sfagent = static_cast<SocialForcesAgent*>(agent); // downcast (Byproduct of poor design. AgentInterface should implement name)
+				// std::cout << sfagent->__name << std::endl;
+				if (sfagent->__name.compare("Robber") == 0)
+				{
+					_goalQueue.front().targetLocation = sfagent->position();
+					// _currentGoal.targetLocation = sfagent->position(); // not sure if this is redundant
+					break;
+				}
+			}
+		}
+	}
+	else if (this->__name.compare("Robber") == 0)
+	{
+		std::vector<SteerLib::AgentInterface*> agents = getSimulationEngine()->getAgents();
+		for (SteerLib::AgentInterface* agent : agents)
+		{
+			if (dynamic_cast<SocialForcesAgent*>(agent) != nullptr)
+			{
+				SocialForcesAgent* sfagent = static_cast<SocialForcesAgent*>(agent);
+				// std::cout << sfagent->__name << std::endl;
+				if (sfagent->__name.compare("Cop") == 0)
+				{
+					Util::Point temp = position() + 10.0f * normalize(position() - sfagent->position());
+					_goalQueue.front().targetLocation = temp;
+					break;
+				}
+			}
+		}
 	}
 
 
