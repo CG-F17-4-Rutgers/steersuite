@@ -764,6 +764,10 @@ void SocialForcesAgent::computeNeighbors()
 }*/
 
 
+/// Custom vector normalization. Takes care of input zero vector by returning zero vector instead of NaN.
+static inline Util::Vector fixedNormalize(const Util::Vector &vec) { float mag = sqrtf(vec.x*vec.x + vec.y*vec.y + vec.z*vec.z); float lengthInv = (mag == 0.0f ? 0.0f : 1.0f/mag); return Util::Vector(lengthInv * vec.x, lengthInv * vec.y, lengthInv * vec.z); }
+static inline Util::Point fixedNormalize(const Util::Point &vec) { float mag = sqrtf(vec.x*vec.x + vec.y*vec.y + vec.z*vec.z); float lengthInv = (mag == 0.0f ? 0.0f : 1.0f/mag); return Util::Point(lengthInv * vec.x, lengthInv * vec.y, lengthInv * vec.z); }
+
 void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNumber)
 {
 	// std::cout << "_SocialForcesParams.rvo_max_speed " << _SocialForcesParams._SocialForcesParams.rvo_max_speed << std::endl;
@@ -811,6 +815,73 @@ void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNu
 				}
 			}
 		}
+	}
+
+	// LEADER FOLLOWING
+	else if (this->__name.compare("Follower") == 0)
+	{
+		std::vector<SteerLib::AgentInterface*> agents = getSimulationEngine()->getAgents();
+		for (SteerLib::AgentInterface* agent : agents) // scan agents and pick out robber
+		{
+			if (dynamic_cast<SocialForcesAgent*>(agent) != nullptr) // check if downcast conversion is valid
+			{
+				SocialForcesAgent* sfagent = static_cast<SocialForcesAgent*>(agent); // downcast (Byproduct of poor design. AgentInterface should implement name)
+				if (sfagent->__name.compare("Leader") == 0 && sfagent->finished())
+				{
+					// WHY IS finished()=1 WHEN IT'S NOT FINISHED AND 0 WHEN IT IS FINISHED??? THAT'S NOT INTUITIVE.
+					Util::Point temp = position() + 4.0f * normalize(sfagent->position() - position());
+					_goalQueue.front().targetLocation = temp;
+					break;
+				}
+			}
+		}
+	}
+	/*
+	 ________  _____       ___      ______  ___  ____        _       
+	|_   __  ||_   _|    .'   `.  .' ___  ||_  ||_  _|      / \      
+	  | |_ \_|  | |     /  .-.  \/ .'   \_|  | |_/ /       / _ \     
+	  |  _|     | |   _ | |   | || |         |  __'.      / ___ \    
+	 _| |_     _| |__/ |\  `-'  /\ `.___.'\ _| |  \ \_  _/ /   \ \_  
+	|_____|   |________| `.___.'  `.____ .'|____||____||____| |____|                                                         
+	*/
+	// FLOCKS: ALIGNMENT
+	float neighborhood = 6.0f;
+	if (this->__name.compare("FLOCKA") == 0)
+	{
+		std::vector<SteerLib::AgentInterface*> agents = getSimulationEngine()->getAgents();
+		Util::Vector alignmentSum;
+		Util::Vector cohesionSum;
+		Util::Vector separationSum;
+		int neighborCount = 0;
+		for (SteerLib::AgentInterface* agent : agents) // scan agents and pick out robber
+		{
+			if (dynamic_cast<SocialForcesAgent*>(agent) != nullptr) // check if downcast conversion is valid
+			{
+				SocialForcesAgent* sfagent = static_cast<SocialForcesAgent*>(agent); // downcast (Byproduct of poor design. AgentInterface should implement name)
+				if (sfagent->__name.compare("FLOCKA") == 0 && sfagent != this) // check if other agent is a FLOCKA but not this
+				{
+					if (distanceBetween(sfagent->position(),position()) < neighborhood) // if agent is in the neighborhood
+					{
+						alignmentSum += sfagent->velocity();
+						cohesionSum += sfagent->position() - Util::Point();
+						separationSum += sfagent->position() - position();
+						neighborCount++;
+					}
+				}
+			}
+		}
+
+		if (neighborCount > 0)
+		{
+			alignmentSum = fixedNormalize(alignmentSum / (float)neighborCount);
+			cohesionSum = fixedNormalize((cohesionSum / (float)neighborCount) - (position() - Util::Point()));
+			separationSum = fixedNormalize(-1.0f * separationSum / (float)neighborCount);
+		}
+		Util::Vector newVel = fixedNormalize(velocity() + alignmentSum * FLOCK_ALIGNMENT_WEIGHT + cohesionSum * FLOCK_COHESION_WEIGHT + separationSum * FLOCK_SEPARATION_WEIGHT);
+		if (newVel == Util::Vector()) newVel += Util::Vector(1.0f, 0.0f, 0.0f); // protect from the 
+		_goalQueue.front().targetLocation = position() + 4.0f * newVel;
+
+
 	}
 
 

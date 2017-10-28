@@ -1,0 +1,384 @@
+<!--
+  Copyright (c) 2009-2015  Glen Berseth, Mubbasir Kapadia, Shawn Singh, Petros Faloutsos, Glenn Reinman
+  See license.txt for complete license.
+--><!--
+  Copyright (c) 2009 Shawn Singh, Mubbasir Kapadia, Petros Faloutsos, Glenn Reinman
+  See license.txt for complete license.
+-->
+
+<SteerBenchTestCase xmlns="http://www.magix.ucla.edu/steerbench"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.magix.ucla.edu/steerbench 
+                                        TestCaseSchema.xsd">
+
+  <header>
+    <version>1.0</version>
+    <name>bottleneck-evacuation</name>
+    <worldBounds>
+      <xmin>-100</xmin>
+      <xmax>100</xmax>
+      <ymin>0</ymin>
+      <ymax>0</ymax>
+      <zmin>-100</zmin>
+      <zmax>100</zmax>
+    </worldBounds>
+  </header>
+  
+  <suggestedCameraView>
+    <position> <x>44</x> <y>30</y> <z>0</z> </position>
+    <lookat> <x>27</x> <y>0</y> <z>0</z> </lookat>
+    <up> <x>0</x> <y>1</y> <z>0</z> </up>
+    <fovy>45</fovy>
+  </suggestedCameraView>
+
+  <suggestedCameraView>
+    <position> <x>104</x> <y>80</y> <z>0</z> </position>
+    <lookat> <x>47</x> <y>0</y> <z>0</z> </lookat>
+    <up> <x>0</x> <y>1</y> <z>0</z> </up>
+    <fovy>45</fovy>
+  </suggestedCameraView>
+
+  <obstacle>
+    <xmin>24.5</xmin>
+    <xmax>25.5</xmax>
+    <ymin>0</ymin>
+    <ymax>1</ymax>
+    <zmin>-24</zmin>
+    <zmax>24</zmax>
+  </obstacle>
+
+  <obstacle>
+    <xmin>25.5</xmin>
+    <xmax>75</xmax>
+    <ymin>0</ymin>
+    <ymax>1</ymax>
+    <zmin>-24</zmin>
+    <zmax>-22</zmax>
+  </obstacle>
+
+  <obstacle>
+    <xmin>25.5</xmin>
+    <xmax>75</xmax>
+    <ymin>0</ymin>
+    <ymax>1</ymax>
+    <zmin>22</zmin>
+    <zmax>24</zmax>
+  </obstacle>
+
+  <obstacle>
+    <xmin>75</xmin>
+    <xmax>77.5</xmax>
+    <ymin>0</ymin>
+    <ymax>1</ymax>
+    <zmin>-24</zmin>
+    <zmax>24</zmax>
+  </obstacle>
+
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>39.7</x> <y>0</y> <z>0.2</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>38.6</x> <y>0</y> <z>2.3</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>42.0</x> <y>0</y> <z>-2.1</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>36.9</x> <y>0</y> <z>-1.6</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>40.2</x> <y>0</y> <z>1.8</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>37.7</x> <y>0</y> <z>-4.1</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>34.2</x> <y>0</y> <z>0.3</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>37.7</x> <y>0</y> <z>-4.2</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>32.4</x> <y>0</y> <z>0.2</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>36.4</x> <y>0</y> <z>-1.2</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>41.1</x> <y>0</y> <z>1.3</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>29.1</x> <y>0</y> <z>0.3</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>45.1</x> <y>0</y> <z>1.9</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>36.1</x> <y>0</y> <z>5.3</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>28.1</x> <y>0</y> <z>-2.4</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>46.1</x> <y>0</y> <z>8.0</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>52.1</x> <y>0</y> <z>5.0</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+  <agent>
+    <name>FLOCKA</name>
+    <initialConditions>
+      <radius>0.5</radius>
+      <position> <x>70.1</x> <y>0</y> <z>-8.0</z> </position>
+      <direction> <random>true</random> </direction>
+      <speed>0</speed>
+    </initialConditions>
+    <goalSequence>
+      <seekStaticTarget>
+        <targetLocation> <random>true</random> </targetLocation>
+        <desiredSpeed>5.0</desiredSpeed>
+        <timeDuration>1000.0</timeDuration>
+      </seekStaticTarget>
+    </goalSequence>
+  </agent>
+
+</SteerBenchTestCase>
