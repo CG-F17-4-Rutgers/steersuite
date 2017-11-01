@@ -809,8 +809,15 @@ void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNu
 				// std::cout << sfagent->__name << std::endl;
 				if (sfagent->__name.compare("Cop") == 0)
 				{
-					Util::Point temp = position() + 10.0f * normalize(position() - sfagent->position());
-					_goalQueue.front().targetLocation = temp;
+					Util::Point temp = position() + 4.0f * normalize(position() - sfagent->position());
+					/*while (!hasLineOfSightTo(temp))
+					{
+						temp = position() + 4.0f * Util::rotateInXZPlane(normalize(position() - sfagent->position()), 1.0);
+					}*/
+					// _goalQueue.front().targetLocation = temp;
+					// updateMidTermPath();
+					runLongTermPlanning(temp, false);
+					// _currentGoal.targetLocation = sfagent->position();
 					break;
 				}
 			}

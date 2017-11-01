@@ -39,39 +39,39 @@
   </suggestedCameraView>
 
   <obstacle>
-    <xmin>24.5</xmin>
-    <xmax>25.5</xmax>
+    <xmin>0</xmin>
+    <xmax>1</xmax>
     <ymin>0</ymin>
     <ymax>1</ymax>
-    <zmin>-24</zmin>
-    <zmax>24</zmax>
+    <zmin>-50</zmin>
+    <zmax>50</zmax>
   </obstacle>
 
   <obstacle>
-    <xmin>25.5</xmin>
-    <xmax>75</xmax>
+    <xmin>0</xmin>
+    <xmax>100</xmax>
     <ymin>0</ymin>
     <ymax>1</ymax>
-    <zmin>-24</zmin>
-    <zmax>-22</zmax>
+    <zmin>-50</zmin>
+    <zmax>-49</zmax>
   </obstacle>
 
   <obstacle>
-    <xmin>25.5</xmin>
-    <xmax>75</xmax>
+    <xmin>0</xmin>
+    <xmax>100</xmax>
     <ymin>0</ymin>
     <ymax>1</ymax>
-    <zmin>22</zmin>
-    <zmax>24</zmax>
+    <zmin>49</zmin>
+    <zmax>50</zmax>
   </obstacle>
 
   <obstacle>
-    <xmin>75</xmin>
-    <xmax>77.5</xmax>
+    <xmin>99</xmin>
+    <xmax>100</xmax>
     <ymin>0</ymin>
     <ymax>1</ymax>
-    <zmin>-24</zmin>
-    <zmax>24</zmax>
+    <zmin>-50</zmin>
+    <zmax>50</zmax>
   </obstacle>
 
 

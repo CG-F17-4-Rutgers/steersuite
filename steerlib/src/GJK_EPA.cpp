@@ -12,8 +12,11 @@ SteerLib::GJK_EPA::GJK_EPA()
 #include <vector>
 #include <algorithm>
 
+#include <limits>
+
 #include <util/DrawLib.h>
 #include <util/Color.h>
+// #include <cfloat>
 
 /* Polygon triangle decomposition package from https://gist.github.com/Shaptic/6526805 */
 class Triangulation {
@@ -167,7 +170,7 @@ public:
 
 
 Util::Vector getSupport(std::vector<Util::Vector> shape, int count, Util::Vector d) {
-    float highest = std::numeric_limits<float>::max() * -1;
+    float highest = FLT_MAX * -1;
     Util::Vector support;
 
     for(int i = 0; i < count; ++i) {
@@ -305,7 +308,7 @@ Edge findClosestEdge(std::vector<Util::Vector> s)
 {
     Edge closest;
     // prime the distance of the edge to the max
-    closest.distance = std::numeric_limits<float>::max();
+    closest.distance = FLT_MAX;
     // float distance = std::numeric_limits<float>::max();
     // float normal;
     // unsigned int closestIndex;

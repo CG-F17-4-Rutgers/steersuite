@@ -25,63 +25,96 @@
   </header>
   
   <suggestedCameraView>
-    <position> <x>44</x> <y>30</y> <z>0</z> </position>
-    <lookat> <x>27</x> <y>0</y> <z>0</z> </lookat>
-    <up> <x>0</x> <y>1</y> <z>0</z> </up>
+    <position>
+      <x>140</x>
+      <y>100</y>
+      <z>50</z>
+    </position>
+    <lookat>
+      <x>50</x>
+      <y>0</y>
+      <z>50</z>
+    </lookat>
+    <up>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </up>
     <fovy>45</fovy>
   </suggestedCameraView>
 
-  <suggestedCameraView>
-    <position> <x>104</x> <y>80</y> <z>0</z> </position>
-    <lookat> <x>47</x> <y>0</y> <z>0</z> </lookat>
-    <up> <x>0</x> <y>1</y> <z>0</z> </up>
-    <fovy>45</fovy>
-  </suggestedCameraView>
-
   <obstacle>
-    <xmin>4.5</xmin>
-    <xmax>5.5</xmax>
+    <xmin>10</xmin>
+    <xmax>80</xmax>
     <ymin>0</ymin>
     <ymax>1</ymax>
-    <zmin>1.2</zmin>
-    <zmax>44</zmax>
+    <zmin>0</zmin>
+    <zmax>1</zmax>
   </obstacle>
 
   <obstacle>
-    <xmin>4.5</xmin>
-    <xmax>5.5</xmax>
+    <xmin>10</xmin>
+    <xmax>80</xmax>
     <ymin>0</ymin>
     <ymax>1</ymax>
-    <zmin>-44</zmin>
-    <zmax>-1.2</zmax>
+    <zmin>49</zmin>
+    <zmax>50</zmax>
   </obstacle>
 
   <obstacle>
-    <xmin>5.5</xmin>
-    <xmax>95</xmax>
+    <xmin>10</xmin>
+    <xmax>11</xmax>
     <ymin>0</ymin>
     <ymax>1</ymax>
-    <zmin>-44</zmin>
-    <zmax>-42</zmax>
+    <zmin>0</zmin>
+    <zmax>20</zmax>
   </obstacle>
 
   <obstacle>
-    <xmin>5.5</xmin>
-    <xmax>95</xmax>
+    <xmin>10</xmin>
+    <xmax>11</xmax>
     <ymin>0</ymin>
     <ymax>1</ymax>
-    <zmin>42</zmin>
-    <zmax>44</zmax>
+    <zmin>30</zmin>
+    <zmax>50</zmax>
   </obstacle>
 
   <obstacle>
-    <xmin>95</xmin>
-    <xmax>97.5</xmax>
+    <xmin>79</xmin>
+    <xmax>80</xmax>
     <ymin>0</ymin>
     <ymax>1</ymax>
-    <zmin>-44</zmin>
-    <zmax>44</zmax>
+    <zmin>0</zmin>
+    <zmax>50</zmax>
   </obstacle>
+
+  <obstacle>
+    <xmin>40</xmin>
+    <xmax>41</xmax>
+    <ymin>0</ymin>
+    <ymax>1</ymax>
+    <zmin>15</zmin>
+    <zmax>20</zmax>
+  </obstacle>
+
+  <obstacle>
+    <xmin>40</xmin>
+    <xmax>45</xmax>
+    <ymin>0</ymin>
+    <ymax>1</ymax>
+    <zmin>35</zmin>
+    <zmax>40</zmax>
+  </obstacle>
+
+  <obstacle>
+    <xmin>20</xmin>
+    <xmax>21</xmax>
+    <ymin>0</ymin>
+    <ymax>1</ymax>
+    <zmin>20</zmin>
+    <zmax>30</zmax>
+  </obstacle>
+  
 
   <agent>
     <name>Leader</name>
@@ -141,7 +174,7 @@
     <name>Follower</name>
     <initialConditions>
       <radius>0.5</radius>
-      <position> <x>20</x> <y>0</y> <z>40</z> </position>
+      <position> <x>18</x> <y>0</y> <z>40</z> </position>
       <direction> <x>0</x> <y>0</y> <z>1</z> </direction>
       <speed>0</speed>
     </initialConditions>
