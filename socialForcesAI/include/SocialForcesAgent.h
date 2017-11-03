@@ -73,6 +73,7 @@ protected:
 
 	// ADDED FOR B3. NOTE: double-underscore indicates something we added
 	std::string __name; // optional name that describes agent role
+	Util::Point __origin; // starting point of agent
 	const float FLOCK_ALIGNMENT_WEIGHT = 0.3f;
 	const float FLOCK_COHESION_WEIGHT = 0.32f;
 	const float FLOCK_SEPARATION_WEIGHT = 0.38f;

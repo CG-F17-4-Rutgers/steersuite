@@ -8,7 +8,7 @@
 #include "SocialForcesAgent.h"
 #include "SocialForcesAIModule.h"
 #include "SocialForces_Parameters.h"
-// #include <math.h>
+#include <math.h>
 
 // #include "util/Geometry.h"
 
@@ -108,6 +108,7 @@ void SocialForcesAgent::reset(const SteerLib::AgentInitialConditions & initialCo
 	_radius = initialConditions.radius;
 	_velocity = initialConditions.speed * _forward;
 	__name = initialConditions.name; // ADDED FOR A3
+	__origin = Util::Point(); // initialConditions.position;
 	// std::cout << "inital colour of agent " << initialConditions.color << std::endl;
 	if ( initialConditions.colorSet == true )
 	{
@@ -877,7 +878,6 @@ void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNu
 				}
 			}
 		}
-
 		if (neighborCount > 0)
 		{
 			alignmentSum = fixedNormalize(alignmentSum / (float)neighborCount);
@@ -887,8 +887,27 @@ void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNu
 		Util::Vector newVel = fixedNormalize(velocity() + alignmentSum * FLOCK_ALIGNMENT_WEIGHT + cohesionSum * FLOCK_COHESION_WEIGHT + separationSum * FLOCK_SEPARATION_WEIGHT);
 		if (newVel == Util::Vector()) newVel += Util::Vector(1.0f, 0.0f, 0.0f); // protect from the 
 		_goalQueue.front().targetLocation = position() + 4.0f * newVel;
+	}
+
+	// // WALL FOLLOWING
+	// if (this->__name.compare("WallFollower") == 0)
+	// {
+	// 	Util::Point blackPoint = position() + velocity() * 3;
+	// }
+
+	//SPIRAL
+	if(this->__name.compare("Spiral") == 0) {
+		
 
 
+		Util::Vector radius = position() - this->__origin;
+		Util::Point futurePosition = position() + Util::clamp(Util::rotateInXZPlane(radius, M_PI/2), 3.0);
+
+		//Util::Vector radius2 = Util::rotateInXZPlane(radius, velocity().length() * 4.0 / radius.length());
+		// std::cout << "radius" << radius << std::endl;
+		//radius2 = radius2 + Util::clamp(radius2, 0.1);
+		// std::cout << "TargetLocation2" << this->__origin + radius2 << std::endl;
+		_goalQueue.front().targetLocation = futurePosition;
 	}
 
 
