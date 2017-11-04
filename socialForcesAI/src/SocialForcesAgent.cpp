@@ -837,8 +837,11 @@ void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNu
 				if (sfagent->__name.compare("Leader") == 0 && sfagent->finished())
 				{
 					// WHY IS finished()=1 WHEN IT'S NOT FINISHED AND 0 WHEN IT IS FINISHED??? THAT'S NOT INTUITIVE.
-					Util::Point temp = position() + 4.0f * normalize(sfagent->position() - position());
+					Util::Point temp = position() + 10.0f * normalize(sfagent->position() - position());
 					_goalQueue.front().targetLocation = temp;
+					if (!hasLineOfSightTo(temp)) {
+						runLongTermPlanning(temp, false);
+					}
 					break;
 				}
 			}
@@ -888,12 +891,6 @@ void SocialForcesAgent::updateAI(float timeStamp, float dt, unsigned int frameNu
 		if (newVel == Util::Vector()) newVel += Util::Vector(1.0f, 0.0f, 0.0f); // protect from the 
 		_goalQueue.front().targetLocation = position() + 4.0f * newVel;
 	}
-
-	// // WALL FOLLOWING
-	// if (this->__name.compare("WallFollower") == 0)
-	// {
-	// 	Util::Point blackPoint = position() + velocity() * 3;
-	// }
 
 	//SPIRAL
 	if(this->__name.compare("Spiral") == 0) {

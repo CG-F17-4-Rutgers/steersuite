@@ -23,17 +23,10 @@
       <zmax>100</zmax>
     </worldBounds>
   </header>
-  
-  <suggestedCameraView>
-    <position> <x>44</x> <y>30</y> <z>0</z> </position>
-    <lookat> <x>27</x> <y>0</y> <z>0</z> </lookat>
-    <up> <x>0</x> <y>1</y> <z>0</z> </up>
-    <fovy>45</fovy>
-  </suggestedCameraView>
 
   <suggestedCameraView>
-    <position> <x>104</x> <y>80</y> <z>0</z> </position>
-    <lookat> <x>47</x> <y>0</y> <z>0</z> </lookat>
+    <position> <x>150</x> <y>100</y> <z>0</z> </position>
+    <lookat> <x>50</x> <y>0</y> <z>0</z> </lookat>
     <up> <x>0</x> <y>1</y> <z>0</z> </up>
     <fovy>45</fovy>
   </suggestedCameraView>

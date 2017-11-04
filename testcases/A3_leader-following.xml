@@ -26,14 +26,14 @@
   
   <suggestedCameraView>
     <position>
-      <x>140</x>
+      <x>35</x>
       <y>100</y>
       <z>50</z>
     </position>
     <lookat>
-      <x>50</x>
+      <x>35</x>
       <y>0</y>
-      <z>50</z>
+      <z>25</z>
     </lookat>
     <up>
       <x>0</x>

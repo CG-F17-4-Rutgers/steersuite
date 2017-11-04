@@ -26,14 +26,14 @@
   
   <suggestedCameraView>
     <position>
-      <x>140</x>
-      <y>100</y>
+      <x>0</x>
+      <y>50</y>
       <z>50</z>
     </position>
     <lookat>
-      <x>50</x>
+      <x>0</x>
       <y>0</y>
-      <z>50</z>
+      <z>0</z>
     </lookat>
     <up>
       <x>0</x>
@@ -56,7 +56,6 @@
     <name>Spiral</name>
     <initialConditions>
       <radius>0.5</radius>
-      <color><r>255</r><g>0</g><b>0</b></color>
       <position> <x>2</x> <y>0</y> <z>2</z> </position>
       <direction> <x>0</x> <y>0</y> <z>1</z> </direction>
       <speed>1.3</speed>

@@ -9,9 +9,9 @@ Options specified by the command line will override options in this configuratio
     Options related to the simulation engine
     -->
         <!-- can be either "fixed-fast" (fixed simulation frame rate, running as fast as possible), "fixed-real-time" (fixed simulation frame rate, running in real-time), or "variable-real-time" (variable simulation frame rate in real-time). -->
-        <clockMode>fixed-real-time</clockMode>
+        <clockMode>fixed-fast</clockMode>
         <!-- The fixed frames-per-second for the simulation clock.  This value is used when simulationClockMode is "fixed-fast" or "fixed-real-time". -->
-        <fixedFPS>10</fixedFPS>
+        <fixedFPS>20</fixedFPS>
         <!-- The maximum time-step allowed when the clock is in "variable-real-time" mode.  If the proposed time-step is larger, this value will be used instead, at the expense of breaking synchronization between simulation time and real-time. -->
         <maxVariableDt>0.2</maxVariableDt>
         <!-- The minimum time-step allowed when the clock is in "variable-real-time" mode.  If the proposed time-step is smaller, this value will be used instead, effectively limiting the max frame rate. -->
@@ -55,9 +55,9 @@ Options specified by the command line will override options in this configuratio
             <!-- Position of the openGL window in y -->
             <windowPositionY>0</windowPositionY>
             <!-- Width of the openGL window in pixels -->
-            <windowSizeX>800</windowSizeX>
+            <windowSizeX>2500</windowSizeX>
             <!-- Height of the openGL window in pixels -->
-            <windowSizeY>600</windowSizeY>
+            <windowSizeY>1400</windowSizeY>
             <!-- Title of the openGL window -->
             <windowTitle>SteerSim</windowTitle>
         </glfw>
