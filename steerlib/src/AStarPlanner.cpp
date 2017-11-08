@@ -24,6 +24,12 @@
 
 namespace SteerLib
 {
+
+	typedef struct {
+		Util::Point point;
+		gValue;
+	} Node;
+
 	AStarPlanner::AStarPlanner(){}
 
 	AStarPlanner::~AStarPlanner(){}
@@ -67,7 +73,13 @@ namespace SteerLib
 		return p;
 	}
 
+	int calcManhattanDistance(Util::Point start, Util::Point goal) {
+		return std::abs(start.x - goal.x) + std::abs(start.z - goal.z);
+	}
 
+	int calcFValue(Util::Point start, Util::Point goal, Util::Point n, int epsilon) {
+		return epsilon * calcManhattanDistance(n, goal)
+	}
 
 	bool AStarPlanner::computePath(std::vector<Util::Point>& agent_path,  Util::Point start, Util::Point goal, SteerLib::SpatialDataBaseInterface * _gSpatialDatabase, bool append_to_path)
 	{
@@ -75,6 +87,15 @@ namespace SteerLib
 
 		//TODO
 		std::cout<<"\nIn A*";
+
+		std::vector<Util::Point> open;
+		std::vector<Util::Point> closed;
+		int epsilon = 1;
+		int g = 0;
+		//int f = 
+
+		open.push_back(start);
+
 
 		return false;
 	}
