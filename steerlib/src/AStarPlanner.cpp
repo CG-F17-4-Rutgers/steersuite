@@ -73,11 +73,14 @@ namespace SteerLib
 		return p;
 	}
 
+	// Calculates the Manhattan distance between two points.
 	int calcManhattanDistance(Util::Point start, Util::Point goal) {
 		return std::abs(start.x - goal.x) + std::abs(start.z - goal.z);
 	}
 
+	// Calculates the f-value of a point n
 	int calcFValue(Util::Point start, Util::Point goal, Util::Point n, int epsilon) {
+		// TODO: Add g value 
 		return epsilon * calcManhattanDistance(n, goal)
 	}
 
