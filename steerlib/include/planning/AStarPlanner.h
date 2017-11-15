@@ -14,6 +14,7 @@
 #include <map>
 #include <unordered_map> // added -Taichi
 #include <limits> // added -Taichi
+#include <algorithm> // added -Taichi
 #include "SteerLib.h"
 
 namespace SteerLib
@@ -36,6 +37,7 @@ namespace SteerLib
 			double g;
 			Util::Point point;
 			AStarPlannerNode* parent;
+			int gridIndex;
 			AStarPlannerNode(Util::Point _point, double _g, double _f, AStarPlannerNode* _parent)
 			{
 				f = _f;
@@ -43,12 +45,16 @@ namespace SteerLib
 				g = _g;
 				parent = _parent;
 			}
+			AStarPlannerNode(Util::Point _point, double _g, double _f, int _gridIndex, AStarPlannerNode* _parent)
+			{
+				f = _f;
+				point = _point;
+				g = _g;
+				parent = _parent;
+				gridIndex = _gridIndex;
+			}
 			AStarPlannerNode()
 			{
-				f = DBL_MAX;
-				point = Util::Point();
-				g = DBL_MAX;
-				parent = NULL;
 			}
 			bool operator<(AStarPlannerNode other) const
 		    {
@@ -64,6 +70,43 @@ namespace SteerLib
 		    }
 
 	};
+
+	static bool comp(const AStarPlannerNode * n1, const AStarPlannerNode * n2) {
+		// return true;
+		return n1->f < n2->f;
+	}
+
+	/* Custom stupid class for sorted lists.
+	 * Sorts every time an item is pushed.
+	 */
+	class STEERLIB_API MyDumbAssClass{
+		public:
+			std::deque<AStarPlannerNode*> list;
+			void push(AStarPlannerNode * node)
+			{
+				this->list.push_back(node);
+				std::sort(this->list.begin(), this->list.end(), comp);
+				// [](const AStarPlannerNode * n1, const AStarPlannerNode * n2) { return n1->f < n2->f; }
+			}
+			void pop()
+			{
+				this->list.pop_front();
+			}
+			AStarPlannerNode * top()
+			{
+				return this->list.front();
+			}
+			bool contains(AStarPlannerNode* node)
+			{
+				std::find(this->list.begin(), this->list.end(), node) != this->list.end();
+			}
+			void remove(AStarPlannerNode* node)
+			{
+				this->list.erase(std::remove(this->list.begin(), this->list.end(), node), this->list.end());
+			}
+	};
+
+	
 
 	
 
@@ -107,17 +150,28 @@ namespace SteerLib
 			bool computePath(std::vector<Util::Point>& agent_path, Util::Point start, Util::Point goal, SteerLib::SpatialDataBaseInterface * _gSpatialDatabase, bool append_to_path = false);
 		private:
 			SteerLib::SpatialDataBaseInterface * gSpatialDatabase;
+			MyDumbAssClass openSet; // MyDumbAssClass is a custom class for a sorted list
+			MyDumbAssClass closedSet;
+			std::map<int, AStarPlannerNode> gridIndex_gValuedNodes_map;
+			
+
 			// sets are minimum priority queues. Because std::priority_queue is a max-priority by default, need to use std::greater as comparator.
-			std::priority_queue< AStarPlannerNode, std::vector<AStarPlannerNode>, std::greater<AStarPlannerNode> > openSet, inconsistentSet;
-			std::vector<AStarPlannerNode> closedSet;
-			std::unordered_map<int, AStarPlannerNode> gridIndex_gValuedNodes_map;
+			// std::priority_queue< AStarPlannerNode, std::vector<AStarPlannerNode>, std::greater<AStarPlannerNode> > openSet, inconsistentSet;
+			// std::vector<AStarPlannerNode> openSet;
+			// std::vector<AStarPlannerNode> inconsistentSet;
+			// std::vector<AStarPlannerNode> closedSet;
+			
 
 			/*
 				@function getNeighborGridIndices returns a vector of grid indices, corresponding
 				to cells in the grid structure of the spatial database that are neighbors of the
 				node n.
 			*/
-			std::vector<int> getNeighborGridIndices(AStarPlannerNode n);
+			std::vector<int> getNeighborGridIndices(AStarPlannerNode * n);
+
+			/*
+			*/
+			AStarPlannerNode * getNodeFromGridIndex(int gridIndex);
 
 			/*
 				@function ARAstar_improvePath is a helper function for ARAstar.
@@ -131,6 +185,11 @@ namespace SteerLib
 			*/
 			bool ARAStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path);
 
+
+			/*
+				@function AStar runs A* search algorithm.
+			*/
+			bool WeightedAStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path);
 
 	};
 

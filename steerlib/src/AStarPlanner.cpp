@@ -16,6 +16,7 @@
 #include "planning/AStarPlanner.h"
 #include <limits> // added -Taichi
 #include <queue> // added -Taichi
+#include <map> // added -Taichi
 #include <unordered_map> // added -Taichi
 
 
@@ -67,8 +68,6 @@ namespace SteerLib
 		return true;
 	}
 
-
-
 	Util::Point AStarPlanner::getPointFromGridIndex(int id)
 	{
 		Util::Point p;
@@ -76,159 +75,192 @@ namespace SteerLib
 		return p;
 	}
 
-	// Calculates the Manhattan distance between two points.
-	int calcManhattanDistance(Util::Point start, Util::Point goal) {
-		return std::abs(start.x - goal.x) + std::abs(start.z - goal.z);
+
+
+
+	/* Calculates f-value of node n with euclidean distance heuristic
+	 * Taichi */
+	float fValue(AStarPlannerNode * n, double epsilon, Util::Point goalPoint) {
+		return n->g + epsilon * Util::distanceBetween(n->point, goalPoint);
 	}
 
-	// Calculates the f-value of a point n
-	int calcFValue(Util::Point start, Util::Point goal, Util::Point n, int epsilon) {
-		// TODO: Add g value 
-		return epsilon * calcManhattanDistance(n, goal);
-	}
-
-
-
-
-
-	/* Implemented f-value based on euclidean distance heuristic
-	 * UNTESTED - Taichi */
-	float calcEuclideanDistance(Util::Point p1, Util::Point p2) {
-		return Util::distanceBetween(p1, p2);
-	}
-	float calcFValueEuclidean(AStarPlannerNode n, double epsilon, AStarPlannerNode goal) {
-		return n.g + epsilon * calcEuclideanDistance(n.point, goal.point);
-	}
-
-	/* Given an AStarPlannerNode n, returns the grid-indices of grid-cells neighboring that of n
-	 * UNTESTED - Taichi */
-	std::vector<int> AStarPlanner::getNeighborGridIndices(AStarPlannerNode n)
+	/* Given an AStarPlannerNode n, returns the grid-indices of grid-cells neighboring n
+	 * Taichi */
+	std::vector<int> AStarPlanner::getNeighborGridIndices(AStarPlannerNode * n)
 	{
+		int nGridIndex = gSpatialDatabase->getCellIndexFromLocation(n->point.x, n->point.z);
 		std::vector<int> neighborGridIndices;
-		for (int i = -1; i <= 1; i++) {
-			for (int j = -1; j <= 1; j++) {
-				int temp = gSpatialDatabase->getCellIndexFromLocation(n.point.x + i, n.point.z + j);
-				neighborGridIndices.push_back(temp);
+		for (int i = -1; i <= 1; i+=GRID_STEP) {
+			for (int j = -1; j <= 1; j+=GRID_STEP) {
+				int neighborGridIndex = gSpatialDatabase->getCellIndexFromLocation(n->point.x + i, n->point.z + j);
+				if (neighborGridIndex != nGridIndex) // add neighbor if not self
+					neighborGridIndices.push_back(neighborGridIndex);
 			}
 		}
 		return neighborGridIndices;
 	}
 
 	/* Computes cost between node and its neighbor. Simple Euclidean distance. Higher cost for diagonal neighbors. 
-	 * UNTESTED - Taichi */
-	double computeCost(AStarPlannerNode n, AStarPlannerNode neighbor)
+	 * Taichi */
+	double computeCost(AStarPlannerNode * n, AStarPlannerNode * neighbor)
 	{
-		return Util::distanceBetween(n.point, neighbor.point);
+		return Util::distanceBetween(n->point, neighbor->point);
+	}
+
+	/* Returns node corresponding to grid index in spatial database
+	 * If a node has not been created for the given grid index,
+	 * a new node with default values is created and returned.
+	 * Taichi */
+	AStarPlannerNode * AStarPlanner::getNodeFromGridIndex(int gridIndex)
+	{
+		if (gridIndex_gValuedNodes_map.find(gridIndex) == gridIndex_gValuedNodes_map.end())
+		{
+			std::cout << "\nCREATING NEW NODE FOR GRIDINDEX " << gridIndex << std::endl;
+			// AStarPlannerNode dummy;
+			gridIndex_gValuedNodes_map.emplace(gridIndex, AStarPlannerNode(getPointFromGridIndex(gridIndex), DBL_MAX, DBL_MAX, gridIndex, nullptr));
+		}
+		return &gridIndex_gValuedNodes_map[gridIndex];
+	}
+
+	/* Takes the start and goal node and reconstructs a path by
+	 * backtracking through parents.
+	 * NEEDS WORK FIGURE OUT POINTER / REFERENCE DISTINCTION - Taichi */
+	std::vector<Util::Point> reconstructPath(const AStarPlannerNode* goal)
+	{
+		// std::deque<Util::Point> temp; // temporary deque to reverse the order
+		// AStarPlannerNode n = goal;
+		
+		// // Backtrack through parents until we can't anymore (start node reached)
+		// while (n != nullptr) {
+		// 	std::cout << n.point << std::endl;
+		// 	temp.push_front(n.point);
+		// 	n = n.parent;
+		// }
+
+		// temp.push_front(n.point);
+
+		// // Copy contents of deque to path output.
+		// std::vector<Util::Point> path;
+		// for (Util::Point p : temp)
+		// {
+		// 	path.push_back(p);
+		// }
+		// return path;
 	}
 
 
-	/* Helper function for ARA* implementation */
-	void AStarPlanner::ARAStar_improvePath(double epsilon, AStarPlannerNode goal)
+
+	/* A* Search
+	 * Remember: CALL BY REFERENCE is required to changes the parameters of arguments
+	 * e.g. void swap(int &x, int &y) { ... x = y; ... }
+	 * More info: https://www.tutorialspoint.com/cplusplus/cpp_function_call_by_reference.htm
+	 * Taichi */
+	bool AStarPlanner::WeightedAStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path)
 	{
-		while (openSet.size() > 0 && goal.f > openSet.top().f)
+		// Set epsilon parameter (weight)
+		double epsilon = 1.0;
+
+		// Initialize start node
+		int startGridIndex = gSpatialDatabase->getCellIndexFromLocation(startPoint.x, startPoint.z);
+		AStarPlannerNode start = AStarPlannerNode(startPoint, 0, DBL_MAX, startGridIndex, nullptr);
+		start.f = fValue(&start, epsilon, goalPoint);
+		gridIndex_gValuedNodes_map.emplace(startGridIndex, start);
+
+		// Get grid index of goal point
+		int goalGridIndex = gSpatialDatabase->getCellIndexFromLocation(goalPoint.x, goalPoint.z);
+		std::cout << "GOAL GRID INDEX: " << goalGridIndex << std::endl;
+
+		// Initialize OPEN Set
+		openSet.push(&start); // add start to open set
+
+		// OUTER MEMORY: Current taken from the top of the open set and added to the closed set.
+		// AStarPlannerNode& current = openSet.top();
+
+		// Repeat search loop until the min in open set is the goal
+		int counter = 0;
+		while (openSet.top()->gridIndex != goalGridIndex && counter++ < 100)
 		{
-			AStarPlannerNode n = openSet.top(); // get node from open set with smallest f value
+			// // Current taken from the top of the open set and added to the closed set.
+			AStarPlannerNode * current = openSet.top();
+			// OUTER MEMORY: current = openSet.top();
 			openSet.pop();
-			closedSet.push_back(n);
+			closedSet.push(current);
+			std::cout << "\nCURRENT - Address: " << &current << ", Point: " << current->point << ", g: " << current->g << ", f: " << current->f << std::endl;
 
-			std::vector<int> neighborGridIndices = getNeighborGridIndices(n); // get grid indices of neighboring cells
-			
-			for (int neighborGridIndex : neighborGridIndices) {
-				if (canBeTraversed(neighborGridIndex)) {
-					AStarPlannerNode neighbor;
-					
-					// if there is no g value for this neighbor, create a new AStarPlannerNode and store it.
-					try {
-						neighbor = gridIndex_gValuedNodes_map.at(neighborGridIndex);
-					}
-					catch (const std::out_of_range& oor) {
-						neighbor = AStarPlannerNode(getPointFromGridIndex(neighborGridIndex), DBL_MAX, DBL_MAX, 0);
-						gridIndex_gValuedNodes_map.emplace(neighborGridIndex, neighbor);
-					}
+			// Get neighbors of current
+			std::vector<int> neighborGridIndices = getNeighborGridIndices(current);
 
-					// compute cost from n to neighbor (diagonal costs more)
-					double totalValue = n.g + computeCost(n, neighbor);
+			// Search neighbors of current
+			for (int neighborGridIndex : neighborGridIndices)
+			{
+				AStarPlannerNode * neighbor = getNodeFromGridIndex(neighborGridIndex);
 
-					// relax neighbor if better value is found
-					if (totalValue < neighbor.g) {
-						neighbor.g = totalValue;
-						neighbor.parent = &n;
-						if (std::find(closedSet.begin(), closedSet.end(), neighbor) == closedSet.end()) // if closedSet doesn't contain neighbor
-						{
-							neighbor.f = calcFValueEuclidean(neighbor, epsilon, goal);
-							openSet.push(neighbor);
-						} else { // if closedSet contains neighbor
-							inconsistentSet.push(neighbor);
-						}
-					}
+				// calculate cost of start ~~> current -> neighbor
+				double cost = current->g + computeCost(current, neighbor);
+
+				if (openSet.contains(neighbor) && cost < neighbor->g) {
+					openSet.remove(neighbor); // remove duplicate to update cost
 				}
+				if (closedSet.contains(neighbor) && cost < neighbor->g) {
+					closedSet.remove(neighbor); // remove duplicate to update cost
+				}
+				if (!openSet.contains(neighbor) && !closedSet.contains(neighbor)) {
+					neighbor->g = cost;
+					neighbor->f = fValue(neighbor, epsilon, goalPoint);
+					neighbor->parent = current;
+					openSet.push(neighbor);
+
+					std::cout << "\nNEIGHBOR - Address: " << &neighbor << ", Point: " << neighbor->point << " COST: " << neighbor->g << std::endl;
+					std::cout << "New parent: " << neighbor->parent << std::endl;
+				}
+
 			}
 		}
-	}
 
-	bool AStarPlanner::ARAStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path)
-	{
+		// std::cout << "\nGOAL NODE (outside loop): " << goal->g << " POINT: " << goal->point << " PARENT: " << goal->parent << std::endl;
 
-		double epsilon = 2.5;
-		AStarPlannerNode goal = AStarPlannerNode(goalPoint, DBL_MAX, DBL_MAX, 0);
-		AStarPlannerNode start = AStarPlannerNode(startPoint, 0, DBL_MAX, 0);
+		// Display everything remaining in open set
+		// std::cout << "\nOPEN SET: " << std::endl;
+		// for (AStarPlannerNode n : openSet.list)
+		// {
+		// 	std::cout << n.f << std::endl;
+		// }
 
-		// Populate spatial database points
-		start.f = calcFValueEuclidean(start, epsilon, goal);
-		openSet.push(start);
+		// std::cout << "CURRENT (at the end) - Address: " << &current << std::endl;
+		std::cout << "\nTOP OF OPENSET (at the end) - Address: " << openSet.top() << std::endl;
 
-		ARAStar_improvePath(epsilon, goal);
+		AStarPlannerNode * goal = openSet.top();
+		std::cout << "\nGOAL - Address: " << &goal << ", Cost: " << goal->g << std::endl;
 
-		double suboptimality_bound = MIN(epsilon, (goal.g / MIN(calcFValueEuclidean(openSet.top(), 1.0, goal), calcFValueEuclidean(inconsistentSet.top(), 1.0, goal))));
+		std::cout << "\nGOAL'S PARENT - Address: " << goal->parent << std::endl;
 
-		while (suboptimality_bound > 1.0)
-		{
-			epsilon = MAX(epsilon - 1.0, 1.0); // decrease epsilon by 1
-			std::priority_queue< AStarPlannerNode, std::vector<AStarPlannerNode>, std::greater<AStarPlannerNode> > newOpenSet;
-			for (unsigned int i = 0; i < inconsistentSet.size(); i++)
-			{
-				AStarPlannerNode n = inconsistentSet.top();
-				inconsistentSet.pop();
-				n.f = calcFValueEuclidean(n, epsilon, goal);
-				newOpenSet.push(n);
-			}
-			for (unsigned int i = 0; i < openSet.size(); i++)
-			{
-				AStarPlannerNode n = openSet.top();
-				openSet.pop();
-				n.f = calcFValueEuclidean(n, epsilon, goal);
-				newOpenSet.push(n);
-			}
-			openSet = newOpenSet;
-			closedSet.clear(); // does this work, who knows.
+		// AStarPlannerNode& prev = * goal.parent;
+		// std::cout << &prev << std::endl;
+		// std::cout << &prev << std::endl;
+		// std::cout << "GOAL - Address: " << &goal << ", Cost: " << goal.g << ", Parent: " << goal.parent << std::endl;
+		// AStarPlannerNode* parent = goal->parent;
+		// std::cout << parent->g << std::endl;
+		// std::cout << "PREV - Address: " << prev << std::endl;
+		// const AStarPlannerNode* prev = goal->parent;
+		// std::cout << "PREVIOUS - Address: " << prev << ", Cost: " << prev->g << ", Parent: " << &prev->parent << std::endl;
 
-			ARAStar_improvePath(epsilon, goal);
-
-			suboptimality_bound = MIN(epsilon, (goal.g / MIN(calcFValueEuclidean(openSet.top(), 1.0, goal), calcFValueEuclidean(inconsistentSet.top(), 1.0, goal))));
-		}
-
-		if (goal.parent == NULL)
-		{
-			return false; // goal has no parent, so it was never reached
-		}
-		else
-		{
-			std::deque<AStarPlannerNode*> path;
-			AStarPlannerNode* n = &goal;
-			while (n != NULL)
-			{
-				path.push_front(n);
-				n = n->parent;
-			}
-			std::vector<Util::Point> pathPoints;
-			for (AStarPlannerNode* n : path)
-				pathPoints.push_back(n->point);
-			if (append_to_path)
-				agent_path.insert(agent_path.end(), pathPoints.begin(), pathPoints.end());
-			else 
-				agent_path = pathPoints;
-			return true;
-		}
+		return true;
+		// Print path (if found)
+		// std::cout << "\n PRINTING PATH" << std::endl;
+		// if (&goal->parent == nullptr)
+		// {
+		// 	std::cout << "NO PATH CREATED. GOAL HAS NO PARENT" << std::endl;
+		// 	return false; // goal has no parent, so it was never reached
+		// }
+		// else
+		// {
+		// 	std::vector<Util::Point> path = reconstructPath(goal);
+		// 	if (append_to_path)
+		// 		agent_path.insert(agent_path.end(), path.begin(), path.end());
+		// 	else 
+		// 		agent_path = path;
+		// 	return true;
+		// }
 	}
 
 
@@ -236,32 +268,15 @@ namespace SteerLib
 	{
 		gSpatialDatabase = _gSpatialDatabase;
 
-		// //TODO
-		// std::cout<<"\nIn A*";
-
-		std::cout << "how the fuck do i get a print message to show up god fucking damn it." << std::endl;
-
-		// std::vector<Util::Point> open;
-		// std::vector<Util::Point> closed;
-		// int epsilon = 1;
-		// int g = 0;
-		// //int f = 
-
-		// open.push_back(start);
-
-		return ARAStar(agent_path, start, goal, append_to_path);
-
-		// return false;
-
-		// ARA* IMPLEMENTATION - Taichi
-		// std::cout << "ARA*" << std::endl;
-
-		// for (Util::Point p : agent_path)
-		// {
-		// 	std::cout << p << std::endl;
-		// }
-		// return true;
-		// return ARAStar(agent_path, start, goal, append_to_path);
+		// A* IMPLEMENTATION - Taichi
+		std::cout << "WeightedA*" << std::endl;
+		bool result = WeightedAStar(agent_path, start, goal, append_to_path);
+		std::cout << "result: " << result << std::endl;
+		for (Util::Point p : agent_path)
+		{
+			std::cout << p << std::endl;
+		}
+		return result;
 	}
 
 
