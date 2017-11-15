@@ -12,6 +12,8 @@
 #include <stack>
 #include <set>
 #include <map>
+#include <unordered_map> // added -Taichi
+#include <limits> // added -Taichi
 #include "SteerLib.h"
 
 namespace SteerLib
@@ -40,6 +42,13 @@ namespace SteerLib
 				point = _point;
 				g = _g;
 				parent = _parent;
+			}
+			AStarPlannerNode()
+			{
+				f = DBL_MAX;
+				point = Util::Point();
+				g = DBL_MAX;
+				parent = NULL;
 			}
 			bool operator<(AStarPlannerNode other) const
 		    {
@@ -83,6 +92,7 @@ namespace SteerLib
 			*/
 			Util::Point getPointFromGridIndex(int id);
 
+
 			/*
 				@function computePath
 				DO NOT CHANGE THE DEFINITION OF THIS FUNCTION
@@ -94,10 +104,34 @@ namespace SteerLib
 				_gSpatialDatabase : The pointer to the GridDatabase2D from the agent
 				append_to_path : An optional argument to append to agent_path instead of overwriting it.
 			*/
-
 			bool computePath(std::vector<Util::Point>& agent_path, Util::Point start, Util::Point goal, SteerLib::SpatialDataBaseInterface * _gSpatialDatabase, bool append_to_path = false);
 		private:
 			SteerLib::SpatialDataBaseInterface * gSpatialDatabase;
+			// sets are minimum priority queues. Because std::priority_queue is a max-priority by default, need to use std::greater as comparator.
+			std::priority_queue< AStarPlannerNode, std::vector<AStarPlannerNode>, std::greater<AStarPlannerNode> > openSet, inconsistentSet;
+			std::vector<AStarPlannerNode> closedSet;
+			std::unordered_map<int, AStarPlannerNode> gridIndex_gValuedNodes_map;
+
+			/*
+				@function getNeighborGridIndices returns a vector of grid indices, corresponding
+				to cells in the grid structure of the spatial database that are neighbors of the
+				node n.
+			*/
+			std::vector<int> getNeighborGridIndices(AStarPlannerNode n);
+
+			/*
+				@function ARAstar_improvePath is a helper function for ARAstar.
+				Runs A* search with a certain epsilon value
+			*/
+			void ARAStar_improvePath(double epsilon, AStarPlannerNode goal);
+
+			/* 
+				@function ARAstar runs ARA* search algorithm.
+				Modifies or appends found path to agent_path (depending on value of append_to_path).
+			*/
+			bool ARAStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path);
+
+
 	};
 
 
