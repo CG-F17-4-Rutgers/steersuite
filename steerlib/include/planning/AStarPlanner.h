@@ -15,6 +15,7 @@
 #include <unordered_map> // added -Taichi
 #include <limits> // added -Taichi
 #include <algorithm> // added -Taichi
+#include <functional> // added -Taichi
 #include "SteerLib.h"
 
 namespace SteerLib
