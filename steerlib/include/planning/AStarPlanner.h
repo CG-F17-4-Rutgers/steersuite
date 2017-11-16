@@ -91,7 +91,6 @@ namespace SteerLib
 			{
 				this->list.push_back(node);
 				std::sort(this->list.begin(), this->list.end(), comp);
-				// [](const AStarPlannerNode * n1, const AStarPlannerNode * n2) { return n1->f < n2->f; }
 			}
 			void pop()
 			{
@@ -108,6 +107,10 @@ namespace SteerLib
 			void remove(AStarPlannerNode* node)
 			{
 				this->list.erase(std::remove(this->list.begin(), this->list.end(), node), this->list.end());
+			}
+			void sort()
+			{
+				std::sort(this->list.begin(), this->list.end(), comp);
 			}
 	};
 
@@ -181,7 +184,7 @@ namespace SteerLib
 				@function ARAstar_improvePath is a helper function for ARAstar.
 				Runs A* search with a certain epsilon value
 			*/
-			void ARAStar_improvePath(double epsilon, AStarPlannerNode * goal);
+			bool ARAStar_improvePath(double epsilon, AStarPlannerNode * goal);
 
 			/* 
 				@function ARAstar runs ARA* search algorithm.
