@@ -12,6 +12,10 @@
 #include <stack>
 #include <set>
 #include <map>
+#include <unordered_map> // added -Taichi
+#include <limits> // added -Taichi
+#include <algorithm> // added -Taichi
+#include <functional> // added -Taichi
 #include "SteerLib.h"
 
 namespace SteerLib
@@ -34,12 +38,24 @@ namespace SteerLib
 			double g;
 			Util::Point point;
 			AStarPlannerNode* parent;
+			int gridIndex;
 			AStarPlannerNode(Util::Point _point, double _g, double _f, AStarPlannerNode* _parent)
 			{
 				f = _f;
 				point = _point;
 				g = _g;
 				parent = _parent;
+			}
+			AStarPlannerNode(Util::Point _point, double _g, double _f, int _gridIndex, AStarPlannerNode* _parent)
+			{
+				f = _f;
+				point = _point;
+				g = _g;
+				parent = _parent;
+				gridIndex = _gridIndex;
+			}
+			AStarPlannerNode()
+			{
 			}
 			bool operator<(AStarPlannerNode other) const
 		    {
@@ -51,10 +67,54 @@ namespace SteerLib
 		    }
 		    bool operator==(AStarPlannerNode other) const
 		    {
-		        return ((this->point.x == other.point.x) && (this->point.z == other.point.z));
+		        // return ((this->point.x == other.point.x) && (this->point.z == other.point.z));
+		        return (this->gridIndex == other.gridIndex);
 		    }
 
 	};
+
+
+	/* Comparator function for AStarPlannerNode pointers. Compares by f-value */
+	static bool comp(const AStarPlannerNode * n1, const AStarPlannerNode * n2) {
+		// return true;
+		return n1->f < n2->f;
+	}
+
+
+	/* Custom stupid class for sorted lists.
+	 * Sorts every time an item is pushed.
+	 */
+	class STEERLIB_API MyDumbAssClass{
+		public:
+			std::deque<AStarPlannerNode*> list;
+			void push(AStarPlannerNode * node)
+			{
+				this->list.push_back(node);
+				std::sort(this->list.begin(), this->list.end(), comp);
+			}
+			void pop()
+			{
+				this->list.pop_front();
+			}
+			AStarPlannerNode * top()
+			{
+				return this->list.front();
+			}
+			bool contains(AStarPlannerNode* node)
+			{
+				return std::find(this->list.begin(), this->list.end(), node) != this->list.end();
+			}
+			void remove(AStarPlannerNode* node)
+			{
+				this->list.erase(std::remove(this->list.begin(), this->list.end(), node), this->list.end());
+			}
+			void sort()
+			{
+				std::sort(this->list.begin(), this->list.end(), comp);
+			}
+	};
+
+	
 
 	
 
@@ -83,6 +143,7 @@ namespace SteerLib
 			*/
 			Util::Point getPointFromGridIndex(int id);
 
+
 			/*
 				@function computePath
 				DO NOT CHANGE THE DEFINITION OF THIS FUNCTION
@@ -94,10 +155,49 @@ namespace SteerLib
 				_gSpatialDatabase : The pointer to the GridDatabase2D from the agent
 				append_to_path : An optional argument to append to agent_path instead of overwriting it.
 			*/
-
 			bool computePath(std::vector<Util::Point>& agent_path, Util::Point start, Util::Point goal, SteerLib::SpatialDataBaseInterface * _gSpatialDatabase, bool append_to_path = false);
 		private:
 			SteerLib::SpatialDataBaseInterface * gSpatialDatabase;
+			MyDumbAssClass openSet; // MyDumbAssClass is a custom class for a sorted list
+			MyDumbAssClass closedSet;
+			MyDumbAssClass inconsistentSet;
+			std::map<int, AStarPlannerNode> gridIndex_gValuedNodes_map;
+			
+
+			// sets are minimum priority queues. Because std::priority_queue is a max-priority by default, need to use std::greater as comparator.
+			// std::priority_queue< AStarPlannerNode, std::vector<AStarPlannerNode>, std::greater<AStarPlannerNode> > openSet, inconsistentSet;
+			// std::vector<AStarPlannerNode> inconsistentSet;
+			
+
+			/*
+				@function getNeighborGridIndices returns a vector of grid indices, corresponding
+				to cells in the grid structure of the spatial database that are neighbors of the
+				node n.
+			*/
+			std::vector<int> getNeighborGridIndices(AStarPlannerNode * n);
+
+			/*
+			*/
+			AStarPlannerNode * getNodeFromGridIndex(int gridIndex);
+
+			/*
+				@function ARAstar_improvePath is a helper function for ARAstar.
+				Runs A* search with a certain epsilon value
+			*/
+			bool ARAStar_improvePath(double epsilon, AStarPlannerNode * goal);
+
+			/* 
+				@function ARAstar runs ARA* search algorithm.
+				Modifies or appends found path to agent_path (depending on value of append_to_path).
+			*/
+			bool ARAStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path);
+
+
+			/*
+				@function AStar runs A* search algorithm.
+			*/
+			bool WeightedAStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path);
+
 	};
 
 
