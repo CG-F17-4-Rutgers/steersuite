@@ -79,7 +79,7 @@ namespace SteerLib
 		// return true;
 		return n1->f < n2->f;
 	}
-	
+
 
 	/* Custom stupid class for sorted lists.
 	 * Sorts every time an item is pushed.
@@ -103,7 +103,7 @@ namespace SteerLib
 			}
 			bool contains(AStarPlannerNode* node)
 			{
-				std::find(this->list.begin(), this->list.end(), node) != this->list.end();
+				return std::find(this->list.begin(), this->list.end(), node) != this->list.end();
 			}
 			void remove(AStarPlannerNode* node)
 			{
@@ -157,6 +157,7 @@ namespace SteerLib
 			SteerLib::SpatialDataBaseInterface * gSpatialDatabase;
 			MyDumbAssClass openSet; // MyDumbAssClass is a custom class for a sorted list
 			MyDumbAssClass closedSet;
+			MyDumbAssClass inconsistentSet;
 			std::map<int, AStarPlannerNode> gridIndex_gValuedNodes_map;
 			
 
@@ -180,7 +181,7 @@ namespace SteerLib
 				@function ARAstar_improvePath is a helper function for ARAstar.
 				Runs A* search with a certain epsilon value
 			*/
-			void ARAStar_improvePath(double epsilon, AStarPlannerNode goal);
+			void ARAStar_improvePath(double epsilon, AStarPlannerNode * goal);
 
 			/* 
 				@function ARAstar runs ARA* search algorithm.
