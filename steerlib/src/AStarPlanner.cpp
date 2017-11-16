@@ -125,27 +125,28 @@ namespace SteerLib
 	/* Takes the start and goal node and reconstructs a path by
 	 * backtracking through parents.
 	 * NEEDS WORK FIGURE OUT POINTER / REFERENCE DISTINCTION - Taichi */
-	std::vector<Util::Point> reconstructPath(const AStarPlannerNode* goal)
+	std::vector<Util::Point> reconstructPath(AStarPlannerNode * goal)
 	{
-		// std::deque<Util::Point> temp; // temporary deque to reverse the order
-		// AStarPlannerNode n = goal;
+		std::deque<Util::Point> temp; // temporary deque to reverse the order
+		AStarPlannerNode * n = goal;
 		
-		// // Backtrack through parents until we can't anymore (start node reached)
-		// while (n != nullptr) {
-		// 	std::cout << n.point << std::endl;
-		// 	temp.push_front(n.point);
-		// 	n = n.parent;
-		// }
+		// Backtrack through parents until we can't anymore (start node reached)
+		while (n != nullptr) {
+			std::cout << "HE" <<  n->point << std::endl;
+			temp.push_front(n->point);
+			n = n->parent;
+			if(n == nullptr) {
+				std::cout << "n is null" << std::endl;
+			}
+		}
 
-		// temp.push_front(n.point);
-
-		// // Copy contents of deque to path output.
-		// std::vector<Util::Point> path;
-		// for (Util::Point p : temp)
-		// {
-		// 	path.push_back(p);
-		// }
-		// return path;
+		// Copy contents of deque to path output.
+		std::vector<Util::Point> path;
+		for (Util::Point p : temp)
+		{
+			path.push_back(p);
+		}
+		return path;
 	}
 
 
@@ -173,19 +174,16 @@ namespace SteerLib
 		// Initialize OPEN Set
 		openSet.push(&start); // add start to open set
 
-		// OUTER MEMORY: Current taken from the top of the open set and added to the closed set.
-		// AStarPlannerNode& current = openSet.top();
-
 		// Repeat search loop until the min in open set is the goal
-		int counter = 0;
-		while (openSet.top()->gridIndex != goalGridIndex && counter++ < 100)
+		// int counter = 0;
+		while (openSet.top()->gridIndex != goalGridIndex)
 		{
 			// // Current taken from the top of the open set and added to the closed set.
 			AStarPlannerNode * current = openSet.top();
 			// OUTER MEMORY: current = openSet.top();
 			openSet.pop();
 			closedSet.push(current);
-			std::cout << "\nCURRENT - Address: " << &current << ", Point: " << current->point << ", g: " << current->g << ", f: " << current->f << std::endl;
+			std::cout << "\nCURRENT - Address: " << current << ", Point: " << current->point << ", g: " << current->g << ", f: " << current->f << std::endl;
 
 			// Get neighbors of current
 			std::vector<int> neighborGridIndices = getNeighborGridIndices(current);
@@ -193,74 +191,54 @@ namespace SteerLib
 			// Search neighbors of current
 			for (int neighborGridIndex : neighborGridIndices)
 			{
-				AStarPlannerNode * neighbor = getNodeFromGridIndex(neighborGridIndex);
+				if (canBeTraversed(neighborGridIndex)) {
+					AStarPlannerNode * neighbor = getNodeFromGridIndex(neighborGridIndex);
 
-				// calculate cost of start ~~> current -> neighbor
-				double cost = current->g + computeCost(current, neighbor);
+					// calculate cost of start ~~> current -> neighbor
+					double cost = current->g + computeCost(current, neighbor);
 
-				if (openSet.contains(neighbor) && cost < neighbor->g) {
-					openSet.remove(neighbor); // remove duplicate to update cost
+					if (openSet.contains(neighbor) && cost < neighbor->g) {
+						openSet.remove(neighbor); // remove duplicate to update cost
+					}
+					if (closedSet.contains(neighbor) && cost < neighbor->g) {
+						closedSet.remove(neighbor); // remove duplicate to update cost
+					}
+					if (!openSet.contains(neighbor) && !closedSet.contains(neighbor) && cost < neighbor->g) {
+						neighbor->g = cost;
+						neighbor->f = fValue(neighbor, epsilon, goalPoint);
+						neighbor->parent = current;
+						openSet.push(neighbor);
+
+						std::cout << "\nNEIGHBOR - Address: " << neighbor << ", Point: " << neighbor->point << " COST: " << neighbor->g << " f: " << neighbor->f << std::endl;
+						std::cout << "New parent: " << neighbor->parent << std::endl;
+					}
 				}
-				if (closedSet.contains(neighbor) && cost < neighbor->g) {
-					closedSet.remove(neighbor); // remove duplicate to update cost
-				}
-				if (!openSet.contains(neighbor) && !closedSet.contains(neighbor)) {
-					neighbor->g = cost;
-					neighbor->f = fValue(neighbor, epsilon, goalPoint);
-					neighbor->parent = current;
-					openSet.push(neighbor);
-
-					std::cout << "\nNEIGHBOR - Address: " << &neighbor << ", Point: " << neighbor->point << " COST: " << neighbor->g << std::endl;
-					std::cout << "New parent: " << neighbor->parent << std::endl;
-				}
-
 			}
 		}
 
-		// std::cout << "\nGOAL NODE (outside loop): " << goal->g << " POINT: " << goal->point << " PARENT: " << goal->parent << std::endl;
-
-		// Display everything remaining in open set
-		// std::cout << "\nOPEN SET: " << std::endl;
-		// for (AStarPlannerNode n : openSet.list)
-		// {
-		// 	std::cout << n.f << std::endl;
-		// }
+		AStarPlannerNode * goal = openSet.top();
 
 		// std::cout << "CURRENT (at the end) - Address: " << &current << std::endl;
-		std::cout << "\nTOP OF OPENSET (at the end) - Address: " << openSet.top() << std::endl;
+		// std::cout << "\nTOP OF OPENSET (at the end) - Address: " << openSet.top() << std::endl;
+		// std::cout << "\nGOAL - Address: " << &goal << ", Cost: " << goal->g << std::endl;
+		// std::cout << "\nGOAL'S PARENT - Address: " << goal->parent << std::endl;
 
-		AStarPlannerNode * goal = openSet.top();
-		std::cout << "\nGOAL - Address: " << &goal << ", Cost: " << goal->g << std::endl;
-
-		std::cout << "\nGOAL'S PARENT - Address: " << goal->parent << std::endl;
-
-		// AStarPlannerNode& prev = * goal.parent;
-		// std::cout << &prev << std::endl;
-		// std::cout << &prev << std::endl;
-		// std::cout << "GOAL - Address: " << &goal << ", Cost: " << goal.g << ", Parent: " << goal.parent << std::endl;
-		// AStarPlannerNode* parent = goal->parent;
-		// std::cout << parent->g << std::endl;
-		// std::cout << "PREV - Address: " << prev << std::endl;
-		// const AStarPlannerNode* prev = goal->parent;
-		// std::cout << "PREVIOUS - Address: " << prev << ", Cost: " << prev->g << ", Parent: " << &prev->parent << std::endl;
-
-		return true;
 		// Print path (if found)
-		// std::cout << "\n PRINTING PATH" << std::endl;
-		// if (&goal->parent == nullptr)
-		// {
-		// 	std::cout << "NO PATH CREATED. GOAL HAS NO PARENT" << std::endl;
-		// 	return false; // goal has no parent, so it was never reached
-		// }
-		// else
-		// {
-		// 	std::vector<Util::Point> path = reconstructPath(goal);
-		// 	if (append_to_path)
-		// 		agent_path.insert(agent_path.end(), path.begin(), path.end());
-		// 	else 
-		// 		agent_path = path;
-		// 	return true;
-		// }
+		std::cout << "\n PRINTING PATH" << std::endl;
+		if (goal->parent == nullptr)
+		{
+			std::cout << "NO PATH CREATED. GOAL HAS NO PARENT" << std::endl;
+			return false; // goal has no parent, so it was never reached
+		}
+		else
+		{
+			std::vector<Util::Point> path = reconstructPath(goal);
+			if (append_to_path)
+				agent_path.insert(agent_path.end(), path.begin(), path.end());
+			else 
+				agent_path = path;
+			return true;
+		}
 	}
 
 
@@ -268,7 +246,7 @@ namespace SteerLib
 	{
 		gSpatialDatabase = _gSpatialDatabase;
 
-		// A* IMPLEMENTATION - Taichi
+		// A* IMPLEMENTATION
 		std::cout << "WeightedA*" << std::endl;
 		bool result = WeightedAStar(agent_path, start, goal, append_to_path);
 		std::cout << "result: " << result << std::endl;

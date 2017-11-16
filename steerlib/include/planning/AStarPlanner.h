@@ -67,15 +67,19 @@ namespace SteerLib
 		    }
 		    bool operator==(AStarPlannerNode other) const
 		    {
-		        return ((this->point.x == other.point.x) && (this->point.z == other.point.z));
+		        // return ((this->point.x == other.point.x) && (this->point.z == other.point.z));
+		        return (this->gridIndex == other.gridIndex);
 		    }
 
 	};
 
+
+	/* Comparator function for AStarPlannerNode pointers. Compares by f-value */
 	static bool comp(const AStarPlannerNode * n1, const AStarPlannerNode * n2) {
 		// return true;
 		return n1->f < n2->f;
 	}
+	
 
 	/* Custom stupid class for sorted lists.
 	 * Sorts every time an item is pushed.
@@ -158,9 +162,7 @@ namespace SteerLib
 
 			// sets are minimum priority queues. Because std::priority_queue is a max-priority by default, need to use std::greater as comparator.
 			// std::priority_queue< AStarPlannerNode, std::vector<AStarPlannerNode>, std::greater<AStarPlannerNode> > openSet, inconsistentSet;
-			// std::vector<AStarPlannerNode> openSet;
 			// std::vector<AStarPlannerNode> inconsistentSet;
-			// std::vector<AStarPlannerNode> closedSet;
 			
 
 			/*
