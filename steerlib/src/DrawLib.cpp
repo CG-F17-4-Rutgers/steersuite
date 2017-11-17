@@ -245,9 +245,8 @@ void DrawLib::drawAgentDisc(const Point & pos, const Vector & dir, float radius,
 		float rad = atan2(dir.z, dir.x)*(-M_180_OVER_PI);
 		glColor(color);
 		glTranslate(pos);
-		glTranslatef(0, 0.125, 0);
-		glRotatef(90,0.0f,0.0f,1.0f);
-		glScalef(radius*0.25f, radius*4.0f, radius);
+		glRotatef(rad, 0.0f, 1.0f, 0.0f);
+		glScalef(radius, radius*4.0f, radius);
 
 		_drawDisplayList(_agentDisplayList);
 	}

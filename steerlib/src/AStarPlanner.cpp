@@ -4,6 +4,8 @@
 //
 
 
+#define NOMINMAX
+
 #include <vector>
 #include <stack>
 #include <set>
@@ -28,11 +30,9 @@
 
 namespace SteerLib
 {
-
-	// typedef struct {
-	// 	Util::Point point;
-	// 	double gValue;
-	// } Node;
+	AStarPlannerNode * startNode;
+	AStarPlannerNode * goalNode;
+	double eps;
 
 	AStarPlanner::AStarPlanner(){}
 
@@ -153,7 +153,7 @@ namespace SteerLib
 
 
 	/* A* Search
-	 * Remember: CALL BY REFERENCE is required to changes the parameters of arguments
+	 * Remember: CALL BY REFERENCE is required to change the parameters of arguments
 	 * e.g. void swap(int &x, int &y) { ... x = y; ... }
 	 * More info: https://www.tutorialspoint.com/cplusplus/cpp_function_call_by_reference.htm
 	 * Taichi */
@@ -367,6 +367,69 @@ namespace SteerLib
 		return result;
 	}
 
+	bool AStarPlanner::ADStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path)
+	{
+		eps = 2.5;
+
+		// Initialize start node
+		int startGridIndex = gSpatialDatabase->getCellIndexFromLocation(startPoint.x, startPoint.z);
+		startNode = &AStarPlannerNode(startPoint, DBL_MAX, DBL_MAX, startGridIndex, nullptr, DBL_MAX, DBL_MAX, DBL_MAX);
+		gridIndex_gValuedNodes_map.emplace(startGridIndex, startNode);
+
+		//Initialize goal node
+		int goalGridIndex = gSpatialDatabase->getCellIndexFromLocation(goalPoint.x, goalPoint.z);
+		goalNode = &AStarPlannerNode(goalPoint, DBL_MAX, -1, goalGridIndex, nullptr, 0, 0, 0);
+		key(goalNode);
+
+		openSet.push(goalNode);
+
+		ComputeorImprovePath();
+
+
+		
+		
+		
+		return true;
+	}
+
+	void AStarPlanner::ComputeorImprovePath() {
+		while (*openSet.top() < *startNode || startNode->rhs != startNode->g) {
+
+		}
+	}
+
+	double AStarPlanner::g(AStarPlannerNode * s) {
+		
+
+		return 0.0;
+	}
+
+	double AStarPlanner::rhs(AStarPlannerNode * s) {
+
+
+		return 0.0;
+	}
+
+	double AStarPlanner::h(AStarPlannerNode * s1, AStarPlannerNode * s2) {
+
+
+		return 0.0;
+	}
+
+	void AStarPlanner::key(AStarPlannerNode * s) {
+		if (s->g > s->rhs) {
+			s->k1 = s->rhs + eps*h(startNode, s);
+			s->k2 = s->rhs;
+		}
+		else {
+			s->k1 = s->g + h(startNode, s);
+			s->k2 = s->g;
+		}
+	}
+
+	
+
+
 
 
 	bool AStarPlanner::computePath(std::vector<Util::Point>& agent_path, Util::Point start, Util::Point goal, SteerLib::SpatialDataBaseInterface * _gSpatialDatabase, bool append_to_path)
@@ -379,7 +442,7 @@ namespace SteerLib
 
 		// ARA* IMPLEMENTATION
 		std::cout << "ARA*" << std::endl;
-		bool result = ARAStar(agent_path, start, goal, append_to_path);
+		bool result = WeightedAStar(agent_path, start, goal, append_to_path);
 		return result;
 	}
 

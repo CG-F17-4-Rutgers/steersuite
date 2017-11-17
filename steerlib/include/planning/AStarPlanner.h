@@ -36,6 +36,9 @@ namespace SteerLib
 		public:
 			double f;
 			double g;
+			double rhs;
+			double k1;
+			double k2;
 			Util::Point point;
 			AStarPlannerNode* parent;
 			int gridIndex;
@@ -45,6 +48,7 @@ namespace SteerLib
 				point = _point;
 				g = _g;
 				parent = _parent;
+				k1 = -1;
 			}
 			AStarPlannerNode(Util::Point _point, double _g, double _f, int _gridIndex, AStarPlannerNode* _parent)
 			{
@@ -53,17 +57,50 @@ namespace SteerLib
 				g = _g;
 				parent = _parent;
 				gridIndex = _gridIndex;
+				k1 = -1;
 			}
+			AStarPlannerNode(Util::Point _point, double _g, double _f, int _gridIndex, AStarPlannerNode* _parent, double _rhs, double _k1, double _k2) {
+				f = _f;
+				point = _point;
+				g = _g;
+				parent = _parent;
+				gridIndex = _gridIndex;
+				rhs = _rhs;
+				k1 = _k1;
+				k2 = _k2;
+			}
+
 			AStarPlannerNode()
 			{
 			}
 			bool operator<(AStarPlannerNode other) const
 		    {
-		        return this->f < other.f;
+				if (this->k1 > 0) {
+					if (this->k1 == other.k1) {
+						return this->k2 < other.k2;
+					}
+					else {
+						return this->k1 < other.k1;
+					}
+				}
+				else {
+					return this->f < other.f;
+				}
 		    }
 		    bool operator>(AStarPlannerNode other) const
 		    {
-		        return this->f > other.f;
+		        
+				if (this->k1 > 0) {
+					if (this->k1 == other.k1) {
+						return this->k2 > other.k2;
+					}
+					else {
+						return this->k1 > other.k1;
+					}
+				}
+				else {
+					return this->f > other.f;
+				}
 		    }
 		    bool operator==(AStarPlannerNode other) const
 		    {
@@ -192,12 +229,41 @@ namespace SteerLib
 			*/
 			bool ARAStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path);
 
-
 			/*
 				@function AStar runs A* search algorithm.
 			*/
 			bool WeightedAStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path);
 
+			/*
+			@function ADStar runs AD* search algorithm.
+			Modifies or appends found path to agent_path (depending on value of append_to_path).
+			*/
+			bool ADStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path);
+
+			/*
+			@function ComputeorImprovePath does what it sounds like
+			*/
+			void AStarPlanner::ComputeorImprovePath();
+
+			/*
+			@function g returns an estimated cost from state s to the goal.
+			*/
+			double g(AStarPlannerNode * s);
+
+			/*
+			@function rhs returns a one-step lookahead cost.
+			*/
+			double rhs(AStarPlannerNode * s);
+
+			/*
+			@function h is the heuristic h(s1,s2) that estimates the cost of an optimal path from state s1 to s2.
+			*/
+			double h(AStarPlannerNode * s1, AStarPlannerNode * s2);
+
+			/*
+			@function key sets the key values in the AStarPlannerNode.
+			*/
+			void AStarPlanner::key(AStarPlannerNode * s);
 	};
 
 
