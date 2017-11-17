@@ -164,7 +164,7 @@ namespace SteerLib
 
 		// Initialize start node
 		int startGridIndex = gSpatialDatabase->getCellIndexFromLocation(startPoint.x, startPoint.z);
-		AStarPlannerNode start = AStarPlannerNode(startPoint, 0, DBL_MAX, startGridIndex, nullptr);
+		AStarPlannerNode start = AStarPlannerNode(getPointFromGridIndex(startGridIndex), 0, DBL_MAX, startGridIndex, nullptr);
 		start.f = fValue(&start, epsilon, goalPoint);
 		gridIndex_gValuedNodes_map.emplace(startGridIndex, start);
 
@@ -305,7 +305,7 @@ namespace SteerLib
 
 		// Initialize start node
 		int startGridIndex = gSpatialDatabase->getCellIndexFromLocation(startPoint.x, startPoint.z);
-		AStarPlannerNode start = AStarPlannerNode(startPoint, 0, DBL_MAX, startGridIndex, nullptr);
+		AStarPlannerNode start = AStarPlannerNode(getPointFromGridIndex(startGridIndex), 0, DBL_MAX, startGridIndex, nullptr);
 		start.f = fValue(&start, epsilon, goalPoint);
 		gridIndex_gValuedNodes_map.emplace(startGridIndex, start);
 

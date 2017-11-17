@@ -76,8 +76,10 @@ namespace SteerLib
 
 	/* Comparator function for AStarPlannerNode pointers. Compares by f-value */
 	static bool comp(const AStarPlannerNode * n1, const AStarPlannerNode * n2) {
-		// return true;
-		return n1->f < n2->f;
+		if (n1->f == n2->f)
+			return n1->g < n2->g; // break ties using lower g-value
+		else
+			return n1->f < n2->f; // sort by f value
 	}
 
 
