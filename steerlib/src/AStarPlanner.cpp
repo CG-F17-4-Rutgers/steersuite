@@ -30,8 +30,8 @@
 
 namespace SteerLib
 {
-	AStarPlannerNode * startNode;
-	AStarPlannerNode * goalNode;
+	AStarPlannerNode * startNode = NULL;
+	AStarPlannerNode * goalNode = NULL;
 	double eps;
 
 	AStarPlanner::AStarPlanner(){}
@@ -88,7 +88,7 @@ namespace SteerLib
 	 * Taichi */
 	std::vector<int> AStarPlanner::getNeighborGridIndices(AStarPlannerNode * n)
 	{
-		int nGridIndex = gSpatialDatabase->getCellIndexFromLocation(n->point.x, n->point.z);
+		int nGridIndex = n->gridIndex;
 		std::vector<int> neighborGridIndices;
 		for (int i = -1; i <= 1; i+=GRID_STEP) {
 			for (int j = -1; j <= 1; j+=GRID_STEP) {
@@ -116,8 +116,8 @@ namespace SteerLib
 		// if there is no node corresponding to the grid index, create a new one in the map
 		if (gridIndex_gValuedNodes_map.find(gridIndex) == gridIndex_gValuedNodes_map.end())
 		{
-			// std::cout << "\nCREATING NEW NODE FOR GRIDINDEX " << gridIndex << std::endl;
-			gridIndex_gValuedNodes_map.emplace(gridIndex, AStarPlannerNode(getPointFromGridIndex(gridIndex), DBL_MAX, DBL_MAX, gridIndex, nullptr));
+			// //std::cout << "\nCREATING NEW NODE FOR GRIDINDEX " << gridIndex << std::endl;
+			gridIndex_gValuedNodes_map.emplace(gridIndex, AStarPlannerNode(getPointFromGridIndex(gridIndex), DBL_MAX, DBL_MAX, gridIndex, NULL));
 		}
 
 		return &gridIndex_gValuedNodes_map[gridIndex];
@@ -132,11 +132,11 @@ namespace SteerLib
 		AStarPlannerNode * n = goal;
 		
 		// Backtrack through parents until we can't anymore (start node reached)
-		while (n != nullptr) {
+		while (n != NULL) {
 			temp.push_front(n->point);
 			n = n->parent;
-			// if(n == nullptr) {
-			// 	std::cout << "n is null" << std::endl;
+			// if(n == NULL) {
+			// 	//std::cout << "n is null" << std::endl;
 			// }
 		}
 
@@ -145,7 +145,7 @@ namespace SteerLib
 		for (Util::Point p : temp)
 		{
 			path.push_back(p);
-			std::cout << p << std::endl; // publish path
+			//std::cout << p << std::endl; // publish path
 		}
 		return path;
 	}
@@ -164,13 +164,13 @@ namespace SteerLib
 
 		// Initialize start node
 		int startGridIndex = gSpatialDatabase->getCellIndexFromLocation(startPoint.x, startPoint.z);
-		AStarPlannerNode start = AStarPlannerNode(getPointFromGridIndex(startGridIndex), 0, DBL_MAX, startGridIndex, nullptr);
+		AStarPlannerNode start = AStarPlannerNode(getPointFromGridIndex(startGridIndex), 0, DBL_MAX, startGridIndex, NULL);
 		start.f = fValue(&start, epsilon, goalPoint);
 		gridIndex_gValuedNodes_map.emplace(startGridIndex, start);
 
 		// Get grid index of goal point
 		int goalGridIndex = gSpatialDatabase->getCellIndexFromLocation(goalPoint.x, goalPoint.z);
-		std::cout << "GOAL GRID INDEX: " << goalGridIndex << std::endl;
+		//std::cout << "GOAL GRID INDEX: " << goalGridIndex << std::endl;
 
 		// Initialize OPEN Set
 		openSet.push(&start); // add start to open set
@@ -184,7 +184,7 @@ namespace SteerLib
 			// OUTER MEMORY: current = openSet.top();
 			openSet.pop();
 			closedSet.push(current);
-			std::cout << "\nCURRENT - Address: " << current << ", Point: " << current->point << ", g: " << current->g << ", f: " << current->f << std::endl;
+			//std::cout << "\nCURRENT - Address: " << current << ", Point: " << current->point << ", g: " << current->g << ", f: " << current->f << std::endl;
 
 			// Get neighbors of current
 			std::vector<int> neighborGridIndices = getNeighborGridIndices(current);
@@ -210,8 +210,8 @@ namespace SteerLib
 						neighbor->parent = current;
 						openSet.push(neighbor);
 
-						std::cout << "\nNEIGHBOR - Address: " << neighbor << ", Point: " << neighbor->point << " COST: " << neighbor->g << " f: " << neighbor->f << std::endl;
-						std::cout << "New parent: " << neighbor->parent << std::endl;
+						//std::cout << "\nNEIGHBOR - Address: " << neighbor << ", Point: " << neighbor->point << " COST: " << neighbor->g << " f: " << neighbor->f << std::endl;
+						//std::cout << "New parent: " << neighbor->parent << std::endl;
 					}
 				}
 			}
@@ -219,16 +219,16 @@ namespace SteerLib
 
 		AStarPlannerNode * goal = openSet.top();
 
-		// std::cout << "CURRENT (at the end) - Address: " << &current << std::endl;
-		// std::cout << "\nTOP OF OPENSET (at the end) - Address: " << openSet.top() << std::endl;
-		// std::cout << "\nGOAL - Address: " << &goal << ", Cost: " << goal->g << std::endl;
-		// std::cout << "\nGOAL'S PARENT - Address: " << goal->parent << std::endl;
+		// //std::cout << "CURRENT (at the end) - Address: " << &current << std::endl;
+		// //std::cout << "\nTOP OF OPENSET (at the end) - Address: " << openSet.top() << std::endl;
+		// //std::cout << "\nGOAL - Address: " << &goal << ", Cost: " << goal->g << std::endl;
+		// //std::cout << "\nGOAL'S PARENT - Address: " << goal->parent << std::endl;
 
 		// Print path (if found)
-		std::cout << "\n PRINTING PATH" << std::endl;
-		if (goal->parent == nullptr)
+		//std::cout << "\n PRINTING PATH" << std::endl;
+		if (goal->parent == NULL)
 		{
-			std::cout << "NO PATH CREATED. GOAL HAS NO PARENT" << std::endl;
+			//std::cout << "NO PATH CREATED. GOAL HAS NO PARENT" << std::endl;
 			return false; // goal has no parent, so it was never reached
 		}
 		else
@@ -250,12 +250,12 @@ namespace SteerLib
 		
 		while (openSet.list.size() > 0 && counter++ < 10000 && fValue(goal, epsilon, goal->point) > fValue(openSet.top(), epsilon, goal->point))
 		{
-			// std::cout << "\nfValue of goal: " << fValue(goal, epsilon, goal->point) << ", fValue of min(openSet): " << fValue(openSet.top(), epsilon, goal->point) << std::endl;
+			// //std::cout << "\nfValue of goal: " << fValue(goal, epsilon, goal->point) << ", fValue of min(openSet): " << fValue(openSet.top(), epsilon, goal->point) << std::endl;
 			
 			AStarPlannerNode * current = openSet.top(); // get node from open set with smallest f value
 			openSet.pop();
 			closedSet.push(current);
-			// std::cout << "CURRENT - address: " << current << ", Point: " << current->point << ", g: " << current->g << ", f: " << current->f << std::endl;
+			// //std::cout << "CURRENT - address: " << current << ", Point: " << current->point << ", g: " << current->g << ", f: " << current->f << std::endl;
 
 			std::vector<int> neighborGridIndices = getNeighborGridIndices(current); // get grid indices of neighboring cells
 			
@@ -274,8 +274,8 @@ namespace SteerLib
 					{
 						neighbor->g = cost;
 						neighbor->parent = current;
-						// std::cout << "NEIGHBOR - Address: " << neighbor << ", Point: " << neighbor->point << " COST: " << neighbor->g << " f: " << neighbor->f << std::endl;
-						// std::cout << "New parent: " << neighbor->parent << std::endl;
+						// //std::cout << "NEIGHBOR - Address: " << neighbor << ", Point: " << neighbor->point << " COST: " << neighbor->g << " f: " << neighbor->f << std::endl;
+						// //std::cout << "New parent: " << neighbor->parent << std::endl;
 						
 						if (closedSet.contains(neighbor))
 						{
@@ -283,7 +283,7 @@ namespace SteerLib
 						}
 						else
 						{
-							// std::cout << "Adding/updating neighbor..." << std::endl;
+							// //std::cout << "Adding/updating neighbor..." << std::endl;
 							if (openSet.contains(neighbor))
 								openSet.remove(neighbor); // remove duplicate to update cost
 							neighbor->f = fValue(neighbor, epsilon, goal->point);
@@ -294,7 +294,7 @@ namespace SteerLib
 			}
 		}
 		return counter < 10000;
-		// std::cout << "GOAL REACHED" << std::endl;
+		// //std::cout << "GOAL REACHED" << std::endl;
 	}
 
 
@@ -305,14 +305,14 @@ namespace SteerLib
 
 		// Initialize start node
 		int startGridIndex = gSpatialDatabase->getCellIndexFromLocation(startPoint.x, startPoint.z);
-		AStarPlannerNode start = AStarPlannerNode(getPointFromGridIndex(startGridIndex), 0, DBL_MAX, startGridIndex, nullptr);
+		AStarPlannerNode start = AStarPlannerNode(getPointFromGridIndex(startGridIndex), 0, DBL_MAX, startGridIndex, NULL);
 		start.f = fValue(&start, epsilon, goalPoint);
 		gridIndex_gValuedNodes_map.emplace(startGridIndex, start);
 
 		// Get grid index of goal point
 		int goalGridIndex = gSpatialDatabase->getCellIndexFromLocation(goalPoint.x, goalPoint.z);
 		AStarPlannerNode * goal = getNodeFromGridIndex(goalGridIndex);
-		std::cout << "GOAL GRID INDEX: " << goalGridIndex << std::endl;
+		//std::cout << "GOAL GRID INDEX: " << goalGridIndex << std::endl;
 
 		// Initialize OPEN Set
 		openSet.push(&start); // add start to open set
@@ -323,9 +323,9 @@ namespace SteerLib
 
 		if (result)
 		{
-			// std::cout << &suboptimality_bound << std::endl;
-			// std::cout << "Inconsistent Set - Size: " << inconsistentSet.list.size() << std::endl;
-			std::cout << "Path found with suboptimality bound " << suboptimality_bound << std::endl;
+			// //std::cout << &suboptimality_bound << std::endl;
+			// //std::cout << "Inconsistent Set - Size: " << inconsistentSet.list.size() << std::endl;
+			//std::cout << "Path found with suboptimality bound " << suboptimality_bound << std::endl;
 			agent_path = reconstructPath(goal);
 		}
 
@@ -357,7 +357,7 @@ namespace SteerLib
 
 			if (result)
 			{
-				std::cout << "Path found with suboptimality bound " << suboptimality_bound << std::endl;
+				//std::cout << "Path found with suboptimality bound " << suboptimality_bound << std::endl;
 				agent_path = reconstructPath(goal);
 			}
 
@@ -370,50 +370,141 @@ namespace SteerLib
 	bool AStarPlanner::ADStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path)
 	{
 		eps = 2.5;
-
+		//std::cout << "AD* Start" << startPoint << std::endl;
 		// Initialize start node
 		int startGridIndex = gSpatialDatabase->getCellIndexFromLocation(startPoint.x, startPoint.z);
-		startNode = &AStarPlannerNode(startPoint, DBL_MAX, DBL_MAX, startGridIndex, nullptr, DBL_MAX, DBL_MAX, DBL_MAX);
-		gridIndex_gValuedNodes_map.emplace(startGridIndex, startNode);
-
+		AStarPlannerNode start = AStarPlannerNode(startPoint, DBL_MAX, -1, startGridIndex, NULL, DBL_MAX, DBL_MAX, DBL_MAX);
+		gridIndex_gValuedNodes_map.emplace(startGridIndex, start);
+		startNode = &start;
+		//std::cout << "startNode = " << startNode->point << std::endl;
 		//Initialize goal node
 		int goalGridIndex = gSpatialDatabase->getCellIndexFromLocation(goalPoint.x, goalPoint.z);
-		goalNode = &AStarPlannerNode(goalPoint, DBL_MAX, -1, goalGridIndex, nullptr, 0, 0, 0);
+		AStarPlannerNode goal = AStarPlannerNode(goalPoint, DBL_MAX, -1, goalGridIndex, NULL, 0, 0, 0);
+		goalNode = &goal;
 		key(goalNode);
+		gridIndex_gValuedNodes_map.emplace(goalGridIndex, goal);
+		//std::cout << "startNode = " << startNode->point << std::endl;
+		//std::cout << "Start/Goal created" << std::endl;
 
 		openSet.push(goalNode);
 
+		//std::cout << "pre-computeorimprovepath" << std::endl;
 		ComputeorImprovePath();
+		//std::cout << "postcomputeorimprovepath" << std::endl;
 
+		//std::cout << startNode->parent << std::endl;
 
-		
-		
+		AStarPlannerNode * temp = startNode;
+		while (temp != NULL) {
+			agent_path.push_back(temp->point);
+			std::cout << temp->point << ": g=" << temp->g << " rhs=" << temp->rhs << std::endl;
+			temp = temp->parent;
+		}
 		
 		return true;
 	}
 
-	void AStarPlanner::ComputeorImprovePath() {
-		while (*openSet.top() < *startNode || startNode->rhs != startNode->g) {
+	void AStarPlanner::ComputeorImprovePath()
+	{
+		int i = 0;
+		while (comp(openSet.top(), startNode) || startNode->rhs != startNode->g) {
+			//std::cout << i++ << std::endl;
+			//std::cout << "Front of compute/ip loop" << std::endl;
+			AStarPlannerNode * current = openSet.top();
+			openSet.pop();
+			std::cout << current->point << ": g=" << current->g << " rhs=" << current->rhs << " index=" << current->gridIndex << std::ends;
+			if (current->parent != NULL) {
+				std::cout << " parent=" << current->parent->point << std::endl;
+			}
+			else {
+				std::cout << std::endl;
+			}
+			//std::cout << "before looking at neighbors" << std::endl;
+			if (current->g > current->rhs) {
+				current->g = current->rhs;
+				closedSet.push(current);
+
+				// Get neighbors of current
+				std::vector<int> neighborGridIndices = getNeighborGridIndices(current);
+
+				for (int nGridIndex : neighborGridIndices) {
+					if (canBeTraversed(nGridIndex)) {
+
+						AStarPlannerNode * neighbor = getNodeFromGridIndex2(nGridIndex);
+						neighbor->succ.push(current);
+						UpdateState(neighbor);
+						
+					}
+				}
+			}
+			else {
+				current->g = DBL_MAX;
+
+				std::vector<int> neighborGridIndices = getNeighborGridIndices(current);
+				neighborGridIndices.push_back(current->gridIndex);
+
+				for (int nGridIndex : neighborGridIndices) {
+					if (canBeTraversed(nGridIndex)) {
+
+						AStarPlannerNode * neighbor = getNodeFromGridIndex2(nGridIndex);
+						if (nGridIndex != current->gridIndex) {
+							neighbor->succ.push(current);
+						}
+						UpdateState(neighbor);
+					}
+				}
+			}
 
 		}
 	}
 
-	double AStarPlanner::g(AStarPlannerNode * s) {
-		
+	void AStarPlanner::UpdateState(AStarPlannerNode * s) {
+		if (s != goalNode) {
+			//std::cout << "calculating rhs" << std::endl;
 
-		return 0.0;
+			s->rhs = Calculaterhs(s);
+		}
+		if (openSet.contains(s)) {
+			//std::cout << "if in open set..." << std::endl;
+			openSet.remove(s);
+		}
+		//std::cout << s->point << ": g=" << s->g << " rhs=" << s->rhs << std::endl;
+
+		if (s->g != s->rhs) {
+			//std::cout << "g and rhs n/e" << std::endl;
+
+			if (!closedSet.contains(s)) {
+				//std::cout << "Pushing to open set" << std::endl;
+				key(s);
+				openSet.push(s);
+			}
+			else {
+				//std::cout << "pushing to incons" << std::endl;
+
+				key(s);
+				inconsistentSet.push(s);
+			}
+		}
 	}
 
-	double AStarPlanner::rhs(AStarPlannerNode * s) {
+	double AStarPlanner::Calculaterhs(AStarPlannerNode * s) {
+		double minrhs = DBL_MAX;
+		for (AStarPlannerNode * s2 : s->succ.list) {
+			//std::cout << h(s2, s) << " " << s2->g << std::endl;
+			double temp = h(s2, s) + s2->g;
+			if (temp < minrhs) {
+				minrhs = temp;
+				if (s2->gridIndex != s->gridIndex) {
+					s->parent = s2;
+				}
 
-
-		return 0.0;
+			}
+		}
+		return minrhs;
 	}
 
 	double AStarPlanner::h(AStarPlannerNode * s1, AStarPlannerNode * s2) {
-
-
-		return 0.0;
+		return Util::distanceBetween(s1->point, s2->point);
 	}
 
 	void AStarPlanner::key(AStarPlannerNode * s) {
@@ -427,6 +518,29 @@ namespace SteerLib
 		}
 	}
 
+	/* Returns node corresponding to grid index in spatial database
+	* If a node has not been created for the given grid index,
+	* a new node with default values is created and returned.
+	* modified from Taichi's version to work for AD*
+	* Justin */
+	AStarPlannerNode * AStarPlanner::getNodeFromGridIndex2(int gridIndex)
+	{
+		// if there is no node corresponding to the grid index, create a new one in the map
+		if (gridIndex_gValuedNodes_map.find(gridIndex) == gridIndex_gValuedNodes_map.end())
+		{
+			 //std::cout << "\nCREATING NEW NODE FOR GRIDINDEX " << gridIndex << std::endl;
+			AStarPlannerNode temp = AStarPlannerNode(getPointFromGridIndex(gridIndex), DBL_MAX, -1, gridIndex, NULL, DBL_MAX, DBL_MAX, DBL_MAX);
+			if (h(&temp, startNode) < 1) {
+				return startNode;
+			}
+			else if (h(&temp, goalNode) < 1) {
+				return goalNode;
+			}
+			gridIndex_gValuedNodes_map.emplace(gridIndex, temp);
+		}
+
+		return &gridIndex_gValuedNodes_map[gridIndex];
+	}
 	
 
 
@@ -437,12 +551,12 @@ namespace SteerLib
 		gSpatialDatabase = _gSpatialDatabase;
 
 		// A* IMPLEMENTATION
-		// std::cout << "WeightedA*" << std::endl;
+		// //std::cout << "WeightedA*" << std::endl;
 		// bool result = WeightedAStar(agent_path, start, goal, append_to_path);
 
 		// ARA* IMPLEMENTATION
-		std::cout << "ARA*" << std::endl;
-		bool result = WeightedAStar(agent_path, start, goal, append_to_path);
+		//std::cout << "AD*" << std::endl;
+		bool result = ADStar(agent_path, start, goal, append_to_path);
 		return result;
 	}
 

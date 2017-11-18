@@ -20,6 +20,45 @@
 
 namespace SteerLib
 {
+	class AStarPlannerNode;
+	static bool comp(const AStarPlannerNode * n1, const AStarPlannerNode * n2);
+
+
+	/* Custom stupid class for sorted lists.
+	* Sorts every time an item is pushed.
+	*/
+	class STEERLIB_API MyDumbAssClass {
+	public:
+		std::deque<AStarPlannerNode*> list;
+
+		void push(AStarPlannerNode * node)
+		{
+			if (!this->contains(node)) {
+				this->list.push_back(node);
+				std::sort(this->list.begin(), this->list.end(), comp);
+			}
+		}
+		void pop()
+		{
+			this->list.pop_front();
+		}
+		AStarPlannerNode * top()
+		{
+			return this->list.front();
+		}
+		bool contains(AStarPlannerNode* node)
+		{
+			return std::find(this->list.begin(), this->list.end(), node) != this->list.end();
+		}
+		void remove(AStarPlannerNode* node)
+		{
+			this->list.erase(std::remove(this->list.begin(), this->list.end(), node), this->list.end());
+		}
+		void sort()
+		{
+			std::sort(this->list.begin(), this->list.end(), comp);
+		}
+	};
 
 	/*
 		@function The AStarPlannerNode class gives a suggested container to build your search tree nodes.
@@ -42,6 +81,7 @@ namespace SteerLib
 			Util::Point point;
 			AStarPlannerNode* parent;
 			int gridIndex;
+			MyDumbAssClass succ;
 			AStarPlannerNode(Util::Point _point, double _g, double _f, AStarPlannerNode* _parent)
 			{
 				f = _f;
@@ -113,45 +153,21 @@ namespace SteerLib
 
 	/* Comparator function for AStarPlannerNode pointers. Compares by f-value */
 	static bool comp(const AStarPlannerNode * n1, const AStarPlannerNode * n2) {
-		if (n1->f == n2->f)
-			return n1->g < n2->g; // break ties using lower g-value
-		else
-			return n1->f < n2->f; // sort by f value
+		if (n1->k1 < 0) {
+			if (n1->f == n2->f)
+				return n1->g < n2->g; // break ties using lower g-value
+			else
+				return n1->f < n2->f; // sort by f value
+		}
+		else {
+			if (n1->k1 == n2->k1) {
+				return n1->k2 < n2->k2;
+			}
+			else {
+				return n1->k1 < n2->k1;
+			}
+		}
 	}
-
-
-	/* Custom stupid class for sorted lists.
-	 * Sorts every time an item is pushed.
-	 */
-	class STEERLIB_API MyDumbAssClass{
-		public:
-			std::deque<AStarPlannerNode*> list;
-			void push(AStarPlannerNode * node)
-			{
-				this->list.push_back(node);
-				std::sort(this->list.begin(), this->list.end(), comp);
-			}
-			void pop()
-			{
-				this->list.pop_front();
-			}
-			AStarPlannerNode * top()
-			{
-				return this->list.front();
-			}
-			bool contains(AStarPlannerNode* node)
-			{
-				return std::find(this->list.begin(), this->list.end(), node) != this->list.end();
-			}
-			void remove(AStarPlannerNode* node)
-			{
-				this->list.erase(std::remove(this->list.begin(), this->list.end(), node), this->list.end());
-			}
-			void sort()
-			{
-				std::sort(this->list.begin(), this->list.end(), comp);
-			}
-	};
 
 	
 
@@ -245,17 +261,17 @@ namespace SteerLib
 			/*
 			@function ComputeorImprovePath does what it sounds like
 			*/
-			void AStarPlanner::ComputeorImprovePath();
+			void ComputeorImprovePath();
 
 			/*
-			@function g returns an estimated cost from state s to the goal.
+			@function UpdateState updates the state's rhs value and places the state in the proper list.
 			*/
-			double g(AStarPlannerNode * s);
+			void UpdateState(AStarPlannerNode * s);
 
 			/*
 			@function rhs returns a one-step lookahead cost.
 			*/
-			double rhs(AStarPlannerNode * s);
+			double Calculaterhs(AStarPlannerNode * s);
 
 			/*
 			@function h is the heuristic h(s1,s2) that estimates the cost of an optimal path from state s1 to s2.
@@ -265,7 +281,12 @@ namespace SteerLib
 			/*
 			@function key sets the key values in the AStarPlannerNode.
 			*/
-			void AStarPlanner::key(AStarPlannerNode * s);
+			void key(AStarPlannerNode * s);
+
+			/*
+			@function getNodeFromGridIndex2 does the same as the other version except initializes node differently.
+			*/
+			AStarPlannerNode * getNodeFromGridIndex2(int gridIndex);
 	};
 
 
