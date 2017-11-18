@@ -245,10 +245,11 @@ namespace SteerLib
 
 	/* Helper function for ARA* implementation */
 	bool AStarPlanner::ARAStar_improvePath(double epsilon, AStarPlannerNode * goal)
-	{	
+	{
 		int counter = 0; // limit to 10000 iterations. if goal isn't reached before this, return false for failure
-		
-		while (openSet.list.size() > 0 && counter++ < 10000 && fValue(goal, epsilon, goal->point) > fValue(openSet.top(), epsilon, goal->point))
+		int time_limit= 10000;
+
+		while (openSet.list.size() > 0 && counter++ < time_limit && fValue(goal, epsilon, goal->point) > fValue(openSet.top(), epsilon, goal->point))
 		{
 			// //std::cout << "\nfValue of goal: " << fValue(goal, epsilon, goal->point) << ", fValue of min(openSet): " << fValue(openSet.top(), epsilon, goal->point) << std::endl;
 			
@@ -293,7 +294,7 @@ namespace SteerLib
 				}
 			}
 		}
-		return counter < 10000;
+		return counter < time_limit;
 		// //std::cout << "GOAL REACHED" << std::endl;
 	}
 
@@ -301,7 +302,8 @@ namespace SteerLib
 	/* ARA* Main Method */
 	bool AStarPlanner::ARAStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path)
 	{
-		double epsilon = 2.5; // 2.5;
+		double epsilon = 2.5;
+		double epsilon_decrement = 1.0;
 
 		// Initialize start node
 		int startGridIndex = gSpatialDatabase->getCellIndexFromLocation(startPoint.x, startPoint.z);
@@ -332,7 +334,7 @@ namespace SteerLib
 		while (result && suboptimality_bound > 1)
 		{
 			// decrease epsilon by 1 (minimum = 1)
-			epsilon = MAX(epsilon - 1.0, 1.0);
+			epsilon = MAX(epsilon - epsilon_decrement, 1.0);
 
 			// move nodes from inconsistentSet to openSet
 			while (inconsistentSet.list.size() > 0)
