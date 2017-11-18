@@ -33,6 +33,8 @@ namespace SteerLib
 	AStarPlannerNode * startNode = NULL;
 	AStarPlannerNode * goalNode = NULL;
 	double eps;
+	int ARAStar_time_counter;
+	int ARAStar_time_limit;
 
 	AStarPlanner::AStarPlanner(){}
 
@@ -246,12 +248,14 @@ namespace SteerLib
 	/* Helper function for ARA* implementation */
 	bool AStarPlanner::ARAStar_improvePath(double epsilon, AStarPlannerNode * goal)
 	{
-		int counter = 0; // limit to 10000 iterations. if goal isn't reached before this, return false for failure
-		int time_limit= 10000;
 
-		while (openSet.list.size() > 0 && counter++ < time_limit && fValue(goal, epsilon, goal->point) > fValue(openSet.top(), epsilon, goal->point))
+		std::cout << "NEW IMPROVE PATH CALL " << std::endl;
+		std::cout << "fValue of goal: " << fValue(goal, epsilon, goal->point) << ", fValue of top: " << fValue(openSet.top(), epsilon, goal->point) << std::endl;
+		std::cout << "Time counter: " << ARAStar_time_counter << std::endl;
+
+		while (openSet.list.size() > 0 && (ARAStar_time_counter++ < ARAStar_time_limit) && fValue(goal, epsilon, goal->point) > fValue(openSet.top(), epsilon, goal->point))
 		{
-			// //std::cout << "\nfValue of goal: " << fValue(goal, epsilon, goal->point) << ", fValue of min(openSet): " << fValue(openSet.top(), epsilon, goal->point) << std::endl;
+			std::cout << "\nfValue of goal: " << fValue(goal, epsilon, goal->point) << ", fValue of min(openSet): " << fValue(openSet.top(), epsilon, goal->point) << std::endl;
 			
 			AStarPlannerNode * current = openSet.top(); // get node from open set with smallest f value
 			openSet.pop();
@@ -280,6 +284,7 @@ namespace SteerLib
 						
 						if (closedSet.contains(neighbor))
 						{
+							std::cout << "KSJDFKSDHJFKJSHDF" << std::endl;
 							inconsistentSet.push(neighbor);
 						}
 						else
@@ -294,16 +299,18 @@ namespace SteerLib
 				}
 			}
 		}
-		return counter < time_limit;
-		// //std::cout << "GOAL REACHED" << std::endl;
+		
+		return ARAStar_time_counter < ARAStar_time_limit;
 	}
 
 
 	/* ARA* Main Method */
 	bool AStarPlanner::ARAStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path)
 	{
-		double epsilon = 2.5;
-		double epsilon_decrement = 1.0;
+		double epsilon = 10;
+		double epsilon_decrement = .0;
+		ARAStar_time_counter = 0; // number of total search iterations allowed in ARAStar_improvePath helper method
+		ARAStar_time_limit = 10000;
 
 		// Initialize start node
 		int startGridIndex = gSpatialDatabase->getCellIndexFromLocation(startPoint.x, startPoint.z);
@@ -319,19 +326,25 @@ namespace SteerLib
 		// Initialize OPEN Set
 		openSet.push(&start); // add start to open set
 
-		bool result = ARAStar_improvePath(epsilon, goal);
+		bool pathFound = ARAStar_improvePath(epsilon, goal);
 
 		double suboptimality_bound = std::min(epsilon, (goal->g / std::min(fValue(openSet.top(), 1.0, goal->point), (inconsistentSet.list.size() > 0 ? fValue(inconsistentSet.top(), 1.0, goal->point) : DBL_MAX))));
 
-		if (result)
+		if (pathFound)
 		{
 			// //std::cout << &suboptimality_bound << std::endl;
 			// //std::cout << "Inconsistent Set - Size: " << inconsistentSet.list.size() << std::endl;
-			//std::cout << "Path found with suboptimality bound " << suboptimality_bound << std::endl;
+			std::cout << "Path found with suboptimality bound " << suboptimality_bound << std::endl;
 			agent_path = reconstructPath(goal);
+			for (Util::Point p : agent_path)
+			{
+				std::cout << p << std::endl;
+			}
 		}
 
-		while (result && suboptimality_bound > 1)
+		bool betterPathFound = true;
+
+		while (betterPathFound && suboptimality_bound > 1)
 		{
 			// decrease epsilon by 1 (minimum = 1)
 			epsilon = MAX(epsilon - epsilon_decrement, 1.0);
@@ -349,24 +362,29 @@ namespace SteerLib
 				n->f = fValue(n, epsilon, goalPoint);
 			}
 			openSet.sort();
+			std::cout << "Open set, size: " << openSet.list.size() << std::endl;
 
 			// clear closedSet
 			closedSet.list.clear();
+			std::cout << "Closed set, size: " << closedSet.list.size() << std::endl;
 
-			result = ARAStar_improvePath(epsilon, goal);
+			betterPathFound = ARAStar_improvePath(epsilon, goal);
 
-			suboptimality_bound = std::min(epsilon, (goal->g / std::min(fValue(openSet.top(), 1.0, goal->point), (inconsistentSet.list.size() > 0 ? fValue(inconsistentSet.top(), 1.0, goal->point) : DBL_MAX))));
-
-			if (result)
+			if (betterPathFound)
 			{
-				//std::cout << "Path found with suboptimality bound " << suboptimality_bound << std::endl;
+				suboptimality_bound = std::min(epsilon, (goal->g / std::min(fValue(openSet.top(), 1.0, goal->point), (inconsistentSet.list.size() > 0 ? fValue(inconsistentSet.top(), 1.0, goal->point) : DBL_MAX))));
+				std::cout << "Path found with suboptimality boundd " << suboptimality_bound << std::endl;
 				agent_path = reconstructPath(goal);
 			}
 
 		}
-		
 
-		return result;
+		if (suboptimality_bound <= 1.0)
+			std::cout << "Optimal path found." << std::endl;
+		else
+			std::cout << "Time ran out before optimal path was found." << std::endl;
+		
+		return pathFound;
 	}
 
 	bool AStarPlanner::ADStar(std::vector<Util::Point>& agent_path, Util::Point startPoint, Util::Point goalPoint, bool append_to_path)
@@ -557,8 +575,12 @@ namespace SteerLib
 		// bool result = WeightedAStar(agent_path, start, goal, append_to_path);
 
 		// ARA* IMPLEMENTATION
+		std::cout << "ARA*" << std::endl;
+		bool result = ARAStar(agent_path, start, goal, append_to_path);
+
+		// AD* IMPLEMENTATION
 		//std::cout << "AD*" << std::endl;
-		bool result = ADStar(agent_path, start, goal, append_to_path);
+		// bool result = ARAStar(agent_path, start, goal, append_to_path);
 		return result;
 	}
 
